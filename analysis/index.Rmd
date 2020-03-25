@@ -8,4 +8,14 @@ editor_options:
   chunk_output_type: console
 ---
 
+## Pathway analysis
+KEGG is a collection of databases dealing with genomes, biological pathways, diseases, drugs, and chemical substances. For each pathway of human, we inferred the PCs and PEER factors of it. Then computed the heritabilities of factors and made a summary of the heritabilities.
+
+[For more details](https://xsun1229.github.io/pathway_analysis/analy.html)
+
+
+
+
+
+
 Welcome to my research website.
