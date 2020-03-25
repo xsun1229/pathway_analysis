@@ -19,7 +19,7 @@ KEGG is a collection of databases dealing with genomes, biological pathways, dis
 
 ## Results
 
-### Histogrames and Q-Q plots of heritability.
+### Histograms and Q-Q plots of heritability.
 We tested 331 pathway for PCs, and 327 pathways for PEER factors.
 
 
