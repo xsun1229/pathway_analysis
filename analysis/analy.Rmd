@@ -128,15 +128,17 @@ We performed association test between the fifth PC and all SNPs using Plink. Sin
 Besides, we corrected the results for genotype PCs. We used Plink to compute 10 PCs and used them as corvariates in association test.  
 
 Manhattan plot
-
 <figure class="half">
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_noMHC_co.jpeg" width="50%">
-</figure>   
+</figure> 
+The red line here means -log10(p-value) is 5e-8.
+
 QQ plot 
 
 <figure class="half">
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/T1D_noMHC_co.jpeg" width="50%">
-</figure>   
+</figure>
+Here's the qqplot of observed p-values vs expected p-values(uniform distribution).
 
 ```{r}
 
