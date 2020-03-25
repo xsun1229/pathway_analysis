@@ -537,16 +537,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree69ef57eaf04de20d9cc2eb6e194c005f2f1abbbetargetblank69ef57ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/69ef57eaf04de20d9cc2eb6e194c005f2f1abbbe" target="_blank">69ef57e</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreebb5898cfa619fdebf9196d859c83adbd14d78b94targetblankbb5898ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/bb5898cfa619fdebf9196d859c83adbd14d78b94" target="_blank">bb5898c</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree69ef57eaf04de20d9cc2eb6e194c005f2f1abbbetargetblank69ef57ea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreebb5898cfa619fdebf9196d859c83adbd14d78b94targetblankbb5898ca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/69ef57eaf04de20d9cc2eb6e194c005f2f1abbbe" target="_blank">69ef57e</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/bb5898cfa619fdebf9196d859c83adbd14d78b94" target="_blank">bb5898c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -595,6 +595,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/bb5898cfa619fdebf9196d859c83adbd14d78b94/analysis/analy.Rmd" target="_blank">bb5898c</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-03-25
+</td>
+<td>
+wflow_publish(c(“analysis/analy.Rmd”))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/7fd6ab8775f5d495ccf0f7ad5f5661a5155edfcf/docs/analy.html" target="_blank">7fd6ab8</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-03-25
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/xsun1229/pathway_analysis/blob/69ef57eaf04de20d9cc2eb6e194c005f2f1abbbe/analysis/analy.Rmd" target="_blank">69ef57e</a>
 </td>
 <td>
@@ -623,18 +657,29 @@ update plots
 <ul>
 <li>332 pathways downloaded from <a href="https://www.genome.jp/kegg-bin/get_htext?hsa00001.keg">KEGG</a> .</li>
 <li>Infer 5 PCs and 5 <a href="https://github.com/PMBio/peer/wiki/Installation-instructions">PEER factors</a> of genes belonging to each pathway using GTEx gene expression data (whole blood).</li>
-<li>Estimate heritability of the factors inferred in last step using <a href="https://cnsgenomics.com/software/gcta/#GREML">GCTA</a>`</li>
+<li>Estimate heritability of the factors inferred in last step using <a href="https://cnsgenomics.com/software/gcta/#GREML">GCTA</a></li>
 </ul>
 </div>
 <div id="results" class="section level2">
 <h2>Results</h2>
 <div id="histogrames-and-q-q-plots-of-heritability." class="section level3">
 <h3>Histogrames and Q-Q plots of heritability.</h3>
-<p>We tested 331 pathway for PCs, and 327 pathways for PEER factors. <img src="https://github.com/xsun1229/pathway_analysis/blob/master/output/hist_pc_H.jpeg" alt="hist_pc_H" /></p>
+<p>We tested 331 pathway for PCs, and 327 pathways for PEER factors.</p>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/hist_pc_H.jpeg" width="50%"> <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/hist_peer_H.jpeg" width="50%">
+</figure>
+<figure class="half">
+<p><img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qqplot_pc.jpeg" width="50%"> <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qqplot_peer.jpeg" width="50%"></p>
+</figure>
 </div>
 <div id="pathways-that-have-p-0.001." class="section level3">
 <h3>6 pathways that have p &lt; 0.001.</h3>
-<p>04672 Intestinal immune network for IgA production [PATH:hsa04672] 04940 Type I diabetes mellitus [PATH:hsa04940] 05310 Asthma [PATH:hsa05310] 05320 Autoimmune thyroid disease [PATH:hsa05320] 05330 Allograft rejection [PATH:hsa05330] 05332 Graft-versus-host disease [PATH:hsa05332]</p>
+<p>04672 Intestinal immune network for IgA production [PATH:hsa04672]</p>
+<p>04940 Type I diabetes mellitus [PATH:hsa04940]</p>
+<p>05310 Asthma [PATH:hsa05310]</p>
+<p>05320 Autoimmune thyroid disease [PATH:hsa05320]</p>
+<p>05330 Allograft rejection [PATH:hsa05330]</p>
+<p>05332 Graft-versus-host disease [PATH:hsa05332]</p>
 <p>More details for these pathways:</p>
 <p>PCs</p>
 <table>
@@ -911,7 +956,7 @@ update plots
 </colgroup>
 <thead>
 <tr class="header">
-<th>ÿpeer</th>
+<th>PEER</th>
 <th>V.G/Vpeer</th>
 <th>SE</th>
 <th>zscore</th>
@@ -1167,7 +1212,13 @@ update plots
 <h3>Results of ‘Type I diabetes mellitus’ pathway (PCA).</h3>
 <p>We performed association test between the fifth PC and all SNPs using Plink. Since SNPs in MHC has p &lt; 1e-100, We show the results after removing MHC. Besides, we corrected the results for genotype PCs. We used Plink to compute 10 PCs and used them as corvariates in association test.</p>
 <p>Manhattan plot</p>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_noMHC_co.jpeg" width="50%">
+</figure>
 <p>QQ plot</p>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/T1D_noMHC_co.jpeg" width="50%">
+</figure>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
