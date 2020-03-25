@@ -15,22 +15,39 @@ KEGG is a collection of databases dealing with genomes, biological pathways, dis
 ## Material and Methods
 - 332 pathways downloaded from [KEGG](https://www.genome.jp/kegg-bin/get_htext?hsa00001.keg) .
 - Infer 5 PCs and 5 [PEER factors](https://github.com/PMBio/peer/wiki/Installation-instructions) of genes belonging to each pathway using GTEx gene expression data (whole blood).
-- Estimate heritability of the factors inferred in last step using [GCTA]( https://cnsgenomics.com/software/gcta/#GREML)`
+- Estimate heritability of the factors inferred in last step using [GCTA]( https://cnsgenomics.com/software/gcta/#GREML)
 
 ## Results
 
 ### Histogrames and Q-Q plots of heritability.
 We tested 331 pathway for PCs, and 327 pathways for PEER factors.
-![hist_pc_H](https://github.com/xsun1229/pathway_analysis/blob/master/output/hist_pc_H.jpeg)
+
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/hist_pc_H.jpeg" width="50%">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/hist_peer_H.jpeg" width="50%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qqplot_pc.jpeg" width="50%">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qqplot_peer.jpeg" width="50%">
+
+</figure>
+
 
 
 ### 6 pathways that have p < 0.001.
 
 04672 Intestinal immune network for IgA production [PATH:hsa04672]
+
 04940 Type I diabetes mellitus [PATH:hsa04940]
+
 05310 Asthma [PATH:hsa05310]
+
 05320 Autoimmune thyroid disease [PATH:hsa05320]
+
 05330 Allograft rejection [PATH:hsa05330]
+
 05332 Graft-versus-host disease [PATH:hsa05332]
 
 More details for these pathways:
@@ -72,7 +89,7 @@ PCs
 
 PEER factors
 
-| ÿpeer | V.G/Vpeer | SE       | zscore      | pval        | pwy                                                    |
+| PEER | V.G/Vpeer | SE       | zscore      | pval        | pwy                                                    |
 |------|-----------|----------|-------------|-------------|--------------------------------------------------------|
 | 1    | 1.00E-06  | 0.052987 | 1.89E-05    | 0.499992471 | 193-04672-Intestinal immune network for IgA production |
 | 2    | 0.16486   | 0.133667 | 1.233363508 | 0.108720087 | 193                                                    |
@@ -112,8 +129,14 @@ Besides, we corrected the results for genotype PCs. We used Plink to compute 10 
 
 Manhattan plot
 
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_noMHC_co.jpeg" width="50%">
+</figure>   
 QQ plot 
 
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/T1D_noMHC_co.jpeg" width="50%">
+</figure>   
 
 ```{r}
 
