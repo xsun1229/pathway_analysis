@@ -18,12 +18,14 @@ PLIER(pathway-level information extractor) is a broadly applicable method to acc
 
 ## Results
 
-###Overview
+### Overview
+
 - The gene expression data from GTEx using Ensemnl ID. In order to use PLIER R package, we need to convert Ensemnl ID to HGNC Gene Symbol. There are 20315 genes in GTEx data. After conversion, 17143 left(not all Ensemnl IDs have a corresponding HGNC Gene Symbol). But only 5641 of 17143 were used in PLIER.
 - We used CanonicalPathways in PLIER R package, which contains 545 curated pathways from Reactome and KEGG.
 - We obtained 90 LVs from PLIER, 26 of them have AUC > 0.70(see figure below).
 
 ### LVs with AUC>0.70
+
 <figure class="half">
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/Umat_wb.jpeg" width="80%">
 </figure>
@@ -31,6 +33,7 @@ PLIER(pathway-level information extractor) is a broadly applicable method to acc
 x-axis shows the name of LVs and y-axis shows the pathway names related to each LVs.
 
 ### Top genes and their pathway assiciations.
+
 <figure class="half">
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/topgenes_wb.jpeg" width="80%">
 </figure>
