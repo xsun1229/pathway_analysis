@@ -25,14 +25,14 @@ PLIER(pathway-level information extractor) is a broadly applicable method to acc
 
 ### LVs with AUC>0.70
 <figure class="half">
-    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/Umat_wb.jpeg" width="50%">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/Umat_wb.jpeg" width="80%">
 </figure>
 
 x-axis shows the name of LVs and y-axis shows the pathway names related to each LVs.
 
 ### Top genes and their pathway assiciations.
 <figure class="half">
-    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/topgenes_wb.jpeg" width="50%">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/topgenes_wb.jpeg" width="80%">
 </figure>
 
 Only LVs with pathway association are plotted.
