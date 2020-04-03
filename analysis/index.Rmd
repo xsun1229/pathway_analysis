@@ -13,9 +13,10 @@ KEGG is a collection of databases dealing with genomes, biological pathways, dis
 
 [For more details](https://xsun1229.github.io/pathway_analysis/analy.html)
 
+## pwy-plier
+PLIER(pathway-level information extractor) is a broadly applicable method to accurately infer relevant biological insights, such as variation in cell-type proportion or pathway activity, from global gene expression studies. It approximates the expression pattern of every gene as a linear combination of eigengene-like latent variables (LVs). We calculated heritability of these LVs and performed further analysis.
 
-
-
+[For more details](https://xsun1229.github.io/pathway_analysis/pwy_PLIER.html)
 
 
 Welcome to my research website.

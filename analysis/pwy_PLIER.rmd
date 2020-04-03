@@ -1,0 +1,44 @@
+---
+title: "pwy_PLIER"
+author: "XSun"
+date: "2020-04-02"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+PLIER(pathway-level information extractor) is a broadly applicable method to accurately infer relevant biological insights, such as variation in cell-type proportion or pathway activity, from global gene expression studies. It approximates the expression pattern of every gene as a linear combination of eigengene-like latent variables (LVs). We calculated heritability of these LVs and performed further analysis.
+
+## Material and Methods 
+
+- We used whole blood gene expression data from GTEx.  
+- Using [PLIER](https://github.com/wgmao/PLIER) to reduce the dimension of gene expression matrix and get LVs. We used default settings as PLIER suggested.
+
+
+## Results
+
+###Overview
+- The gene expression data from GTEx using Ensemnl ID. In order to use PLIER R package, we need to convert Ensemnl ID to HGNC Gene Symbol. There are 20315 genes in GTEx data. After conversion, 17143 left(not all Ensemnl IDs have a corresponding HGNC Gene Symbol). But only 5641 of 17143 were used in PLIER.
+- We used CanonicalPathways in PLIER R package, which contains 545 curated pathways from Reactome and KEGG.
+- We obtained 90 LVs from PLIER, 26 of them have AUC > 0.70(see figure below).
+
+### LVs with AUC>0.70
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/Umat_wb.jpeg" width="50%">
+</figure>
+
+x-axis shows the name of LVs and y-axis shows the pathway names related to each LVs.
+
+### Top genes and their pathway assiciations.
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/topgenes_wb.jpeg" width="50%">
+</figure>
+
+Only LVs with pathway association are plotted.
+
+
+```{r}
+
+```
+
