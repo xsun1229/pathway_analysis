@@ -446,7 +446,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-04-02
+<strong>Last updated:</strong> 2020-04-09
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -537,22 +537,25 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree84481a66050d7975b7705d1d1afbe037c7f57832targetblank84481a6a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/84481a66050d7975b7705d1d1afbe037c7f57832" target="_blank">84481a6</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree40a9578cac8d3178e9e25af9856ec4d22d9e21e5targetblank40a9578a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/40a9578cac8d3178e9e25af9856ec4d22d9e21e5" target="_blank">40a9578</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree84481a66050d7975b7705d1d1afbe037c7f57832targetblank84481a6a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree40a9578cac8d3178e9e25af9856ec4d22d9e21e5targetblank40a9578a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/84481a66050d7975b7705d1d1afbe037c7f57832" target="_blank">84481a6</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/40a9578cac8d3178e9e25af9856ec4d22d9e21e5" target="_blank">40a9578</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
 </p>
 <pre><code>
-working directory clean
+Ignored files:
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+
 </code></pre>
 <p>
 Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
@@ -590,6 +593,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/40a9578cac8d3178e9e25af9856ec4d22d9e21e5/analysis/pwy_PLIER.rmd" target="_blank">40a9578</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-04-09
+</td>
+<td>
+update heritability and association test
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/4cb8c897403beb5a5453c54e349fc4e9fe471bff/docs/pwy_PLIER.html" target="_blank">4cb8c89</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-04-02
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -692,6 +729,8 @@ update plier
 <li>We used whole blood gene expression data from GTEx.<br />
 </li>
 <li>Using <a href="https://github.com/wgmao/PLIER">PLIER</a> to reduce the dimension of gene expression matrix and get LVs. We used default settings as PLIER suggested.</li>
+<li>Estimate heritability of the LVs in last step using <a href="https://cnsgenomics.com/software/gcta/#GREML">GCTA</a></li>
+<li>Perform association test between the LVs with high heritability and all SNPs using Plink. Corrected the results for genotype PCs. We used Plink to compute 10 PCs and used them as corvariates in association test.</li>
 </ul>
 </div>
 <div id="results" class="section level2">
@@ -717,6 +756,293 @@ update plier
 <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/topgenes_wb.jpeg" width="80%">
 </figure>
 <p>Only LVs with pathway association are plotted.</p>
+</div>
+<div id="heritability-of-lvs" class="section level3">
+<h3>Heritability of LVs</h3>
+<p>We computed the heritability of all LVs. The following figure shows the distribution of the heritability.</p>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/hist_H_lv.jpeg" width="50%">
+</figure>
+<p>For more details, we list the heritability of 26 LVs with AUC &gt; 0.7 below. We just list the top 3 pathways related to each LV, corresponding to the figure in ‘LVs with AUC&gt;0.70’ part.</p>
+<table>
+<colgroup>
+<col width="1%" />
+<col width="4%" />
+<col width="3%" />
+<col width="8%" />
+<col width="8%" />
+<col width="7%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>LVs</th>
+<th>V(G)/Vlvs</th>
+<th>SE</th>
+<th>zscore</th>
+<th>pval</th>
+<th>LV_AUC</th>
+<th>pwys</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>60</td>
+<td>0.494548</td>
+<td>0.171469</td>
+<td>2.88418314680788</td>
+<td>0.00196215225033847</td>
+<td>0.726392931195191</td>
+<td>1.REACTOME_GENERIC_TRANSCRIPTION_PATHWAY,</td>
+</tr>
+<tr class="even">
+<td>48</td>
+<td>0.493311</td>
+<td>0.202114</td>
+<td>2.44075620689314</td>
+<td>0.00732827268754888</td>
+<td>0.996043956043956</td>
+<td>1.REACTOME_MITOCHONDRIAL_PROTEIN_IMPORT,2.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,3.KEGG_OXIDATIVE_PHOSPHORYLATION,</td>
+</tr>
+<tr class="odd">
+<td>36</td>
+<td>0.400558</td>
+<td>0.19515</td>
+<td>2.05256469382526</td>
+<td>0.0200574073382793</td>
+<td>0.897281661412943</td>
+<td>1.REACTOME_PROCESSING_OF_CAPPED_INTRON_CONTAINING_PRE_MRNA,2.REACTOME_MRNA_PROCESSING,3.REACTOME_MRNA_SPLICING,</td>
+</tr>
+<tr class="even">
+<td>71</td>
+<td>0.397832</td>
+<td>0.194249</td>
+<td>2.04805172742202</td>
+<td>0.0202774655833539</td>
+<td>0.997166565472576</td>
+<td>1.REACTOME_E2F_MEDIATED_REGULATION_OF_DNA_REPLICATION,2.PID_ATR_PATHWAY,3.KEGG_P53_SIGNALING_PATHWAY,</td>
+</tr>
+<tr class="odd">
+<td>81</td>
+<td>0.256039</td>
+<td>0.164415</td>
+<td>1.55727275491896</td>
+<td>0.0597028705626842</td>
+<td>0.797549019607843</td>
+<td>1.PID_ERBB1_DOWNSTREAM_PATHWAY,2.REACTOME_PROCESSING_OF_CAPPED_INTRON_CONTAINING_PRE_MRNA,3.REACTOME_CYTOKINE_SIGNALING_IN_IMMUNE_SYSTEM,</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0.239428</td>
+<td>0.184462</td>
+<td>1.2979800717763</td>
+<td>0.0971470914853219</td>
+<td>0.876725304465494</td>
+<td>1.KEGG_CYTOKINE_CYTOKINE_RECEPTOR_INTERACTION,2.KEGG_CELL_ADHESION_MOLECULES_CAMS,3.REACTOME_IMMUNOREGULATORY_INTERACTIONS_BETWEEN_A_LYMPHOID_AND_A_NON_LYMPHOID_CELL,</td>
+</tr>
+<tr class="odd">
+<td>22</td>
+<td>0.223824</td>
+<td>0.165512</td>
+<td>1.3523128232394</td>
+<td>0.0881376319708236</td>
+<td>0.964356763925729</td>
+<td>1.KEGG_CELL_ADHESION_MOLECULES_CAMS,2.KEGG_INTESTINAL_IMMUNE_NETWORK_FOR_IGA_PRODUCTION,3.KEGG_PRIMARY_IMMUNODEFICIENCY,</td>
+</tr>
+<tr class="even">
+<td>76</td>
+<td>0.201392</td>
+<td>0.162757</td>
+<td>1.23737842304786</td>
+<td>0.107973312713352</td>
+<td>0.79299641862316</td>
+<td>1.KEGG_CYTOKINE_CYTOKINE_RECEPTOR_INTERACTION,2.REACTOME_PEPTIDE_LIGAND_BINDING_RECEPTORS,3.KEGG_HEMATOPOIETIC_CELL_LINEAGE,</td>
+</tr>
+<tr class="odd">
+<td>82</td>
+<td>0.195819</td>
+<td>0.171871</td>
+<td>1.13933706093524</td>
+<td>0.127281298120168</td>
+<td>0.864578313253012</td>
+<td>1.REACTOME_PROCESSING_OF_CAPPED_INTRON_CONTAINING_PRE_MRNA,2.REACTOME_SIGNALING_BY_WNT,3.REACTOME_TRANSPORT_OF_MATURE_MRNA_DERIVED_FROM_AN_INTRONLESS_TRANSCRIPT,</td>
+</tr>
+<tr class="even">
+<td>79</td>
+<td>0.161897</td>
+<td>0.106225</td>
+<td>1.52409508119558</td>
+<td>0.0637424806329094</td>
+<td>0.856885923101366</td>
+<td>1.REACTOME_DIABETES_PATHWAYS,2.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,3.REACTOME_UNFOLDED_PROTEIN_RESPONSE,</td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td>0.126631</td>
+<td>0.090764</td>
+<td>1.39516768762946</td>
+<td>0.0814826392421427</td>
+<td>0.993530997304582</td>
+<td>1.KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,2.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,3.KEGG_METABOLISM_OF_XENOBIOTICS_BY_CYTOCHROME_P450,</td>
+</tr>
+<tr class="even">
+<td>57</td>
+<td>0.10431</td>
+<td>0.136525</td>
+<td>0.764035890862479</td>
+<td>0.222422927303134</td>
+<td>0.906291320110898</td>
+<td>1.KEGG_VASCULAR_SMOOTH_MUSCLE_CONTRACTION,2.REACTOME_SIGNALING_BY_PDGF,3.KEGG_ECM_RECEPTOR_INTERACTION,</td>
+</tr>
+<tr class="odd">
+<td>89</td>
+<td>0.09778</td>
+<td>0.109456</td>
+<td>0.893326998976758</td>
+<td>0.185841041767189</td>
+<td>0.774674181675942</td>
+<td>1.PID_MTOR_4PATHWAY,2.REACTOME_GLUCOSE_METABOLISM,3.PID_HIF1_TFPATHWAY,</td>
+</tr>
+<tr class="even">
+<td>39</td>
+<td>0.097511</td>
+<td>0.089272</td>
+<td>1.0922909758939</td>
+<td>0.137352612772346</td>
+<td>0.757300275482094</td>
+<td>1.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,2.KEGG_COMPLEMENT_AND_COAGULATION_CASCADES,</td>
+</tr>
+<tr class="odd">
+<td>51</td>
+<td>0.096981</td>
+<td>0.132827</td>
+<td>0.730130169317985</td>
+<td>0.232655310879605</td>
+<td>0.943730044816778</td>
+<td>1.REACTOME_ORC1_REMOVAL_FROM_CHROMATIN,2.KEGG_LYSOSOME,3.KEGG_PROTEASOME,</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>0.079205</td>
+<td>0.125819</td>
+<td>0.629515415000914</td>
+<td>0.264505840043043</td>
+<td>0.992077369773115</td>
+<td>1.REACTOME_NEGATIVE_REGULATORS_OF_RIG_I_MDA5_SIGNALING,2.REACTOME_CYTOKINE_SIGNALING_IN_IMMUNE_SYSTEM,3.KEGG_CYTOSOLIC_DNA_SENSING_PATHWAY,</td>
+</tr>
+<tr class="odd">
+<td>40</td>
+<td>0.073455</td>
+<td>0.097723</td>
+<td>0.751665421650993</td>
+<td>0.226126144895035</td>
+<td>0.953350144092219</td>
+<td>1.REACTOME_MUSCLE_CONTRACTION,2.KEGG_DILATED_CARDIOMYOPATHY,</td>
+</tr>
+<tr class="even">
+<td>78</td>
+<td>0.039485</td>
+<td>0.081458</td>
+<td>0.48472832625402</td>
+<td>0.313934535218113</td>
+<td>0.922911374541349</td>
+<td>1.REACTOME_MITOCHONDRIAL_PROTEIN_IMPORT,2.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,3.MIPS_NOP56P_ASSOCIATED_PRE_RRNA_COMPLEX,</td>
+</tr>
+<tr class="odd">
+<td>37</td>
+<td>0.027415</td>
+<td>0.049898</td>
+<td>0.549420818469678</td>
+<td>0.291358345163622</td>
+<td>0.866641901931649</td>
+<td>1.REACTOME_GLUCOSE_METABOLISM,2.REACTOME_MUSCLE_CONTRACTION,3.KEGG_ARGININE_AND_PROLINE_METABOLISM,</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>1e-06</td>
+<td>0.053586</td>
+<td>1.86615907139925e-05</td>
+<td>0.499992555102445</td>
+<td>0.700039611804318</td>
+<td>1.KEGG_CYTOKINE_CYTOKINE_RECEPTOR_INTERACTION,2.PID_NFAT_TFPATHWAY,3.REACTOME_CYTOKINE_SIGNALING_IN_IMMUNE_SYSTEM,</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>1e-06</td>
+<td>0.035406</td>
+<td>2.82438004857934e-05</td>
+<td>0.499988732353828</td>
+<td>0.828101181402439</td>
+<td>1.REACTOME_GLYCOSAMINOGLYCAN_METABOLISM,2.KEGG_LYSOSOME,3.REACTOME_INNATE_IMMUNE_SYSTEM,</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>1e-06</td>
+<td>0.120094</td>
+<td>8.3268106649791e-06</td>
+<td>0.499996678083165</td>
+<td>0.718790926099158</td>
+<td>1.KEGG_CELL_ADHESION_MOLECULES_CAMS,2.KEGG_LYSOSOME,3.KEGG_INTESTINAL_IMMUNE_NETWORK_FOR_IGA_PRODUCTION,</td>
+</tr>
+<tr class="odd">
+<td>31</td>
+<td>1e-06</td>
+<td>0.036497</td>
+<td>2.73995122886813e-05</td>
+<td>0.499989069176087</td>
+<td>0.765705512811463</td>
+<td>1.REACTOME_TRANSMISSION_ACROSS_CHEMICAL_SYNAPSES,2.REACTOME_NEURONAL_SYSTEM,</td>
+</tr>
+<tr class="even">
+<td>62</td>
+<td>1e-06</td>
+<td>0.042027</td>
+<td>2.37942275204035e-05</td>
+<td>0.499990507476614</td>
+<td>0.996922513280821</td>
+<td>1.REACTOME_3_UTR_MEDIATED_TRANSLATIONAL_REGULATION,2.REACTOME_FORMATION_OF_THE_TERNARY_COMPLEX_AND_SUBSEQUENTLY_THE_43S_COMPLEX,3.KEGG_RIBOSOME,</td>
+</tr>
+<tr class="odd">
+<td>66</td>
+<td>1e-06</td>
+<td>0.169204</td>
+<td>5.91002576771235e-06</td>
+<td>0.499997642240843</td>
+<td>0.851892358774173</td>
+<td>1.KEGG_OXIDATIVE_PHOSPHORYLATION,2.REACTOME_NONSENSE_MEDIATED_DECAY_ENHANCED_BY_THE_EXON_JUNCTION_COMPLEX,3.MIPS_NOP56P_ASSOCIATED_PRE_RRNA_COMPLEX,</td>
+</tr>
+<tr class="even">
+<td>72</td>
+<td>1e-06</td>
+<td>0.043159</td>
+<td>2.31701383257258e-05</td>
+<td>0.49999075645218</td>
+<td>1</td>
+<td>1.REACTOME_3_UTR_MEDIATED_TRANSLATIONAL_REGULATION,2.KEGG_OXIDATIVE_PHOSPHORYLATION,3.REACTOME_NONSENSE_MEDIATED_DECAY_ENHANCED_BY_THE_EXON_JUNCTION_COMPLEX,</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="association-test-results" class="section level3">
+<h3>Association test results</h3>
+<p>Since SNPs in MHC has p &lt; 1e-100, We show the results after removing MHC.</p>
+<div id="results-for-lv60" class="section level4">
+<h4>Results for LV60</h4>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qp_unif_lv60.jpeg" width="50%">
+</figure>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv60.jpeg" width="50%">
+</figure>
+</div>
+<div id="results-for-lv48" class="section level4">
+<h4>Results for LV48</h4>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qp_unif_lv48.jpeg" width="50%">
+</figure>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv48.jpeg" width="50%">
+</figure>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -753,6 +1079,7 @@ loaded via a namespace (and not attached):
 [13] whisker_0.3-2   rmarkdown_1.13  tools_3.6.1     stringr_1.4.0  
 [17] glue_1.3.2      httpuv_1.5.1    xfun_0.12       yaml_2.2.1     
 [21] compiler_3.6.1  htmltools_0.3.6 knitr_1.28     </code></pre>
+</div>
 </div>
 </div>
 </div>
