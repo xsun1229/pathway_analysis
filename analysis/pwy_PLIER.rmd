@@ -14,9 +14,13 @@ PLIER(pathway-level information extractor) is a broadly applicable method to acc
 
 - We used whole blood gene expression data from GTEx.  
 - Using [PLIER](https://github.com/wgmao/PLIER) to reduce the dimension of gene expression matrix and get LVs. We used default settings as PLIER suggested.
+- Estimate heritability of the LVs in last step using [GCTA](https://cnsgenomics.com/software/gcta/#GREML)
+- Perform association test between the LVs with high heritability and all SNPs using Plink. Corrected the results for genotype PCs. We used Plink to compute 10 PCs and used them as corvariates in association test.
+
 
 
 ## Results
+
 
 ### Overview
 
@@ -32,6 +36,7 @@ PLIER(pathway-level information extractor) is a broadly applicable method to acc
 
 x-axis shows the name of LVs and y-axis shows the pathway names related to each LVs.
 
+
 ### Top genes and their pathway assiciations.
 
 <figure class="half">
@@ -39,6 +44,68 @@ x-axis shows the name of LVs and y-axis shows the pathway names related to each 
 </figure>
 
 Only LVs with pathway association are plotted.
+
+### Heritability of LVs
+
+We computed the heritability of all LVs. The following figure shows the distribution of the heritability.
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/hist_H_lv.jpeg" width="50%">
+</figure>
+
+For more details, we list the heritability of 26 LVs with AUC > 0.7 below. We just list the top 3 pathways related to each LV, corresponding to the figure in 'LVs with AUC>0.70' part.
+
+| LVs | V(G)/Vlvs | SE       | zscore               | pval                | LV_AUC            | pwys                                                                                                                                                                   |
+|-----|-----------|----------|----------------------|---------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| 60  | 0.494548  | 0.171469 | 2.88418314680788     | 0.00196215225033847 | 0.726392931195191 | 1.REACTOME_GENERIC_TRANSCRIPTION_PATHWAY,                                                                                                                              |
+| 48  | 0.493311  | 0.202114 | 2.44075620689314     | 0.00732827268754888 | 0.996043956043956 | 1.REACTOME_MITOCHONDRIAL_PROTEIN_IMPORT,2.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,3.KEGG_OXIDATIVE_PHOSPHORYLATION,                                         |
+| 36  | 0.400558  | 0.19515  | 2.05256469382526     | 0.0200574073382793  | 0.897281661412943 | 1.REACTOME_PROCESSING_OF_CAPPED_INTRON_CONTAINING_PRE_MRNA,2.REACTOME_MRNA_PROCESSING,3.REACTOME_MRNA_SPLICING,                                                        |
+| 71  | 0.397832  | 0.194249 | 2.04805172742202     | 0.0202774655833539  | 0.997166565472576 | 1.REACTOME_E2F_MEDIATED_REGULATION_OF_DNA_REPLICATION,2.PID_ATR_PATHWAY,3.KEGG_P53_SIGNALING_PATHWAY,                                                                  |
+| 81  | 0.256039  | 0.164415 | 1.55727275491896     | 0.0597028705626842  | 0.797549019607843 | 1.PID_ERBB1_DOWNSTREAM_PATHWAY,2.REACTOME_PROCESSING_OF_CAPPED_INTRON_CONTAINING_PRE_MRNA,3.REACTOME_CYTOKINE_SIGNALING_IN_IMMUNE_SYSTEM,                              |
+| 1   | 0.239428  | 0.184462 | 1.2979800717763      | 0.0971470914853219  | 0.876725304465494 | 1.KEGG_CYTOKINE_CYTOKINE_RECEPTOR_INTERACTION,2.KEGG_CELL_ADHESION_MOLECULES_CAMS,3.REACTOME_IMMUNOREGULATORY_INTERACTIONS_BETWEEN_A_LYMPHOID_AND_A_NON_LYMPHOID_CELL, |
+| 22  | 0.223824  | 0.165512 | 1.3523128232394      | 0.0881376319708236  | 0.964356763925729 | 1.KEGG_CELL_ADHESION_MOLECULES_CAMS,2.KEGG_INTESTINAL_IMMUNE_NETWORK_FOR_IGA_PRODUCTION,3.KEGG_PRIMARY_IMMUNODEFICIENCY,                                               |
+| 76  | 0.201392  | 0.162757 | 1.23737842304786     | 0.107973312713352   | 0.79299641862316  | 1.KEGG_CYTOKINE_CYTOKINE_RECEPTOR_INTERACTION,2.REACTOME_PEPTIDE_LIGAND_BINDING_RECEPTORS,3.KEGG_HEMATOPOIETIC_CELL_LINEAGE,                                           |
+| 82  | 0.195819  | 0.171871 | 1.13933706093524     | 0.127281298120168   | 0.864578313253012 | 1.REACTOME_PROCESSING_OF_CAPPED_INTRON_CONTAINING_PRE_MRNA,2.REACTOME_SIGNALING_BY_WNT,3.REACTOME_TRANSPORT_OF_MATURE_MRNA_DERIVED_FROM_AN_INTRONLESS_TRANSCRIPT,      |
+| 79  | 0.161897  | 0.106225 | 1.52409508119558     | 0.0637424806329094  | 0.856885923101366 | 1.REACTOME_DIABETES_PATHWAYS,2.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,3.REACTOME_UNFOLDED_PROTEIN_RESPONSE,                                                |
+| 23  | 0.126631  | 0.090764 | 1.39516768762946     | 0.0814826392421427  | 0.993530997304582 | 1.KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,2.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,3.KEGG_METABOLISM_OF_XENOBIOTICS_BY_CYTOCHROME_P450,             |
+| 57  | 0.10431   | 0.136525 | 0.764035890862479    | 0.222422927303134   | 0.906291320110898 | 1.KEGG_VASCULAR_SMOOTH_MUSCLE_CONTRACTION,2.REACTOME_SIGNALING_BY_PDGF,3.KEGG_ECM_RECEPTOR_INTERACTION,                                                                |
+| 89  | 0.09778   | 0.109456 | 0.893326998976758    | 0.185841041767189   | 0.774674181675942 | 1.PID_MTOR_4PATHWAY,2.REACTOME_GLUCOSE_METABOLISM,3.PID_HIF1_TFPATHWAY,                                                                                                |
+| 39  | 0.097511  | 0.089272 | 1.0922909758939      | 0.137352612772346   | 0.757300275482094 | 1.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,2.KEGG_COMPLEMENT_AND_COAGULATION_CASCADES,                                                                       |
+| 51  | 0.096981  | 0.132827 | 0.730130169317985    | 0.232655310879605   | 0.943730044816778 | 1.REACTOME_ORC1_REMOVAL_FROM_CHROMATIN,2.KEGG_LYSOSOME,3.KEGG_PROTEASOME,                                                                                              |
+| 15  | 0.079205  | 0.125819 | 0.629515415000914    | 0.264505840043043   | 0.992077369773115 | 1.REACTOME_NEGATIVE_REGULATORS_OF_RIG_I_MDA5_SIGNALING,2.REACTOME_CYTOKINE_SIGNALING_IN_IMMUNE_SYSTEM,3.KEGG_CYTOSOLIC_DNA_SENSING_PATHWAY,                            |
+| 40  | 0.073455  | 0.097723 | 0.751665421650993    | 0.226126144895035   | 0.953350144092219 | 1.REACTOME_MUSCLE_CONTRACTION,2.KEGG_DILATED_CARDIOMYOPATHY,                                                                                                           |
+| 78  | 0.039485  | 0.081458 | 0.48472832625402     | 0.313934535218113   | 0.922911374541349 | 1.REACTOME_MITOCHONDRIAL_PROTEIN_IMPORT,2.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,3.MIPS_NOP56P_ASSOCIATED_PRE_RRNA_COMPLEX,                                |
+| 37  | 0.027415  | 0.049898 | 0.549420818469678    | 0.291358345163622   | 0.866641901931649 | 1.REACTOME_GLUCOSE_METABOLISM,2.REACTOME_MUSCLE_CONTRACTION,3.KEGG_ARGININE_AND_PROLINE_METABOLISM,                                                                    |
+| 3   | 1e-06     | 0.053586 | 1.86615907139925e-05 | 0.499992555102445   | 0.700039611804318 | 1.KEGG_CYTOKINE_CYTOKINE_RECEPTOR_INTERACTION,2.PID_NFAT_TFPATHWAY,3.REACTOME_CYTOKINE_SIGNALING_IN_IMMUNE_SYSTEM,                                                     |
+| 6   | 1e-06     | 0.035406 | 2.82438004857934e-05 | 0.499988732353828   | 0.828101181402439 | 1.REACTOME_GLYCOSAMINOGLYCAN_METABOLISM,2.KEGG_LYSOSOME,3.REACTOME_INNATE_IMMUNE_SYSTEM,                                                                               |
+| 9   | 1e-06     | 0.120094 | 8.3268106649791e-06  | 0.499996678083165   | 0.718790926099158 | 1.KEGG_CELL_ADHESION_MOLECULES_CAMS,2.KEGG_LYSOSOME,3.KEGG_INTESTINAL_IMMUNE_NETWORK_FOR_IGA_PRODUCTION,                                                               |
+| 31  | 1e-06     | 0.036497 | 2.73995122886813e-05 | 0.499989069176087   | 0.765705512811463 | 1.REACTOME_TRANSMISSION_ACROSS_CHEMICAL_SYNAPSES,2.REACTOME_NEURONAL_SYSTEM,                                                                                           |
+| 62  | 1e-06     | 0.042027 | 2.37942275204035e-05 | 0.499990507476614   | 0.996922513280821 | 1.REACTOME_3_UTR_MEDIATED_TRANSLATIONAL_REGULATION,2.REACTOME_FORMATION_OF_THE_TERNARY_COMPLEX_AND_SUBSEQUENTLY_THE_43S_COMPLEX,3.KEGG_RIBOSOME,                       |
+| 66  | 1e-06     | 0.169204 | 5.91002576771235e-06 | 0.499997642240843   | 0.851892358774173 | 1.KEGG_OXIDATIVE_PHOSPHORYLATION,2.REACTOME_NONSENSE_MEDIATED_DECAY_ENHANCED_BY_THE_EXON_JUNCTION_COMPLEX,3.MIPS_NOP56P_ASSOCIATED_PRE_RRNA_COMPLEX,                   |
+| 72  | 1e-06     | 0.043159 | 2.31701383257258e-05 | 0.49999075645218    | 1                 | 1.REACTOME_3_UTR_MEDIATED_TRANSLATIONAL_REGULATION,2.KEGG_OXIDATIVE_PHOSPHORYLATION,3.REACTOME_NONSENSE_MEDIATED_DECAY_ENHANCED_BY_THE_EXON_JUNCTION_COMPLEX,          |
+
+### Association test results
+
+Since SNPs in MHC has p < 1e-100, We show the results after removing MHC.
+
+#### Results for LV60
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qp_unif_lv60.jpeg" width="50%">
+</figure>
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv60.jpeg" width="50%">
+</figure>
+
+#### Results for LV48
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qp_unif_lv48.jpeg" width="50%">
+</figure>
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv48.jpeg" width="50%">
+</figure>
+
 
 
 ```{r}
