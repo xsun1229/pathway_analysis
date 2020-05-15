@@ -1,0 +1,1113 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="XSun" />
+
+<meta name="date" content="2020-05-14" />
+
+<title>pwy-plier-nochrx</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/master/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">pathway_analysis</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/xsun1229/pathway_analysis">
+    <span class="fa fa-github"></span>
+     
+    Source code
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">pwy-plier-nochrx</h1>
+<h4 class="author">XSun</h4>
+<h4 class="date">2020-05-14</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span> workflowr <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2020-05-14
+</p>
+<p>
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+</p>
+<p>
+<strong>Knit directory:</strong> <code>pathway_analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
+</p>
+<p>
+This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis was created with <a
+  href="https://github.com/jdblischak/workflowr">workflowr</a> (version 1.6.2). The <em>Checks</em> tab describes the reproducibility checks that were applied when the results were created. The <em>Past versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20200323code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20200323)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20200323code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20200323)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree3c7e575f98539f79223023b57bde666e6654c2d5targetblank3c7e575a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/3c7e575f98539f79223023b57bde666e6654c2d5" target="_blank">3c7e575</a> </a>
+</p>
+</div>
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree3c7e575f98539f79223023b57bde666e6654c2d5targetblank3c7e575a" class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/3c7e575f98539f79223023b57bde666e6654c2d5" target="_blank">3c7e575</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .Rhistory
+    Ignored:    .Rproj.user/
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not included in this status report because it is ok for generated content to have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+
+<p>
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/pwy-plier-nochrx.Rmd</code>) and HTML (<code>docs/pwy-plier-nochrx.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+</p>
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+File
+</th>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+<th>
+Message
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/3c7e575f98539f79223023b57bde666e6654c2d5/analysis/pwy-plier-nochrx.Rmd" target="_blank">3c7e575</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-14
+</td>
+<td>
+wflow_publish(c(“analysis/index.Rmd”, “analysis/pwy-plier-nochrx.Rmd”,
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</div>
+</div>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>We performed the same analysis with pwy_PLIER[<a href="https://xsun1229.github.io/pathway_analysis/pwy_PLIER.html" class="uri">https://xsun1229.github.io/pathway_analysis/pwy_PLIER.html</a>], but the data here excluded genes in chrX.</p>
+</div>
+<div id="results" class="section level2">
+<h2>Results</h2>
+<div id="overview" class="section level3">
+<h3>Overview</h3>
+<ul>
+<li>The gene expression data from GTEx using Ensemnl ID. In order to use PLIER R package, we need to convert Ensemnl ID to HGNC Gene Symbol. There are 19696 genes in GTEx data. After conversion, 16634 left(not all Ensemnl IDs have a corresponding HGNC Gene Symbol). But only 5472 of 17143 were used in PLIER.</li>
+<li>We used CanonicalPathways in PLIER R package, which contains 545 curated pathways from Reactome and KEGG.</li>
+<li>We obtained 128 LVs from PLIER, 39 of them have AUC &gt; 0.70(see figure below).</li>
+</ul>
+</div>
+<div id="lvs-with-auc0.70" class="section level3">
+<h3>LVs with AUC&gt;0.70</h3>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/Umat_wb_nox.jpeg" width="80%">
+</figure>
+<p>x-axis shows the name of LVs and y-axis shows the pathway names related to each LVs.</p>
+</div>
+<div id="top-genes-and-their-pathway-assiciations." class="section level3">
+<h3>Top genes and their pathway assiciations.</h3>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/topgenes_wb_nox.jpeg" width="80%">
+</figure>
+<p>Only LVs with pathway association are plotted.</p>
+</div>
+<div id="heritability-of-lvs" class="section level3">
+<h3>Heritability of LVs</h3>
+<p>We computed the heritability of all LVs. The following figure shows the distribution of the heritability.</p>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/hist_H_lv.jpeg" width="50%">
+</figure>
+<p>For more details, we list the heritability of 39 LVs with AUC &gt; 0.7 below. We just list the top 3 pathways related to each LV, corresponding to the figure in ‘LVs with AUC&gt;0.70’ part.</p>
+<table>
+<colgroup>
+<col width="1%" />
+<col width="4%" />
+<col width="3%" />
+<col width="8%" />
+<col width="8%" />
+<col width="7%" />
+<col width="65%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>LVs</th>
+<th>V(G)/Vlvs</th>
+<th>SE</th>
+<th>zscore</th>
+<th>pval</th>
+<th>LV_AUC</th>
+<th>pwys</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>104</td>
+<td>0.566678</td>
+<td>0.188215</td>
+<td>3.01080147703424</td>
+<td>0.00130279572931724</td>
+<td>0.859888262976099</td>
+<td>1.KEGG_ECM_RECEPTOR_INTERACTION,2.PID_FRA_PATHWAY,3.KEGG_TGF_BETA_SIGNALING_PATHWAY,</td>
+</tr>
+<tr class="even">
+<td>65</td>
+<td>0.371206</td>
+<td>0.190483</td>
+<td>1.94876183176451</td>
+<td>0.0256619369247799</td>
+<td>0.742056354916067</td>
+<td>1.PID_ERBB1_DOWNSTREAM_PATHWAY,2.REACTOME_CYTOKINE_SIGNALING_IN_IMMUNE_SYSTEM,3.PID_SHP2_PATHWAY,</td>
+</tr>
+<tr class="odd">
+<td>51</td>
+<td>0.342268</td>
+<td>0.189556</td>
+<td>1.80562999852286</td>
+<td>0.03548807680646</td>
+<td>0.71801981400338</td>
+<td>1.REACTOME_TCA_CYCLE_AND_RESPIRATORY_ELECTRON_TRANSPORT,2.REACTOME_ANTIGEN_PROCESSING_UBIQUITINATION_PROTEASOME_DEGRADATION,</td>
+</tr>
+<tr class="even">
+<td>75</td>
+<td>0.306539</td>
+<td>0.118445</td>
+<td>2.58802819874203</td>
+<td>0.00482635391537334</td>
+<td>0.839352058255313</td>
+<td>1.REACTOME_CELL_CYCLE,2.REACTOME_DESTABILIZATION_OF_MRNA_BY_AUF1_HNRNP_D0,3.KEGG_OXIDATIVE_PHOSPHORYLATION,</td>
+</tr>
+<tr class="odd">
+<td>30</td>
+<td>0.2589</td>
+<td>0.148663</td>
+<td>1.74152277298319</td>
+<td>0.0407959925084865</td>
+<td>0.931003584229391</td>
+<td>1.REACTOME_NEGATIVE_REGULATORS_OF_RIG_I_MDA5_SIGNALING,2.REACTOME_CYTOKINE_SIGNALING_IN_IMMUNE_SYSTEM,3.KEGG_CYTOSOLIC_DNA_SENSING_PATHWAY,</td>
+</tr>
+<tr class="even">
+<td>37</td>
+<td>0.25188</td>
+<td>0.179049</td>
+<td>1.40676574568973</td>
+<td>0.0797484315154764</td>
+<td>0.826142528735632</td>
+<td>1.REACTOME_CELL_CYCLE,2.REACTOME_HOST_INTERACTIONS_OF_HIV_FACTORS,3.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,</td>
+</tr>
+<tr class="odd">
+<td>113</td>
+<td>0.225381</td>
+<td>0.179394</td>
+<td>1.2563463660992</td>
+<td>0.104495209079798</td>
+<td>0.848267743020518</td>
+<td>1.KEGG_NEUROACTIVE_LIGAND_RECEPTOR_INTERACTION,2.REACTOME_BIOLOGICAL_OXIDATIONS,3.REACTOME_PHASE1_FUNCTIONALIZATION_OF_COMPOUNDS,</td>
+</tr>
+<tr class="even">
+<td>122</td>
+<td>0.19492</td>
+<td>0.162325</td>
+<td>1.20080086246727</td>
+<td>0.114914228619595</td>
+<td>0.704706199572729</td>
+<td>1.REACTOME_MUSCLE_CONTRACTION,2.KEGG_CARDIAC_MUSCLE_CONTRACTION,3.KEGG_DILATED_CARDIOMYOPATHY,</td>
+</tr>
+<tr class="odd">
+<td>92</td>
+<td>0.159718</td>
+<td>0.178119</td>
+<td>0.896692660524705</td>
+<td>0.184941469047504</td>
+<td>1</td>
+<td>1.REACTOME_3_UTR_MEDIATED_TRANSLATIONAL_REGULATION,2.REACTOME_PEPTIDE_CHAIN_ELONGATION,3.KEGG_OXIDATIVE_PHOSPHORYLATION,</td>
+</tr>
+<tr class="even">
+<td>100</td>
+<td>0.155914</td>
+<td>0.157656</td>
+<td>0.988950626680875</td>
+<td>0.161343649437385</td>
+<td>0.946170286108239</td>
+<td>1.REACTOME_DIABETES_PATHWAYS,2.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,3.KEGG_ECM_RECEPTOR_INTERACTION,</td>
+</tr>
+<tr class="odd">
+<td>115</td>
+<td>0.144509</td>
+<td>0.131796</td>
+<td>1.09645968011169</td>
+<td>0.136438829468342</td>
+<td>0.841934777850733</td>
+<td>1.KEGG_CYTOKINE_CYTOKINE_RECEPTOR_INTERACTION,2.KEGG_CELL_ADHESION_MOLECULES_CAMS,3.REACTOME_IMMUNOREGULATORY_INTERACTIONS_BETWEEN_A_LYMPHOID_AND_A_NON_LYMPHOID_CELL,</td>
+</tr>
+<tr class="even">
+<td>95</td>
+<td>0.142553</td>
+<td>0.096367</td>
+<td>1.47927194994137</td>
+<td>0.0695338232633544</td>
+<td>0.828467664303842</td>
+<td>1.REACTOME_CELL_CYCLE,2.KEGG_OXIDATIVE_PHOSPHORYLATION,3.KEGG_RIBOSOME,</td>
+</tr>
+<tr class="odd">
+<td>17</td>
+<td>0.131902</td>
+<td>0.113839</td>
+<td>1.15867145705777</td>
+<td>0.123295064809082</td>
+<td>0.707144924540004</td>
+<td>1.KEGG_LYSOSOME,2.REACTOME_PROCESSING_OF_CAPPED_INTRON_CONTAINING_PRE_MRNA,3.KEGG_GLYCEROPHOSPHOLIPID_METABOLISM,</td>
+</tr>
+<tr class="even">
+<td>67</td>
+<td>0.119548</td>
+<td>0.080807</td>
+<td>1.47942628732659</td>
+<td>0.0695132093638851</td>
+<td>0.995371432943157</td>
+<td>1.REACTOME_REGULATION_OF_APOPTOSIS,2.REACTOME_MITOCHONDRIAL_PROTEIN_IMPORT,3.MIPS_28S_RIBOSOMAL_SUBUNIT_MITOCHONDRIAL,</td>
+</tr>
+<tr class="odd">
+<td>90</td>
+<td>0.114003</td>
+<td>0.171114</td>
+<td>0.666240050492654</td>
+<td>0.252628838610528</td>
+<td>0.939211309523809</td>
+<td>1.KEGG_GLUTATHIONE_METABOLISM,2.KEGG_METABOLISM_OF_XENOBIOTICS_BY_CYTOCHROME_P450,3.REACTOME_BIOLOGICAL_OXIDATIONS,</td>
+</tr>
+<tr class="even">
+<td>108</td>
+<td>0.110362</td>
+<td>0.094853</td>
+<td>1.16350563503527</td>
+<td>0.122312206588565</td>
+<td>0.96761493522987</td>
+<td>1.REACTOME_MITOCHONDRIAL_PROTEIN_IMPORT,2.REACTOME_CELL_CYCLE,3.MIPS_28S_RIBOSOMAL_SUBUNIT_MITOCHONDRIAL,</td>
+</tr>
+<tr class="odd">
+<td>114</td>
+<td>0.104978</td>
+<td>0.130814</td>
+<td>0.802498203556194</td>
+<td>0.211132413574628</td>
+<td>0.804487964096287</td>
+<td>1.REACTOME_IMMUNOREGULATORY_INTERACTIONS_BETWEEN_A_LYMPHOID_AND_A_NON_LYMPHOID_CELL,2.PID_IL12_2PATHWAY,3.REACTOME_PEPTIDE_LIGAND_BINDING_RECEPTORS,</td>
+</tr>
+<tr class="even">
+<td>73</td>
+<td>0.098981</td>
+<td>0.085872</td>
+<td>1.15265744363704</td>
+<td>0.124525507637549</td>
+<td>0.765763390974272</td>
+<td>1.REACTOME_GLYCOSAMINOGLYCAN_METABOLISM,2.KEGG_CELL_ADHESION_MOLECULES_CAMS,3.KEGG_LYSOSOME,</td>
+</tr>
+<tr class="odd">
+<td>22</td>
+<td>0.098009</td>
+<td>0.084107</td>
+<td>1.16528945272094</td>
+<td>0.121950923508024</td>
+<td>0.763288097257563</td>
+<td>1.REACTOME_G_ALPHA_I_SIGNALLING_EVENTS,2.KEGG_INTESTINAL_IMMUNE_NETWORK_FOR_IGA_PRODUCTION,3.REACTOME_GENERIC_TRANSCRIPTION_PATHWAY,</td>
+</tr>
+<tr class="even">
+<td>26</td>
+<td>0.097385</td>
+<td>0.099209</td>
+<td>0.981614571258656</td>
+<td>0.163144883087116</td>
+<td>0.93241738885366</td>
+<td>1.REACTOME_REGULATION_OF_APOPTOSIS,2.REACTOME_CELL_CYCLE,3.REACTOME_HOST_INTERACTIONS_OF_HIV_FACTORS,</td>
+</tr>
+<tr class="odd">
+<td>23</td>
+<td>0.074133</td>
+<td>0.063782</td>
+<td>1.16228716565802</td>
+<td>0.122559419068838</td>
+<td>0.963828848698721</td>
+<td>1.KEGG_FATTY_ACID_METABOLISM,2.KEGG_VALINE_LEUCINE_AND_ISOLEUCINE_DEGRADATION,3.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,</td>
+</tr>
+<tr class="even">
+<td>32</td>
+<td>0.038939</td>
+<td>0.053093</td>
+<td>0.73341118414857</td>
+<td>0.231653839927928</td>
+<td>0.708249911120259</td>
+<td>1.ST_B_CELL_ANTIGEN_RECEPTOR,2.KEGG_NON_SMALL_CELL_LUNG_CANCER,3.REACTOME_GENERIC_TRANSCRIPTION_PATHWAY,</td>
+</tr>
+<tr class="odd">
+<td>70</td>
+<td>0.038917</td>
+<td>0.049034</td>
+<td>0.793673777378961</td>
+<td>0.213692684909391</td>
+<td>0.720594012728844</td>
+<td>1.KEGG_CYTOKINE_CYTOKINE_RECEPTOR_INTERACTION,2.PID_NFAT_TFPATHWAY,3.REACTOME_CYTOKINE_SIGNALING_IN_IMMUNE_SYSTEM,</td>
+</tr>
+<tr class="even">
+<td>25</td>
+<td>0.023051</td>
+<td>0.044411</td>
+<td>0.519038076152305</td>
+<td>0.301867094607401</td>
+<td>0.960480421191181</td>
+<td>1.REACTOME_CELL_CYCLE,2.REACTOME_DNA_REPAIR,3.KEGG_DNA_REPLICATION,</td>
+</tr>
+<tr class="odd">
+<td>107</td>
+<td>0.022307</td>
+<td>0.0603</td>
+<td>0.369933665008292</td>
+<td>0.35571595849239</td>
+<td>0.759629600031965</td>
+<td>1.REACTOME_GENERIC_TRANSCRIPTION_PATHWAY,</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>0.00665</td>
+<td>0.039407</td>
+<td>0.168751744613901</td>
+<td>0.432995958032812</td>
+<td>0.989500488349379</td>
+<td>1.REACTOME_CELL_CYCLE,2.PID_ATR_PATHWAY,3.PID_FANCONI_PATHWAY,</td>
+</tr>
+<tr class="odd">
+<td>121</td>
+<td>0.004483</td>
+<td>0.033108</td>
+<td>0.13540534009907</td>
+<td>0.446145701114969</td>
+<td>0.83250175070028</td>
+<td>1.KEGG_CYTOKINE_CYTOKINE_RECEPTOR_INTERACTION,2.REACTOME_CHEMOKINE_RECEPTORS_BIND_CHEMOKINES,3.REACTOME_GPCR_LIGAND_BINDING,</td>
+</tr>
+<tr class="even">
+<td>35</td>
+<td>0.002139</td>
+<td>0.029291</td>
+<td>0.07302584411594</td>
+<td>0.470892775890499</td>
+<td>0.83570542886409</td>
+<td>1.REACTOME_REGULATION_OF_APOPTOSIS,2.KEGG_LYSOSOME,3.KEGG_GLYCOLYSIS_GLUCONEOGENESIS,</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>1e-06</td>
+<td>0.096696</td>
+<td>1.03416894183834e-05</td>
+<td>0.49999587426284</td>
+<td>0.720833333333333</td>
+<td>1.REACTOME_HOST_INTERACTIONS_OF_HIV_FACTORS,2.KEGG_LYSOSOME,3.PID_BETACATENIN_NUC_PATHWAY,</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td>1e-06</td>
+<td>0.041571</td>
+<td>2.40552308099396e-05</td>
+<td>0.499990403351366</td>
+<td>0.825401709401709</td>
+<td>1.KEGG_CYTOKINE_CYTOKINE_RECEPTOR_INTERACTION,2.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,3.REACTOME_CYTOKINE_SIGNALING_IN_IMMUNE_SYSTEM,</td>
+</tr>
+<tr class="odd">
+<td>16</td>
+<td>1e-06</td>
+<td>0.04448</td>
+<td>2.24820143884892e-05</td>
+<td>0.499991030973913</td>
+<td>0.888788153520701</td>
+<td>1.KEGG_CYTOKINE_CYTOKINE_RECEPTOR_INTERACTION,2.REACTOME_AQUAPORIN_MEDIATED_TRANSPORT,3.KEGG_ECM_RECEPTOR_INTERACTION,</td>
+</tr>
+<tr class="even">
+<td>29</td>
+<td>1e-06</td>
+<td>0.100529</td>
+<td>9.947378368431e-06</td>
+<td>0.49999603157019</td>
+<td>0.75346687211094</td>
+<td>1.REACTOME_CELL_CYCLE,2.REACTOME_PROCESSING_OF_CAPPED_INTRON_CONTAINING_PRE_MRNA,3.REACTOME_GENERIC_TRANSCRIPTION_PATHWAY,</td>
+</tr>
+<tr class="odd">
+<td>31</td>
+<td>1e-06</td>
+<td>0.135947</td>
+<td>7.35580777803114e-06</td>
+<td>0.499997065457271</td>
+<td>0.745861844248941</td>
+<td>1.REACTOME_TRANSMISSION_ACROSS_CHEMICAL_SYNAPSES,2.KEGG_CELL_ADHESION_MOLECULES_CAMS,3.SIG_CD40PATHWAYMAP,</td>
+</tr>
+<tr class="even">
+<td>36</td>
+<td>1e-06</td>
+<td>0.036861</td>
+<td>2.71289438702151e-05</td>
+<td>0.499989177117269</td>
+<td>0.779335362852507</td>
+<td>1.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,2.REACTOME_GLUCOSE_METABOLISM,3.REACTOME_MUSCLE_CONTRACTION,</td>
+</tr>
+<tr class="odd">
+<td>39</td>
+<td>1e-06</td>
+<td>0.066475</td>
+<td>1.50432493418578e-05</td>
+<td>0.499993998611803</td>
+<td>0.732700038284839</td>
+<td>1.REACTOME_METABOLISM_OF_AMINO_ACIDS_AND_DERIVATIVES,2.KEGG_METABOLISM_OF_XENOBIOTICS_BY_CYTOCHROME_P450,3.KEGG_COMPLEMENT_AND_COAGULATION_CASCADES,</td>
+</tr>
+<tr class="even">
+<td>40</td>
+<td>1e-06</td>
+<td>0.04092</td>
+<td>2.44379276637341e-05</td>
+<td>0.499990250677411</td>
+<td>0.857282885708685</td>
+<td>1.KEGG_VASCULAR_SMOOTH_MUSCLE_CONTRACTION,2.REACTOME_SIGNALING_BY_PDGF,3.KEGG_ECM_RECEPTOR_INTERACTION,</td>
+</tr>
+<tr class="odd">
+<td>45</td>
+<td>1e-06</td>
+<td>0.029216</td>
+<td>3.42278203723987e-05</td>
+<td>0.49998634507529</td>
+<td>0.803456364878107</td>
+<td>1.PID_MTOR_4PATHWAY,2.KEGG_GLYCOLYSIS_GLUCONEOGENESIS,3.REACTOME_GLUCOSE_METABOLISM,</td>
+</tr>
+<tr class="even">
+<td>54</td>
+<td>1e-06</td>
+<td>0.032177</td>
+<td>3.1078099263449e-05</td>
+<td>0.499987601632211</td>
+<td>0.811074655765921</td>
+<td>1.REACTOME_REGULATION_OF_APOPTOSIS,2.REACTOME_PROCESSING_OF_CAPPED_INTRON_CONTAINING_PRE_MRNA,3.REACTOME_GENERIC_TRANSCRIPTION_PATHWAY,</td>
+</tr>
+<tr class="odd">
+<td>81</td>
+<td>1e-06</td>
+<td>0.148392</td>
+<td>6.73890775783061e-06</td>
+<td>0.499997311564772</td>
+<td>0.814444444444444</td>
+<td>1.PID_ERBB1_DOWNSTREAM_PATHWAY,2.BIOCARTA_CHREBP2_PATHWAY,3.PID_HEDGEHOG_GLIPATHWAY,</td>
+</tr>
+</tbody>
+</table>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.6.1 (2019-07-05)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Scientific Linux 7.4 (Nitrogen)
+
+Matrix products: default
+BLAS/LAPACK: /software/openblas-0.2.19-el7-x86_64/lib/libopenblas_haswellp-r0.2.19.so
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] workflowr_1.6.2
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.4.6    rprojroot_1.3-2 digest_0.6.25   later_0.8.0    
+ [5] R6_2.4.1        backports_1.1.6 git2r_0.26.1    magrittr_1.5   
+ [9] evaluate_0.14   stringi_1.4.6   fs_1.3.1        promises_1.0.1 
+[13] whisker_0.3-2   rmarkdown_1.13  tools_3.6.1     stringr_1.4.0  
+[17] glue_1.4.0      httpuv_1.5.1    xfun_0.13       yaml_2.2.1     
+[21] compiler_3.6.1  htmltools_0.3.6 knitr_1.28     </code></pre>
+</div>
+</div>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+http://docs.mathjax.org/en/latest/configuration.html.  This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
