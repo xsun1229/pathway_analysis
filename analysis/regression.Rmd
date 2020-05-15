@@ -179,10 +179,10 @@ It seems that the r-squared issue is a variante selection issue?
 Taking lv5(low heritability but high r2) and lv101(high heritability but low r2) as examples, we made sveral plots to show the models. Since the lasso and elastic_net models were not quite different, we just post the plots from lasso regression here.
 
 <figure class="half">
-    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV5.jpeg" width="80%">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV5.jpeg" width="300%">
 </figure>
 <figure class="half">
-    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101.jpeg" width="80%">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101.jpeg" width="300%">
 </figure>
 
 ```{r}
