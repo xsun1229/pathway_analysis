@@ -1,0 +1,25 @@
+---
+title: "regression"
+author: "XSun"
+date: "2020-05-11"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+In this part, we will use lasso regression to train a prediction model. The dependent variables here are LVs and the independent variables are genotype of certain variants. (LVs ~ variant genotype)
+
+
+## Data
+
+We used whole blood gene expression data from GTEx including 670 samples. In genptype data, there are 10,726,225 variants in total. 
+
+## Variant selection
+
+
+```{r}
+
+```
+
