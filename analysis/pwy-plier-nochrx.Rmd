@@ -9,7 +9,7 @@ editor_options:
 
 ## Introduction
 
-We performed the same analysis with pwy_PLIER[https://xsun1229.github.io/pathway_analysis/pwy_PLIER.html], but the data here excluded genes in chrX. 
+We performed the same analysis with [pwy_PLIER](https://xsun1229.github.io/pathway_analysis/pwy_PLIER.html), but the data here excluded genes in chrX. 
 
 
 ## Results 
@@ -42,7 +42,7 @@ Only LVs with pathway association are plotted.
 We computed the heritability of all LVs. The following figure shows the distribution of the heritability.
 
 <figure class="half">
-    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/hist_H_lv.jpeg" width="50%">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/hist_H_lv_nox.jpeg" width="50%">
 </figure>
 
 For more details, we list the heritability of 39 LVs with AUC > 0.7 below. We just list the top 3 pathways related to each LV, corresponding to the figure in 'LVs with AUC>0.70' part.

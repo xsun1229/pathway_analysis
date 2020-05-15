@@ -9,7 +9,7 @@ editor_options:
 
 ## Introduction
 
-In this part, we will use lasso regression to train a prediction model. The dependent variables here are LVs and the independent variables are genotype of certain variants. (LVs ~ variant genotype)
+In this part, we will use lasso regression to train a prediction model. The dependent variables here are LVs (extracted from (pwy-plier-nochrx)[https://xsun1229.github.io/pathway_analysis/pwy_plier-nochrx.html]) and the independent variables are genotype of certain variants. (LVs ~ variant genotype)
 
 
 ## Data
