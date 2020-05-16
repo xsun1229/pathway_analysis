@@ -32,7 +32,7 @@ We have extract factors(LVs) related to pathways from gene expression data and c
 
 In this part, we will use lasso and elastic_net regression to train a prediction model. The dependent variables here are LVs and the independent variables are genotype of certain variants.
 
-[For more details](https://xsun1229.github.io/pathway_analysis/regression.html)
+[For more details](https://xsun1229.github.io/pathway_analysis/train_model.html)
 
 ### Prediction part
 
