@@ -345,7 +345,7 @@ $(document).ready(function () {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-05-15
+<strong>Last updated:</strong> 2020-05-16
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -376,16 +376,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreee5fe390daef3281317f7f7b34b39cf697e18a9eetargetblanke5fe390a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/e5fe390daef3281317f7f7b34b39cf697e18a9ee" target="_blank">e5fe390</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree8674aa69fa893bb09ec043756eff4600bfd961fdtargetblank8674aa6a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/8674aa69fa893bb09ec043756eff4600bfd961fd" target="_blank">8674aa6</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreee5fe390daef3281317f7f7b34b39cf697e18a9eetargetblanke5fe390a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree8674aa69fa893bb09ec043756eff4600bfd961fdtargetblank8674aa6a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/e5fe390daef3281317f7f7b34b39cf697e18a9ee" target="_blank">e5fe390</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/8674aa69fa893bb09ec043756eff4600bfd961fd" target="_blank">8674aa6</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -395,6 +395,11 @@ Ignored files:
     Ignored:    .RData
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+
+Unstaged changes:
+    Deleted:    analysis/regression.Rmd
+    Deleted:    output/LV5.jpeg
+    Deleted:    output/snp001_le.jpeg
 
 </code></pre>
 <p>
@@ -433,6 +438,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/8674aa69fa893bb09ec043756eff4600bfd961fd/analysis/index.Rmd" target="_blank">8674aa6</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-16
+</td>
+<td>
+wflow_publish(“analysis/index.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/c9d6c1c7572abe20a3ccdb6a178723b0901afb6a/docs/index.html" target="_blank">c9d6c1c</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-15
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -665,7 +704,7 @@ Start workflowr project.
 <div id="training-part" class="section level3">
 <h3>Training part</h3>
 <p>In this part, we will use lasso and elastic_net regression to train a prediction model. The dependent variables here are LVs and the independent variables are genotype of certain variants.</p>
-<p><a href="https://xsun1229.github.io/pathway_analysis/regression.html">For more details</a></p>
+<p><a href="https://xsun1229.github.io/pathway_analysis/train_model.html">For more details</a></p>
 </div>
 <div id="prediction-part" class="section level3">
 <h3>Prediction part</h3>
