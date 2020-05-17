@@ -446,7 +446,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-05-16
+<strong>Last updated:</strong> 2020-05-17
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
@@ -537,16 +537,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreecce4683f1da896b8bf35bebb04e713e4a427359ctargetblankcce4683a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/cce4683f1da896b8bf35bebb04e713e4a427359c" target="_blank">cce4683</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree22336985563c2430efae5c177640b772c7c8babetargetblank2233698a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/22336985563c2430efae5c177640b772c7c8babe" target="_blank">2233698</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreecce4683f1da896b8bf35bebb04e713e4a427359ctargetblankcce4683a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree22336985563c2430efae5c177640b772c7c8babetargetblank2233698a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/cce4683f1da896b8bf35bebb04e713e4a427359c" target="_blank">cce4683</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/22336985563c2430efae5c177640b772c7c8babe" target="_blank">2233698</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -604,6 +604,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/22336985563c2430efae5c177640b772c7c8babe/analysis/train_model.Rmd" target="_blank">2233698</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-17
+</td>
+<td>
+wflow_publish(c(“analysis/index.Rmd”, “analysis/train_model.Rmd”,
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/7b6522feaa3ea989768dec869b8704d2bf4dc0df/docs/train_model.html" target="_blank">7b6522f</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-16
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/xsun1229/pathway_analysis/blob/cce4683f1da896b8bf35bebb04e713e4a427359c/analysis/train_model.Rmd" target="_blank">cce4683</a>
 </td>
 <td>
@@ -642,12 +676,6 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <li><p>From 3, we selected all SNPs with p &lt; 1e-02. For each LV, we can get a set of a bit less than 100,000 variants.</p></li>
 <li><p>Trained Lasso/Elastic net using SNPs from step4 in the training data and evaluated the performance in the testing data.</p></li>
 </ol>
-<pre class="r"><code>  # ###Lasso regression. &#39;k&#39; represents the kth LV. 
-  #   fit_lasso &lt;- cv.glmnet(x, y, alpha =1, foldid = foldid)   ##&#39;foldid = foldid&#39; can fix the data partition in cross validation, making the codes reproducible
-  #   fit_r_train_l[k]  &lt;- fit_lasso$glmnet.fit$dev.ratio[which(fit_lasso$glmnet.fit$lambda == fit_lasso$lambda.min)]  ###r2 when lambda = lambda.min
-  #   predict_l &lt;- predict(fit_lasso, nx, s = fit_lasso$lambda.min )
-  #   mspe_l[k] &lt;- sum((y_observed[k]-predict_l[k])^2)/length(y_observed[k]) # mean squared prediction error when lambda=lambda.min (mean squared error on test set)
-  #   </code></pre>
 </div>
 <div id="results" class="section level2">
 <h2>Results</h2>
@@ -658,11 +686,12 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/devide_snp001_le.jpeg" width="150%">
 </figure>
 </div>
-<div id="debugging" class="section level3">
-<h3>Debugging</h3>
+</div>
+<div id="debugging" class="section level2">
+<h2>Debugging</h2>
 <p>There seems to be some overfitting problems. So I did some debuggings.</p>
-<div id="table" class="section level4">
-<h4>Table</h4>
+<div id="table" class="section level3">
+<h3>Table</h3>
 <p>The table below shows the heritability of LVs and performance of the training models. The table has been sorted by Heritability from small to large.</p>
 <p>Some notations to explain: rsq_min is the r-squared when lambda=lambda.min, ncoef_nzero_min is the number of non-zero coefficients when lambda=lambda.min, mspe_min is mean squared prediction error when lambda=lambda.min (mean squared error on test set). When the suffix is ’_1se’, the notations mean lambda=lambda.1se. Suffix ’_l’ means lasso regression and ’_e’ means elastic_net</p>
 <p>Some LVs like LV6,LV8 have pretty low heritability but have very high r-squared. In such LVs, the training model always selected many variants(ncoef_nzero). Other LVs like LV101,LV113 have relatively high heritability but very low r-squared.In such LVs, the training model always selected few variants(ncoef_nzero).</p>
@@ -3404,14 +3433,28 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 </tbody>
 </table>
 </div>
-<div id="lv5-and-lv101" class="section level4">
-<h4>lv5 and lv101</h4>
+<div id="lv6-and-lv101" class="section level3">
+<h3>lv6 and lv101</h3>
 <p>Taking lv6(low heritability but high r2) and lv101(high heritability but low r2) as examples, we made sveral plots to show the models. Since the lasso and elastic_net models were not quite different, we just post the plots from lasso regression here.</p>
+<p>We first plot the change of mean squared errors and coefficients when training the model using lasso. We also plot the predicted lv values vs observed lv values. ####LV6</p>
 <figure class="half">
-<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV6.jpeg" width="300%">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV6_mse.jpeg" width="80%">
 </figure>
 <figure class="half">
-<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101.jpeg" width="300%">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV6_coef.jpeg" width="80%">
+</figure>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV6_testpred.jpeg" width="80%">
+</figure>
+####LV101
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_mse.jpeg" width="80%">
+</figure>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_coef.jpeg" width="80%">
+</figure>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_testpred.jpeg" width="80%">
 </figure>
 <br>
 <p>
@@ -3449,7 +3492,6 @@ loaded via a namespace (and not attached):
 [13] whisker_0.3-2   rmarkdown_1.13  tools_3.6.1     stringr_1.4.0  
 [17] glue_1.4.0      httpuv_1.5.1    xfun_0.13       yaml_2.2.1     
 [21] compiler_3.6.1  htmltools_0.3.6 knitr_1.28     </code></pre>
-</div>
 </div>
 </div>
 </div>

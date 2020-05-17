@@ -9,9 +9,11 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="XSun" />
 
+<meta name="date" content="2020-05-16" />
 
-<title>Home</title>
+<title>T1B</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,6 +21,9 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -270,6 +275,90 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -277,6 +366,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -320,7 +419,9 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">T1B</h1>
+<h4 class="author">XSun</h4>
+<h4 class="date">2020-05-16</h4>
 
 </div>
 
@@ -348,7 +449,7 @@ $(document).ready(function () {
 <strong>Last updated:</strong> 2020-05-17
 </p>
 <p>
-<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
+<strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>pathway_analysis/</code> <span class="glyphicon glyphicon-question-sign" aria-hidden="true" title="This is the local directory in which the code in this file was executed."> </span>
@@ -370,6 +471,66 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div id="strongRMarkdownfilestronguptodate" class="panel-collapse collapse">
 <div class="panel-body">
 <p>Great! Since the R Markdown file has been committed to the Git repository, you know the exact version of the code that produced these results.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the global environment can affect the analysis in your R Markdown file in unknown ways. For reproduciblity it’s best to always run the code in an empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20200323code"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Seed:</strong> <code>set.seed(20200323)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20200323code" class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20200323)</code> was run prior to running the code in the R Markdown file. Setting a seed ensures that any results that rely on randomness, e.g. subsampling or permutations, are reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Session information:</strong> recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be confident that you successfully produced the results during this run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
@@ -414,7 +575,7 @@ Note that any generated files, e.g. HTML, png, CSS, etc., are not included in t
 <div id="versions" class="tab-pane fade">
 
 <p>
-These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/index.Rmd</code>) and HTML (<code>docs/index.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
+These are the previous versions of the repository in which changes were made to the R Markdown (<code>analysis/T1B.Rmd</code>) and HTML (<code>docs/T1B.html</code>) files. If you’ve configured a remote Git repository (see <code>?wflow_git_remote</code>), click on the hyperlinks in the table below to view the files as they were in that past version.
 </p>
 <div class="table-responsive">
 <table class="table table-condensed table-hover">
@@ -443,7 +604,7 @@ Message
 Rmd
 </td>
 <td>
-<a href="https://github.com/xsun1229/pathway_analysis/blob/22336985563c2430efae5c177640b772c7c8babe/analysis/index.Rmd" target="_blank">2233698</a>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/22336985563c2430efae5c177640b772c7c8babe/analysis/T1B.Rmd" target="_blank">2233698</a>
 </td>
 <td>
 XSun
@@ -455,261 +616,6 @@ XSun
 wflow_publish(c(“analysis/index.Rmd”, “analysis/train_model.Rmd”,
 </td>
 </tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/9a2b903f5f77a217047fd39102b4037f761b8da4/docs/index.html" target="_blank">9a2b903</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-05-16
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/xsun1229/pathway_analysis/blob/8674aa69fa893bb09ec043756eff4600bfd961fd/analysis/index.Rmd" target="_blank">8674aa6</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-05-16
-</td>
-<td>
-wflow_publish(“analysis/index.Rmd”)
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/c9d6c1c7572abe20a3ccdb6a178723b0901afb6a/docs/index.html" target="_blank">c9d6c1c</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-05-15
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/xsun1229/pathway_analysis/blob/e5fe390daef3281317f7f7b34b39cf697e18a9ee/analysis/index.Rmd" target="_blank">e5fe390</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-05-15
-</td>
-<td>
-wflow_publish(c(“analysis/index.Rmd”, “analysis/regression.Rmd”))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/cc5e360e14d6b9318c185c9f3ae5cc3047f75676/docs/index.html" target="_blank">cc5e360</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-05-15
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/31841c5d4b4acdb55509e9a17c1e5344d6773d0b/docs/index.html" target="_blank">31841c5</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-05-14
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/xsun1229/pathway_analysis/blob/eceb1a5603352e16f0360fe893466952dc660b4e/analysis/index.Rmd" target="_blank">eceb1a5</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-05-14
-</td>
-<td>
-wflow_publish(c(“analysis/index.Rmd”, “analysis/pwy-plier-nochrx.Rmd”,
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/8de9fc70b334c479d2825033371395e394fe2a4a/docs/index.html" target="_blank">8de9fc7</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-05-14
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/xsun1229/pathway_analysis/blob/3c7e575f98539f79223023b57bde666e6654c2d5/analysis/index.Rmd" target="_blank">3c7e575</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-05-14
-</td>
-<td>
-wflow_publish(c(“analysis/index.Rmd”, “analysis/pwy-plier-nochrx.Rmd”,
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/016fff00d6f48a5c74956af75a09004c842e411a/docs/index.html" target="_blank">016fff0</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-04-02
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/xsun1229/pathway_analysis/blob/2c1659f2d63f8c4ce6538b07a37fcf7e7a54a6b8/analysis/index.Rmd" target="_blank">2c1659f</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-04-02
-</td>
-<td>
-update plier
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/145c32cb248d9e76c013f46f48084ca8440b2f8f/docs/index.html" target="_blank">145c32c</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-03-25
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/xsun1229/pathway_analysis/blob/a89cccd65526db35ba10f5cf1c23776731901ab2/analysis/index.Rmd" target="_blank">a89cccd</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-03-25
-</td>
-<td>
-wflow_publish(c(“analysis/index.Rmd”))
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/23a27d25e6077eef5e948632c9265a355bd3bbc9/docs/index.html" target="_blank">23a27d2</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-03-23
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/xsun1229/pathway_analysis/blob/2a200e317c67ad8df7fad14acc3d9b6449e93aa7/analysis/index.Rmd" target="_blank">2a200e3</a>
-</td>
-<td>
-XSun
-</td>
-<td>
-2020-03-23
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
 </tbody>
 </table>
 </div>
@@ -717,31 +623,132 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<div id="pathway-analysis" class="section level2">
-<h2>Pathway analysis</h2>
-<p>KEGG is a collection of databases dealing with genomes, biological pathways, diseases, drugs, and chemical substances. For each pathway of human, we inferred the PCs and PEER factors of it. Then computed the heritabilities of factors and made a summary of the heritabilities.</p>
-<p><a href="https://xsun1229.github.io/pathway_analysis/analy.html">For more details</a></p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>We used the same data and work flow as <a href="https://xsun1229.github.io/pathway_analysis/train_model.html">LVs</a>. So we just show the results here.</p>
 </div>
-<div id="pwy-plier" class="section level2">
-<h2>pwy-plier</h2>
-<p>PLIER(pathway-level information extractor) is a broadly applicable method to accurately infer relevant biological insights, such as variation in cell-type proportion or pathway activity, from global gene expression studies. It approximates the expression pattern of every gene as a linear combination of eigengene-like latent variables (LVs). We calculated heritability of these LVs and performed further analysis.</p>
-<p><a href="https://xsun1229.github.io/pathway_analysis/pwy_PLIER.html">For more details</a></p>
+<div id="results" class="section level2">
+<h2>Results</h2>
+<div id="table" class="section level3">
+<h3>Table</h3>
+<table>
+<colgroup>
+<col width="2%" />
+<col width="3%" />
+<col width="2%" />
+<col width="6%" />
+<col width="5%" />
+<col width="5%" />
+<col width="6%" />
+<col width="5%" />
+<col width="6%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+<col width="6%" />
+<col width="5%" />
+<col width="6%" />
+<col width="5%" />
+<col width="5%" />
+<col width="5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>LVs</th>
+<th>V.G..Vlvs</th>
+<th>SE</th>
+<th>zscore</th>
+<th>pval</th>
+<th>rsq_min_l</th>
+<th>lambda_min_l</th>
+<th>ncoef_nzero_min_l</th>
+<th>mspe_l</th>
+<th>rsq_1se_l</th>
+<th>lambda_1se_l</th>
+<th>ncoef_nzero_1se_l</th>
+<th>rsq_min_e</th>
+<th>lambda_min_e</th>
+<th>ncoef_nzero_min_e</th>
+<th>mspe_e</th>
+<th>rsq_1se_e</th>
+<th>lambda_1se_e</th>
+<th>ncoef_nzero_1se_e</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1B_PC5</td>
+<td>0.99999</td>
+<td>0.298475</td>
+<td>3.35036100175894</td>
+<td>0.00040353151578687</td>
+<td>0.026779196</td>
+<td>0.0191768825543947</td>
+<td>9</td>
+<td>1.583682</td>
+<td>0</td>
+<td>0.3003121</td>
+<td>0</td>
+<td>0.026779796</td>
+<td>0.5223923</td>
+<td>10</td>
+<td>1.58436</td>
+<td>0</td>
+<td>0.6006242</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="pwy-plier-nochrx" class="section level2">
-<h2>pwy-plier-nochrx</h2>
-<p>In last part, we extracted LVs from gene expression matrix which includes chrX, but it maybe more accurate to exclude chrX. So, we performed analysis for the data excluding chrX.</p>
-<p><a href="https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx.html">For more details</a></p>
+<div id="plots" class="section level3">
+<h3>Plots</h3>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/T1B_pc5_mse.jpeg" width="80%">
+</figure>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/T1B_pc5_coef.jpeg" width="80%">
+</figure>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/T1B_pc5_testpred.jpeg" width="80%">
+</figure>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>R version 3.6.1 (2019-07-05)
+Platform: x86_64-pc-linux-gnu (64-bit)
+Running under: Scientific Linux 7.4 (Nitrogen)
+
+Matrix products: default
+BLAS/LAPACK: /software/openblas-0.2.19-el7-x86_64/lib/libopenblas_haswellp-r0.2.19.so
+
+locale:
+ [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+ [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+ [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+ [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+ [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+[11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+other attached packages:
+[1] workflowr_1.6.2
+
+loaded via a namespace (and not attached):
+ [1] Rcpp_1.0.4.6    rprojroot_1.3-2 digest_0.6.25   later_0.8.0    
+ [5] R6_2.4.1        backports_1.1.6 git2r_0.26.1    magrittr_1.5   
+ [9] evaluate_0.14   stringi_1.4.6   fs_1.3.1        promises_1.0.1 
+[13] whisker_0.3-2   rmarkdown_1.13  tools_3.6.1     stringr_1.4.0  
+[17] glue_1.4.0      httpuv_1.5.1    xfun_0.13       yaml_2.2.1     
+[21] compiler_3.6.1  htmltools_0.3.6 knitr_1.28     </code></pre>
 </div>
-<div id="factor-twas" class="section level2">
-<h2>Factor-TWAS</h2>
-<p>We have extract factors(LVs) related to pathways from gene expression data and calculated their heritability in former analysis. We plan to use TWAS to find the association between diseases and pathways/factors. TWAS analyse can be divided into training and prediction part.</p>
-<div id="training-part" class="section level3">
-<h3>Training part</h3>
-<p>In this part, we will use lasso and elastic_net regression to train a prediction model. The dependent variables here are LVs and the independent variables are genotype of certain variants.</p>
-<p><a href="https://xsun1229.github.io/pathway_analysis/train_model.html">For more details</a></p>
-<p>We also trained a model for the fifth pc of T1B pathway.</p>
-<p><a href="https://xsun1229.github.io/pathway_analysis/T1B.html">For more details</a> ### Prediction part</p>
-<p>Welcome to my research website.</p>
 </div>
 </div>
 
@@ -759,6 +766,8 @@ footer is added to webpages before the MathJax javascript. -->
 </script>
 
 
+</div>
+</div>
 
 </div>
 
