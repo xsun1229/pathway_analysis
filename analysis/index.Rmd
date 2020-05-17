@@ -34,6 +34,9 @@ In this part, we will use lasso and elastic_net regression to train a prediction
 
 [For more details](https://xsun1229.github.io/pathway_analysis/train_model.html)
 
+We also trained a model for the fifth pc of T1B pathway. 
+
+[For more details](https://xsun1229.github.io/pathway_analysis/T1B.html)
 ### Prediction part
 
 

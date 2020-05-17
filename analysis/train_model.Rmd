@@ -28,14 +28,6 @@ The missing data pattern of our dataset. x-axis represents the proportion of mis
 
 5. Trained Lasso/Elastic net using SNPs from step4 in the training data and evaluated the performance in the testing data.
 
-```{r}
-  # ###Lasso regression. 'k' represents the kth LV. 
-  #   fit_lasso <- cv.glmnet(x, y, alpha =1, foldid = foldid)   ##'foldid = foldid' can fix the data partition in cross validation, making the codes reproducible
-  #   fit_r_train_l[k]  <- fit_lasso$glmnet.fit$dev.ratio[which(fit_lasso$glmnet.fit$lambda == fit_lasso$lambda.min)]  ###r2 when lambda = lambda.min
-  #   predict_l <- predict(fit_lasso, nx, s = fit_lasso$lambda.min )
-  #   mspe_l[k] <- sum((y_observed[k]-predict_l[k])^2)/length(y_observed[k]) # mean squared prediction error when lambda=lambda.min (mean squared error on test set)
-  #   
-```
 
 ## Results
 
@@ -48,14 +40,25 @@ This figure shows the prediction performance (R2 of Lasso/Elastic_net regression
 </figure>
   
   
-### Debugging
+## Debugging
 
 There seems to be some overfitting problems. So I did some debuggings. 
 
-#### Table
+### Table
 The table below shows the heritability of LVs and performance of the training models. The table has been sorted by Heritability from small to large.
 
 Some notations to explain: rsq_min is the r-squared when lambda=lambda.min,  ncoef_nzero_min is the number of non-zero coefficients when lambda=lambda.min, mspe_min is mean squared prediction error when lambda=lambda.min (mean squared error on test set). When the suffix is '_1se', the notations mean lambda=lambda.1se. Suffix '_l' means lasso regression and '_e' means elastic_net
+
+
+```{r eval=FALSE, include=FALSE}
+  ###Lasso regression. 'k' represents the kth LV.
+    fit_lasso <- cv.glmnet(x, y, alpha =1, foldid = foldid)   ##'foldid = foldid' can fix the data partition in cross validation, making the codes reproducible
+    fit_r_train_l[k]  <- fit_lasso$glmnet.fit$dev.ratio[which(fit_lasso$glmnet.fit$lambda == fit_lasso$lambda.min)]  ###r2 when lambda = lambda.min
+    predict_l <- predict(fit_lasso, nx, s = fit_lasso$lambda.min )
+    mspe_l[k] <- sum((y_observed[k]-predict_l[k])^2)/length(y_observed[k]) # mean squared prediction error when lambda=lambda.min (mean squared error on test set)
+
+```
+
 
 Some LVs like LV6,LV8 have pretty low heritability but have very high r-squared. In such LVs, the training model always selected many variants(ncoef_nzero). 
 Other LVs like LV101,LV113 have relatively high heritability but very low r-squared.In such LVs, the training model always selected few variants(ncoef_nzero). 
@@ -194,14 +197,31 @@ It seems that the r-squared issue is a variante selection issue?
 | 104 | 0.566678  | 0.188215 | 3.01080147703424     | 0.00130279572931724 | 0.487290290738235   | 0.047527776962781    | 129               | 0.157302196126318    | 0                  | 0.10979532905503    | 0                 | 0.479546203736585   | 0.0950555539255621   | 201               | 0.157267717293995    | 0                  | 0.21959065811006    | 0                 |
 
 
-#### lv5 and lv101
+### lv6 and lv101
 
 Taking lv6(low heritability but high r2) and lv101(high heritability but low r2) as examples, we made sveral plots to show the models. Since the lasso and elastic_net models were not quite different, we just post the plots from lasso regression here.
 
+We first plot the change of mean squared errors and coefficients when training the model using lasso. We also plot the predicted lv values vs observed lv values. 
+####LV6
+
 <figure class="half">
-    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV6.jpeg" width="300%">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV6_mse.jpeg" width="80%">
 </figure>
 <figure class="half">
-    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101.jpeg" width="300%">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV6_coef.jpeg" width="80%">
+</figure>
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV6_testpred.jpeg" width="80%">
+</figure>
+
+####LV101
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_mse.jpeg" width="80%">
+</figure>
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_coef.jpeg" width="80%">
+</figure>
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_testpred.jpeg" width="80%">
 </figure>
 

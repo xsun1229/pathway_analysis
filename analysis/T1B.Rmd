@@ -1,0 +1,38 @@
+---
+title: "T1B"
+author: "XSun"
+date: "2020-05-16"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+We used the same data and work flow as [LVs](https://xsun1229.github.io/pathway_analysis/train_model.html). So we just show the results here.
+
+## Results
+
+### Table
+| LVs     | V.G..Vlvs | SE       | zscore               | pval                | rsq_min_l           | lambda_min_l         | ncoef_nzero_min_l | mspe_l               | rsq_1se_l          | lambda_1se_l        | ncoef_nzero_1se_l | rsq_min_e           | lambda_min_e         | ncoef_nzero_min_e | mspe_e               | rsq_1se_e          | lambda_1se_e        | ncoef_nzero_1se_e |
+|---------|-----------|----------|----------------------|---------------------|---------------------|----------------------|-------------------|----------------------|--------------------|---------------------|-------------------|---------------------|----------------------|-------------------|----------------------|--------------------|---------------------|-------------------|
+| T1B_PC5 | 0.99999   | 0.298475 | 3.35036100175894     | 0.00040353151578687 | 0.026779196         | 0.0191768825543947   | 9                 | 1.583682             | 0                  | 0.3003121           | 0                 | 0.026779796         | 0.5223923            | 10                | 1.58436              | 0                  | 0.6006242           | 0                 |
+
+### Plots
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/T1B_pc5_mse.jpeg" width="80%">
+</figure>
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/T1B_pc5_coef.jpeg" width="80%">
+</figure>
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/T1B_pc5_testpred.jpeg" width="80%">
+</figure>
+
+
+
+```{r}
+
+```
+
