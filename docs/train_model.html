@@ -537,16 +537,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreea8abd7662bf53a33dadc5032bd9833c6049431b1targetblanka8abd76a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/a8abd7662bf53a33dadc5032bd9833c6049431b1" target="_blank">a8abd76</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree424101923ca2677c74d54492cdc8663110182011targetblank4241019a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/424101923ca2677c74d54492cdc8663110182011" target="_blank">4241019</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreea8abd7662bf53a33dadc5032bd9833c6049431b1targetblanka8abd76a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree424101923ca2677c74d54492cdc8663110182011targetblank4241019a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/a8abd7662bf53a33dadc5032bd9833c6049431b1" target="_blank">a8abd76</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/424101923ca2677c74d54492cdc8663110182011" target="_blank">4241019</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -599,6 +599,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/424101923ca2677c74d54492cdc8663110182011/analysis/train_model.Rmd" target="_blank">4241019</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-19
+</td>
+<td>
+wflow_publish(“analysis/train_model.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/3c1577b7a7dc0defb0588d3338f100dc6a28aafe/docs/train_model.html" target="_blank">3c1577b</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-19
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -727,35 +761,38 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <div id="table" class="section level3">
 <h3>Table</h3>
 <p>The table below shows the heritability of LVs and performance of the training models. The table has been sorted by Heritability from small to large.</p>
-<p>Some notations to explain: rsq_min is the r-squared when lambda=lambda.min, ncoef_nzero_min is the number of non-zero coefficients when lambda=lambda.min, mspe_min is mean squared prediction error when lambda=lambda.min (mean squared error on test set). When the suffix is ’_1se’, the notations mean lambda=lambda.1se. Suffix ’_l’ means lasso regression and ’_e’ means elastic_net</p>
+<p>Some notations to explain: <em>rsq_min</em> is the r-squared when lambda=lambda.min, <em>ncoef_nzero_min</em> is the number of non-zero coefficients when lambda=lambda.min, <em>rsq_test</em> is the r-squared in testing set when lambda=lambda.min , <em>mspe_min</em> is mean squared prediction error when lambda=lambda.min (mean squared error on test set). When the suffix is ’_1se’, the notations mean lambda=lambda.1se. Suffix ’_l’ means lasso regression and ’_e’ means elastic_net</p>
 <pre class="r"><code>  ###Lasso regression. &#39;k&#39; represents the kth LV.
     fit_lasso &lt;- cv.glmnet(x, y, alpha =1, foldid = foldid)   ##&#39;foldid = foldid&#39; can fix the data partition in cross validation, making the codes reproducible
     fit_r_train_l[k]  &lt;- fit_lasso$glmnet.fit$dev.ratio[which(fit_lasso$glmnet.fit$lambda == fit_lasso$lambda.min)]  ###r2 when lambda = lambda.min
     predict_l &lt;- predict(fit_lasso, nx, s = fit_lasso$lambda.min )
+    rsq_test_l &lt;- sum((predict_l - y_test_mean)^2)/sum((y_test - y_test_mean )^2)
     mspe_l[k] &lt;- sum((y_observed[k]-predict_l[k])^2)/length(y_observed[k]) # mean squared prediction error when lambda=lambda.min (mean squared error on test set)</code></pre>
 <p>Some LVs like LV6,LV8 have pretty low heritability but have very high r-squared. In such LVs, the training model always selected many variants(ncoef_nzero). Other LVs like LV101,LV113 have relatively high heritability but very low r-squared.In such LVs, the training model always selected few variants(ncoef_nzero).</p>
 <p>It seems that the r-squared issue is a variante selection issue?</p>
 <table>
 <colgroup>
 <col width="1%" />
-<col width="3%" />
 <col width="2%" />
-<col width="6%" />
-<col width="5%" />
-<col width="5%" />
-<col width="6%" />
-<col width="5%" />
-<col width="6%" />
+<col width="2%" />
 <col width="5%" />
 <col width="5%" />
 <col width="5%" />
 <col width="5%" />
-<col width="6%" />
-<col width="5%" />
-<col width="6%" />
+<col width="4%" />
 <col width="5%" />
 <col width="5%" />
+<col width="4%" />
 <col width="5%" />
+<col width="4%" />
+<col width="5%" />
+<col width="5%" />
+<col width="4%" />
+<col width="5%" />
+<col width="5%" />
+<col width="4%" />
+<col width="5%" />
+<col width="4%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -767,6 +804,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <th>rsq_min_l</th>
 <th>lambda_min_l</th>
 <th>ncoef_nzero_min_l</th>
+<th>rsq_test_l</th>
 <th>mspe_l</th>
 <th>rsq_1se_l</th>
 <th>lambda_1se_l</th>
@@ -774,6 +812,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <th>rsq_min_e</th>
 <th>lambda_min_e</th>
 <th>ncoef_nzero_min_e</th>
+<th>rsq_test_e</th>
 <th>mspe_e</th>
 <th>rsq_1se_e</th>
 <th>lambda_1se_e</th>
@@ -790,6 +829,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.746872501918715</td>
 <td>0.0191768825543947</td>
 <td>280</td>
+<td>0.0684491578141754</td>
 <td>0.0692565647142184</td>
 <td>0</td>
 <td>0.0613519700952273</td>
@@ -797,6 +837,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.742606912748116</td>
 <td>0.0383537651087894</td>
 <td>363</td>
+<td>0.0594483944657362</td>
 <td>0.0683457746938214</td>
 <td>0.0249680349074091</td>
 <td>0.10672162961179</td>
@@ -811,6 +852,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999029114198291</td>
 <td>0.0025468152830638</td>
 <td>696</td>
+<td>0.13545413282389</td>
 <td>0.449327442825097</td>
 <td>0.983738033315223</td>
 <td>0.0107711003738184</td>
@@ -818,6 +860,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.998157450383805</td>
 <td>0.00705409954980617</td>
 <td>803</td>
+<td>0.115598155101066</td>
 <td>0.44316262308647</td>
 <td>0.986238901716028</td>
 <td>0.0196284510077105</td>
@@ -832,6 +875,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.975472384015646</td>
 <td>0.00781840445884999</td>
 <td>502</td>
+<td>0.13387838950522</td>
 <td>0.134471318585579</td>
 <td>0.87774639027828</td>
 <td>0.0180615283335676</td>
@@ -839,6 +883,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.98987481245555</td>
 <td>0.00982037172659728</td>
 <td>741</td>
+<td>0.130382878258349</td>
 <td>0.134040682165879</td>
 <td>0.943829265069514</td>
 <td>0.0237665591667629</td>
@@ -853,6 +898,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999067430188158</td>
 <td>0.00120335448413954</td>
 <td>706</td>
+<td>0.172265055092951</td>
 <td>0.0900321802609404</td>
 <td>0.975501352824938</td>
 <td>0.00642194094036049</td>
@@ -860,6 +906,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999062394268505</td>
 <td>0.00240670896827908</td>
 <td>866</td>
+<td>0.151544359206767</td>
 <td>0.0874603264120175</td>
 <td>0.975103474421601</td>
 <td>0.012843881880721</td>
@@ -874,6 +921,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.224277503677695</td>
 <td>0.0480145243277909</td>
 <td>64</td>
+<td>0.0135520033034858</td>
 <td>0.126338378659455</td>
 <td>0</td>
 <td>0.0664946603503522</td>
@@ -881,6 +929,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.215641858802289</td>
 <td>0.0960290486555817</td>
 <td>80</td>
+<td>0.0120460397620539</td>
 <td>0.126159998178982</td>
 <td>0</td>
 <td>0.132989320700704</td>
@@ -895,6 +944,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.830288815545725</td>
 <td>0.0167640962305254</td>
 <td>317</td>
+<td>0.0500970067158356</td>
 <td>0.125554204067377</td>
 <td>0.0502287371194123</td>
 <td>0.0561865893035356</td>
@@ -902,6 +952,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.841517783682749</td>
 <td>0.0320042843697436</td>
 <td>411</td>
+<td>0.0473367699422103</td>
 <td>0.124076731492398</td>
 <td>0.138268312721172</td>
 <td>0.0932941870825895</td>
@@ -916,6 +967,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.042792689664077</td>
 <td>0.0901865800468365</td>
 <td>7</td>
+<td>0.008888742184879</td>
 <td>0.189879429241912</td>
 <td>0</td>
 <td>0.103692651286371</td>
@@ -923,6 +975,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.037830201034895</td>
 <td>0.180373160093673</td>
 <td>7</td>
+<td>0.00849244700905219</td>
 <td>0.189916633157012</td>
 <td>0</td>
 <td>0.207385302572743</td>
@@ -937,6 +990,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0</td>
 <td>0.083958715936741</td>
 <td>0</td>
+<td>3.60872313758345e-05</td>
 <td>0.171634609233258</td>
 <td>0</td>
 <td>0.083958715936741</td>
@@ -944,6 +998,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0</td>
 <td>0.167917431873482</td>
 <td>0</td>
+<td>3.60872313758345e-05</td>
 <td>0.171634609233258</td>
 <td>0</td>
 <td>0.167917431873482</td>
@@ -958,6 +1013,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.978456890450646</td>
 <td>0.00925988346032878</td>
 <td>512</td>
+<td>0.213681864191738</td>
 <td>0.19275840533847</td>
 <td>0.894058323250729</td>
 <td>0.0213915317843332</td>
@@ -965,6 +1021,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.980038728946416</td>
 <td>0.0176780149326164</td>
 <td>613</td>
+<td>0.2069390021021</td>
 <td>0.188878523389121</td>
 <td>0.917206533147963</td>
 <td>0.037210526872617</td>
@@ -979,6 +1036,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999018497029511</td>
 <td>0.00182720150517977</td>
 <td>676</td>
+<td>0.314334469022269</td>
 <td>0.200735018932418</td>
 <td>0.980386732812086</td>
 <td>0.00848111809107798</td>
@@ -986,6 +1044,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.980151554194897</td>
 <td>0.016962236182156</td>
 <td>664</td>
+<td>0.268329141228356</td>
 <td>0.192431514734907</td>
 <td>0.924619241380495</td>
 <td>0.0340810847123437</td>
@@ -1000,6 +1059,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.996502653671411</td>
 <td>0.00352528384281124</td>
 <td>611</td>
+<td>0.147873326370408</td>
 <td>0.202425659398296</td>
 <td>0.982105777475676</td>
 <td>0.00814386290015095</td>
@@ -1007,6 +1067,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999018922951563</td>
 <td>0.00367617183702347</td>
 <td>854</td>
+<td>0.137414009498672</td>
 <td>0.204338644799008</td>
 <td>0.988461669197634</td>
 <td>0.0129077441526131</td>
@@ -1021,6 +1082,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.956761892388293</td>
 <td>0.00887664123882015</td>
 <td>447</td>
+<td>0.215797947338196</td>
 <td>0.0810304788564523</td>
 <td>0</td>
 <td>0.0951813142090227</td>
@@ -1028,6 +1090,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0571106626435743</td>
 <td>0.137457218446143</td>
 <td>3</td>
+<td>0.0437425628260236</td>
 <td>0.0713543692942471</td>
 <td>0</td>
 <td>0.190362628418045</td>
@@ -1042,6 +1105,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.994447825690278</td>
 <td>0.00207021318651789</td>
 <td>590</td>
+<td>0.16255407152349</td>
 <td>0.0487718945889179</td>
 <td>0.991263623799792</td>
 <td>0.00261231275825579</td>
@@ -1049,6 +1113,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.783243146848888</td>
 <td>0.027882254933823</td>
 <td>430</td>
+<td>0.0767039599689421</td>
 <td>0.0460070047915368</td>
 <td>0.313376294735083</td>
 <td>0.0560219467625643</td>
@@ -1063,6 +1128,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.010232872791521</td>
 <td>0.0945650493467397</td>
 <td>1</td>
+<td>0.000161671173411241</td>
 <td>0.101801117038238</td>
 <td>0</td>
 <td>0.0990678353546847</td>
@@ -1070,6 +1136,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.00922527848866235</td>
 <td>0.189130098693479</td>
 <td>9</td>
+<td>0.000110718806079093</td>
 <td>0.101758447420194</td>
 <td>0</td>
 <td>0.198135670709369</td>
@@ -1084,6 +1151,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999070250595142</td>
 <td>0.00104660052853621</td>
 <td>698</td>
+<td>0.183925958169853</td>
 <td>0.0557517502301519</td>
 <td>0.98147908251227</td>
 <td>0.0048578893195619</td>
@@ -1091,6 +1159,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999062893460655</td>
 <td>0.00209320105707242</td>
 <td>873</td>
+<td>0.171742572242597</td>
 <td>0.0555779580987654</td>
 <td>0.982759197060323</td>
 <td>0.00927418150564542</td>
@@ -1105,6 +1174,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.142723640634763</td>
 <td>0.0486360808410257</td>
 <td>42</td>
+<td>0.0144979298428822</td>
 <td>0.0850958311044143</td>
 <td>0</td>
 <td>0.06429403654716</td>
@@ -1112,6 +1182,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.134862335701812</td>
 <td>0.0972721616820514</td>
 <td>60</td>
+<td>0.0130849039361579</td>
 <td>0.0850174666714567</td>
 <td>0</td>
 <td>0.12858807309432</td>
@@ -1126,6 +1197,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.394065425681452</td>
 <td>0.0605407306098818</td>
 <td>111</td>
+<td>0.0735714519265247</td>
 <td>0.152659049063607</td>
 <td>0</td>
 <td>0.11083423298214</td>
@@ -1133,6 +1205,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.347900920215866</td>
 <td>0.12684684613912</td>
 <td>128</td>
+<td>0.063909307090395</td>
 <td>0.152531313609952</td>
 <td>0</td>
 <td>0.221668465964279</td>
@@ -1147,6 +1220,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.98626844282133</td>
 <td>0.00455538196737047</td>
 <td>548</td>
+<td>0.150937719303925</td>
 <td>0.0885826794111973</td>
 <td>0.901085447237787</td>
 <td>0.0126756209118705</td>
@@ -1154,6 +1228,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.987231390065057</td>
 <td>0.00869666565329402</td>
 <td>710</td>
+<td>0.126577968433041</td>
 <td>0.0865931234038991</td>
 <td>0.922819800516048</td>
 <td>0.0220492172941866</td>
@@ -1168,6 +1243,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.989824815010739</td>
 <td>0.00552159552701236</td>
 <td>577</td>
+<td>0.169031835014819</td>
 <td>0.162513458986094</td>
 <td>0.919787411839565</td>
 <td>0.0160957439366612</td>
@@ -1175,6 +1251,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.994032296657855</td>
 <td>0.00835376905372047</td>
 <td>824</td>
+<td>0.157393055909502</td>
 <td>0.159713592826548</td>
 <td>0.931603269593825</td>
 <td>0.0293316848166562</td>
@@ -1189,6 +1266,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999000830834005</td>
 <td>0.00255507284466866</td>
 <td>651</td>
+<td>0.250023876650903</td>
 <td>0.482205703714323</td>
 <td>0.977762532607181</td>
 <td>0.0124243012333674</td>
@@ -1196,6 +1274,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999076566583577</td>
 <td>0.00487788168128538</td>
 <td>787</td>
+<td>0.235639036058043</td>
 <td>0.476034948138673</td>
 <td>0.979446377958829</td>
 <td>0.0237191951358528</td>
@@ -1210,6 +1289,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.875603117139521</td>
 <td>0.0117924288487393</td>
 <td>348</td>
+<td>0.160356825900029</td>
 <td>0.0462508773875114</td>
 <td>0.731827689873924</td>
 <td>0.0179234432951444</td>
@@ -1217,6 +1297,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.849313885966263</td>
 <td>0.0258843522050694</td>
 <td>455</td>
+<td>0.137102067869394</td>
 <td>0.0448813558291784</td>
 <td>0.678310527332654</td>
 <td>0.0393419137762028</td>
@@ -1231,6 +1312,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999010776589996</td>
 <td>0.00102462575185805</td>
 <td>712</td>
+<td>0.116432278960944</td>
 <td>0.0756931917003884</td>
 <td>0.988518867655754</td>
 <td>0.00359765746637978</td>
@@ -1238,6 +1320,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999003960387615</td>
 <td>0.00204925150371611</td>
 <td>863</td>
+<td>0.109967028165168</td>
 <td>0.0759044277740339</td>
 <td>0.989325325568853</td>
 <td>0.00686827676455903</td>
@@ -1252,6 +1335,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.670314894231759</td>
 <td>0.0400971683037139</td>
 <td>225</td>
+<td>0.0518463082416974</td>
 <td>0.227738643851606</td>
 <td>0</td>
 <td>0.101660936737896</td>
@@ -1259,6 +1343,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.605877540421656</td>
 <td>0.0880131854185608</td>
 <td>310</td>
+<td>0.0406692884541489</td>
 <td>0.225842095156756</td>
 <td>0</td>
 <td>0.203321873475793</td>
@@ -1273,6 +1358,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.804037193004734</td>
 <td>0.0515313950300545</td>
 <td>312</td>
+<td>0.05691265471427</td>
 <td>0.735971795804798</td>
 <td>0.501139416761424</td>
 <td>0.0859595476913388</td>
@@ -1280,6 +1366,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.80031703952457</td>
 <td>0.103062790060109</td>
 <td>398</td>
+<td>0.0492344288564738</td>
 <td>0.731493522313639</td>
 <td>0.532484140499977</td>
 <td>0.164105107175343</td>
@@ -1294,6 +1381,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.993400750749309</td>
 <td>0.00386001280867275</td>
 <td>613</td>
+<td>0.143153742611743</td>
 <td>0.139616268844747</td>
 <td>0.978592292044269</td>
 <td>0.00706667320728776</td>
@@ -1301,6 +1389,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.989480738975861</td>
 <td>0.00974156746058328</td>
 <td>730</td>
+<td>0.135067480019442</td>
 <td>0.137920148743017</td>
 <td>0.962754875410538</td>
 <td>0.0186834521860957</td>
@@ -1315,6 +1404,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.681418079377141</td>
 <td>0.013805289731051</td>
 <td>232</td>
+<td>0.0761335657306384</td>
 <td>0.0228698638260567</td>
 <td>0</td>
 <td>0.0462698456074518</td>
@@ -1322,6 +1412,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.648971666680673</td>
 <td>0.0289252779868957</td>
 <td>295</td>
+<td>0.0607268216398465</td>
 <td>0.0224554969843049</td>
 <td>0</td>
 <td>0.0925396912149037</td>
@@ -1336,6 +1427,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.931087524152773</td>
 <td>0.00795882239352614</td>
 <td>435</td>
+<td>0.133448135028678</td>
 <td>0.0422105792387216</td>
 <td>0.555626266318542</td>
 <td>0.0221458960604958</td>
@@ -1343,6 +1435,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.935904418528669</td>
 <td>0.0151941632658303</td>
 <td>555</td>
+<td>0.125681073215076</td>
 <td>0.0419481813057728</td>
 <td>0.697797083986553</td>
 <td>0.0351004878009357</td>
@@ -1357,6 +1450,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0277074167088155</td>
 <td>0.0521238122832954</td>
 <td>7</td>
+<td>0.0138873439118589</td>
 <td>0.0554370583824639</td>
 <td>0</td>
 <td>0.0599297177917284</td>
@@ -1364,6 +1458,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0250914274614189</td>
 <td>0.104247624566591</td>
 <td>16</td>
+<td>0.0135919540731622</td>
 <td>0.0554166699891771</td>
 <td>0</td>
 <td>0.119859435583457</td>
@@ -1378,6 +1473,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999074704914613</td>
 <td>0.000890250034620063</td>
 <td>681</td>
+<td>0.130159408234407</td>
 <td>0.0407090456353896</td>
 <td>0.990167912440632</td>
 <td>0.00298376437267015</td>
@@ -1385,6 +1481,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999066853876828</td>
 <td>0.00178050006924013</td>
 <td>860</td>
+<td>0.124026044804482</td>
 <td>0.0409179284891033</td>
 <td>0.988039752297679</td>
 <td>0.00654935543048784</td>
@@ -1399,6 +1496,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.865733190488923</td>
 <td>0.0216777443756464</td>
 <td>341</td>
+<td>0.121822666686357</td>
 <td>0.178878384838525</td>
 <td>0.474494512333312</td>
 <td>0.047802260459293</td>
@@ -1406,6 +1504,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.863530111036443</td>
 <td>0.0433554887512928</td>
 <td>453</td>
+<td>0.111331700277664</td>
 <td>0.177363814173984</td>
 <td>0.57259118970488</td>
 <td>0.0831519367254981</td>
@@ -1420,6 +1519,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999019739029675</td>
 <td>0.000752266070405185</td>
 <td>673</td>
+<td>0.22984029396969</td>
 <td>0.0241436912029827</td>
 <td>0.956353556600254</td>
 <td>0.0053070884021133</td>
@@ -1427,6 +1527,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999013904479149</td>
 <td>0.00150453214081037</td>
 <td>806</td>
+<td>0.209437623111751</td>
 <td>0.0234860282875644</td>
 <td>0.951504147251848</td>
 <td>0.0111195788225207</td>
@@ -1441,6 +1542,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999074731407323</td>
 <td>0.000868849903805949</td>
 <td>676</td>
+<td>0.137000205475856</td>
 <td>0.0327593946301498</td>
 <td>0.976659760823953</td>
 <td>0.00463679060644334</td>
@@ -1448,6 +1550,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999078178925719</td>
 <td>0.0017376998076119</td>
 <td>813</td>
+<td>0.133832717568094</td>
 <td>0.0328288716436903</td>
 <td>0.971778676329108</td>
 <td>0.0101777439319609</td>
@@ -1462,6 +1565,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.945383565328771</td>
 <td>0.0334065330886852</td>
 <td>429</td>
+<td>0.167910277440216</td>
 <td>1.12498380464877</td>
 <td>0.890383054326</td>
 <td>0.0484671595780437</td>
@@ -1469,6 +1573,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.949059643579444</td>
 <td>0.0637763092072168</td>
 <td>555</td>
+<td>0.157110918293303</td>
 <td>1.11310535523152</td>
 <td>0.905885736934378</td>
 <td>0.0883229414120918</td>
@@ -1483,6 +1588,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999056007621289</td>
 <td>0.00139100292135954</td>
 <td>685</td>
+<td>0.206611621703887</td>
 <td>0.118609776238909</td>
 <td>0.985473465908637</td>
 <td>0.00561550279298839</td>
@@ -1490,6 +1596,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.997636843742024</td>
 <td>0.0044297400324169</td>
 <td>754</td>
+<td>0.192433337740618</td>
 <td>0.117348265675335</td>
 <td>0.978820429326745</td>
 <td>0.013527785986631</td>
@@ -1504,6 +1611,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0</td>
 <td>0.0629204841835624</td>
 <td>0</td>
+<td>0.00141813055156451</td>
 <td>0.0726994844510502</td>
 <td>0</td>
 <td>0.0629204841835624</td>
@@ -1511,6 +1619,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0</td>
 <td>0.125840968367125</td>
 <td>0</td>
+<td>0.00141813055156451</td>
 <td>0.0726994844510502</td>
 <td>0</td>
 <td>0.125840968367125</td>
@@ -1525,6 +1634,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999052020141201</td>
 <td>0.0013713697090804</td>
 <td>710</td>
+<td>0.214363585557994</td>
 <td>0.155284104224138</td>
 <td>0.986632967240447</td>
 <td>0.0052846123798505</td>
@@ -1532,6 +1642,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.997138811922695</td>
 <td>0.00479301502456481</td>
 <td>798</td>
+<td>0.200923848507295</td>
 <td>0.154153158034903</td>
 <td>0.982183327575817</td>
 <td>0.0121520401018178</td>
@@ -1546,6 +1657,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999060125750177</td>
 <td>0.00249957089759619</td>
 <td>677</td>
+<td>0.191332002305851</td>
 <td>0.398945301864703</td>
 <td>0.981013569241958</td>
 <td>0.0116019803505194</td>
@@ -1553,6 +1665,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999058123673719</td>
 <td>0.00499914179519238</td>
 <td>790</td>
+<td>0.174625428512303</td>
 <td>0.395378117346605</td>
 <td>0.98242483114786</td>
 <td>0.0221493048765779</td>
@@ -1567,6 +1680,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.939885651738356</td>
 <td>0.00868002889165607</td>
 <td>420</td>
+<td>0.0745620135163317</td>
 <td>0.0818157902590708</td>
 <td>0.757873132220957</td>
 <td>0.0182706287758665</td>
@@ -1574,6 +1688,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.926805059048429</td>
 <td>0.0190526419844224</td>
 <td>537</td>
+<td>0.0667681440058722</td>
 <td>0.0814579054991913</td>
 <td>0.773646771897244</td>
 <td>0.0348804010020005</td>
@@ -1588,6 +1703,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.997962419028441</td>
 <td>0.00159778543937813</td>
 <td>663</td>
+<td>0.216950895374246</td>
 <td>0.0667873192790004</td>
 <td>0.986243667321159</td>
 <td>0.00424385838144142</td>
@@ -1595,6 +1711,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999009177953597</td>
 <td>0.00220258305268564</td>
 <td>840</td>
+<td>0.206654483053474</td>
 <td>0.0659621394937444</td>
 <td>0.990291665775341</td>
 <td>0.00704665157109469</td>
@@ -1609,6 +1726,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0</td>
 <td>0.0460780516639079</td>
 <td>0</td>
+<td>0.0184837667968479</td>
 <td>0.0171755490352941</td>
 <td>0</td>
 <td>0.0460780516639079</td>
@@ -1616,6 +1734,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0</td>
 <td>0.0921561033278158</td>
 <td>0</td>
+<td>0.0184837667968479</td>
 <td>0.0171755490352941</td>
 <td>0</td>
 <td>0.0921561033278158</td>
@@ -1630,6 +1749,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.971154523349351</td>
 <td>0.00971876363727441</td>
 <td>526</td>
+<td>0.16418655495554</td>
 <td>0.173098542676714</td>
 <td>0.899194663517238</td>
 <td>0.0186397164993928</td>
@@ -1637,6 +1757,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.939913376029495</td>
 <td>0.0282005239429415</td>
 <td>592</td>
+<td>0.139277688499074</td>
 <td>0.170299284045294</td>
 <td>0.841308771154946</td>
 <td>0.0470413091161265</td>
@@ -1651,6 +1772,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999001752178034</td>
 <td>0.00107443396877448</td>
 <td>717</td>
+<td>0.167601496533154</td>
 <td>0.0674216563032317</td>
 <td>0.99827008631561</td>
 <td>0.00142033847426346</td>
@@ -1658,6 +1780,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999086211772543</td>
 <td>0.00205119857344632</td>
 <td>885</td>
+<td>0.144794260283096</td>
 <td>0.0661461908351038</td>
 <td>0.993747462699297</td>
 <td>0.00544816346637189</td>
@@ -1672,6 +1795,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0</td>
 <td>0.0834706226061113</td>
 <td>0</td>
+<td>0.0597766794531051</td>
 <td>0.114629526086074</td>
 <td>0</td>
 <td>0.0834706226061113</td>
@@ -1679,6 +1803,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.542131261071245</td>
 <td>0.0689803295875392</td>
 <td>262</td>
+<td>0.0939535498359414</td>
 <td>0.123186994021238</td>
 <td>0</td>
 <td>0.166941245212223</td>
@@ -1693,6 +1818,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999022991091683</td>
 <td>0.00164250787930492</td>
 <td>669</td>
+<td>0.278574747734061</td>
 <td>0.137831710059512</td>
 <td>0.994534029925463</td>
 <td>0.00397507974058133</td>
@@ -1700,6 +1826,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.99901866494588</td>
 <td>0.00328501575860984</td>
 <td>844</td>
+<td>0.273073686599344</td>
 <td>0.139124338408173</td>
 <td>0.996792321436778</td>
 <td>0.00601400409727353</td>
@@ -1714,6 +1841,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.176869051247298</td>
 <td>0.00632180812467869</td>
 <td>38</td>
+<td>0.0169373880208941</td>
 <td>0.00140625212773255</td>
 <td>0</td>
 <td>0.0100661062953689</td>
@@ -1721,6 +1849,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0946672599527648</td>
 <td>0.0138763532238354</td>
 <td>45</td>
+<td>0.0116459735710645</td>
 <td>0.00140303989603329</td>
 <td>0</td>
 <td>0.0201322125907379</td>
@@ -1735,6 +1864,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.99908236953855</td>
 <td>0.00200083670197885</td>
 <td>687</td>
+<td>0.175983522446249</td>
 <td>0.27611312893375</td>
 <td>0.977692566714549</td>
 <td>0.0101925382895356</td>
@@ -1742,6 +1872,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.998886791636042</td>
 <td>0.00439183162036945</td>
 <td>817</td>
+<td>0.162596566048054</td>
 <td>0.271209193061802</td>
 <td>0.977345578091102</td>
 <td>0.0203850765790712</td>
@@ -1756,6 +1887,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.530224959559641</td>
 <td>0.0237160307805428</td>
 <td>125</td>
+<td>0.0620772447877128</td>
 <td>0.040563113407368</td>
 <td>0</td>
 <td>0.0601287823267921</td>
@@ -1763,6 +1895,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.490671701506303</td>
 <td>0.0496905748765296</td>
 <td>170</td>
+<td>0.0522930951495642</td>
 <td>0.0398205485363116</td>
 <td>0</td>
 <td>0.120257564653584</td>
@@ -1777,6 +1910,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0171067287910339</td>
 <td>0.0615320535249032</td>
 <td>6</td>
+<td>0.00138841373484386</td>
 <td>0.0672968413489183</td>
 <td>0</td>
 <td>0.0675313527759826</td>
@@ -1784,6 +1918,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0157006522410439</td>
 <td>0.123064107049806</td>
 <td>6</td>
+<td>0.00132962403843851</td>
 <td>0.0673366599088275</td>
 <td>0</td>
 <td>0.135062705551965</td>
@@ -1798,6 +1933,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.994080579713039</td>
 <td>0.00205310959280191</td>
 <td>574</td>
+<td>0.238037882225662</td>
 <td>0.0377112081554425</td>
 <td>0.878998008689177</td>
 <td>0.00998345393530072</td>
@@ -1805,6 +1941,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.992125368992845</td>
 <td>0.0047211542326708</td>
 <td>716</td>
+<td>0.193969123438413</td>
 <td>0.0365264119647762</td>
 <td>0.886832411321987</td>
 <td>0.0190593810930173</td>
@@ -1819,6 +1956,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.957450758617816</td>
 <td>0.0158847553131811</td>
 <td>473</td>
+<td>0.130537838038357</td>
 <td>0.290726873167298</td>
 <td>0</td>
 <td>0.122989891238281</td>
@@ -1826,6 +1964,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.40988407954935</td>
 <td>0.134360976258938</td>
 <td>195</td>
+<td>0.0392708248511731</td>
 <td>0.267997933576731</td>
 <td>0</td>
 <td>0.245979782476562</td>
@@ -1840,6 +1979,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.998988589108689</td>
 <td>0.00397177188154243</td>
 <td>690</td>
+<td>0.244002600080127</td>
 <td>0.90559229381238</td>
 <td>0.991100081517628</td>
 <td>0.0121292174276669</td>
@@ -1847,6 +1987,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.99898634116194</td>
 <td>0.00794354376308487</td>
 <td>789</td>
+<td>0.220381361376968</td>
 <td>0.89101606225949</td>
 <td>0.990133381676628</td>
 <td>0.0254135184913685</td>
@@ -1861,6 +2002,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.415109772077399</td>
 <td>0.00190612175990556</td>
 <td>136</td>
+<td>0.0368657566101203</td>
 <td>0.000221211278350211</td>
 <td>0</td>
 <td>0.00348961007079777</td>
@@ -1868,6 +2010,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.23016252149404</td>
 <td>0.00459186081514538</td>
 <td>116</td>
+<td>0.0224090336454655</td>
 <td>0.000219446502717332</td>
 <td>0</td>
 <td>0.00697922014159555</td>
@@ -1882,6 +2025,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0</td>
 <td>0.133706772904633</td>
 <td>0</td>
+<td>0.0459224442260612</td>
 <td>0.0277189112252803</td>
 <td>0</td>
 <td>0.133706772904633</td>
@@ -1889,6 +2033,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0</td>
 <td>0.267413545809266</td>
 <td>0</td>
+<td>0.0459224442260612</td>
 <td>0.0277189112252803</td>
 <td>0</td>
 <td>0.267413545809266</td>
@@ -1903,6 +2048,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.827999263041507</td>
 <td>0.0244084514302607</td>
 <td>343</td>
+<td>0.0687983598672457</td>
 <td>0.161249165362531</td>
 <td>0</td>
 <td>0.0985373395515124</td>
@@ -1910,6 +2056,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.809459366983152</td>
 <td>0.0511413564368695</td>
 <td>450</td>
+<td>0.0592642566505264</td>
 <td>0.160909478644045</td>
 <td>0</td>
 <td>0.197074679103025</td>
@@ -1924,6 +2071,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.873280637329065</td>
 <td>0.0115444079695238</td>
 <td>378</td>
+<td>0.0862992059625221</td>
 <td>0.0568517063127375</td>
 <td>0</td>
 <td>0.0535843950454061</td>
@@ -1931,6 +2079,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.900958848952805</td>
 <td>0.0200814746372222</td>
 <td>538</td>
+<td>0.089459129191974</td>
 <td>0.0582122196882664</td>
 <td>0</td>
 <td>0.107168790090812</td>
@@ -1945,6 +2094,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.941531721972311</td>
 <td>0.0109886578249482</td>
 <td>446</td>
+<td>0.171316591688282</td>
 <td>0.104208388108018</td>
 <td>0.861019337195768</td>
 <td>0.0174970507689978</td>
@@ -1952,6 +2102,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.945833983554935</td>
 <td>0.0209784127360874</td>
 <td>566</td>
+<td>0.158738690629535</td>
 <td>0.103012947348139</td>
 <td>0.858717531881387</td>
 <td>0.0349941015379956</td>
@@ -1966,6 +2117,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.942886171016826</td>
 <td>0.00976942706688139</td>
 <td>470</td>
+<td>0.132699354837619</td>
 <td>0.0889931544690719</td>
 <td>0.835967059019875</td>
 <td>0.0170723512423036</td>
@@ -1973,6 +2125,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.917192074054146</td>
 <td>0.0235346189726389</td>
 <td>604</td>
+<td>0.1157294651201</td>
 <td>0.0871783439797401</td>
 <td>0.784156271787638</td>
 <td>0.0392581105323494</td>
@@ -1987,6 +2140,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0323660425796027</td>
 <td>0.0783406553639004</td>
 <td>3</td>
+<td>0.00691777481298448</td>
 <td>0.0494621365090968</td>
 <td>0</td>
 <td>0.0900727165169812</td>
@@ -1994,6 +2148,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0620544340123927</td>
 <td>0.1427621749269</td>
 <td>8</td>
+<td>0.00813563809838238</td>
 <td>0.0488079207765501</td>
 <td>0</td>
 <td>0.180145433033962</td>
@@ -2008,6 +2163,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.153979957269242</td>
 <td>0.00374575186157546</td>
 <td>34</td>
+<td>0.0160975064677006</td>
 <td>0.00047732352611351</td>
 <td>0</td>
 <td>0.00569320976618034</td>
@@ -2015,6 +2171,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.10901870313777</td>
 <td>0.00784821731211532</td>
 <td>56</td>
+<td>0.0130160610568699</td>
 <td>0.000477019506842547</td>
 <td>0</td>
 <td>0.0113864195323607</td>
@@ -2029,6 +2186,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.986576430779306</td>
 <td>0.00582702377547593</td>
 <td>532</td>
+<td>0.232806839309631</td>
 <td>0.131298708380885</td>
 <td>0.91972323030166</td>
 <td>0.0147736291730608</td>
@@ -2036,6 +2194,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.990517899468757</td>
 <td>0.00967539501832229</td>
 <td>727</td>
+<td>0.215906179368245</td>
 <td>0.129417481108056</td>
 <td>0.937188230574908</td>
 <td>0.0256986984799692</td>
@@ -2050,6 +2209,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.867356474381081</td>
 <td>0.0327977540029595</td>
 <td>366</td>
+<td>0.145911794513779</td>
 <td>0.319683742112707</td>
 <td>0.511664738234623</td>
 <td>0.0690361282836624</td>
@@ -2057,6 +2217,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.825244664705308</td>
 <td>0.0754188941866717</td>
 <td>437</td>
+<td>0.123375530773426</td>
 <td>0.311163395025178</td>
 <td>0.344318151589201</td>
 <td>0.166308521818042</td>
@@ -2071,6 +2232,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.00906453045888756</td>
 <td>0.118209073947287</td>
 <td>3</td>
+<td>0.0005741040201402</td>
 <td>0.289234765324962</td>
 <td>0</td>
 <td>0.123837687984491</td>
@@ -2078,6 +2240,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.00785607872562359</td>
 <td>0.236418147894573</td>
 <td>4</td>
+<td>0.000548670129952537</td>
 <td>0.289305842451101</td>
 <td>0</td>
 <td>0.247675375968982</td>
@@ -2092,6 +2255,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.785866762403026</td>
 <td>0.018911452664483</td>
 <td>266</td>
+<td>0.0955829551113884</td>
 <td>0.0702019132074932</td>
 <td>0.526286081860099</td>
 <td>0.0301123806616954</td>
@@ -2099,6 +2263,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.815155286750357</td>
 <td>0.0344628226668218</td>
 <td>452</td>
+<td>0.0931316121107115</td>
 <td>0.06951585222241</td>
 <td>0.552999046072689</td>
 <td>0.0574874529765605</td>
@@ -2113,6 +2278,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.551596486678516</td>
 <td>0.0478821924511755</td>
 <td>32</td>
+<td>0.128504077067935</td>
 <td>0.0538037240826555</td>
 <td>0</td>
 <td>0.168123558154011</td>
@@ -2120,6 +2286,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.546784415428702</td>
 <td>0.095764384902351</td>
 <td>50</td>
+<td>0.0867761665086934</td>
 <td>0.0516242874935523</td>
 <td>0</td>
 <td>0.336247116308023</td>
@@ -2134,6 +2301,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.927725490713439</td>
 <td>0.00658475564893222</td>
 <td>365</td>
+<td>0.114321193740888</td>
 <td>0.0240125847725361</td>
 <td>0</td>
 <td>0.0811799451281755</td>
@@ -2141,6 +2309,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.905580587099149</td>
 <td>0.0151417377387212</td>
 <td>457</td>
+<td>0.103658887487759</td>
 <td>0.0237805223543356</td>
 <td>0</td>
 <td>0.162359890256351</td>
@@ -2155,6 +2324,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.969473131065578</td>
 <td>0.00469484508064934</td>
 <td>450</td>
+<td>0.148813537446477</td>
 <td>0.0376316075623673</td>
 <td>0.780622853850164</td>
 <td>0.0136857225182</td>
@@ -2162,6 +2332,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.966210675563971</td>
 <td>0.00983678732636447</td>
 <td>580</td>
+<td>0.1206573154733</td>
 <td>0.0370620038076756</td>
 <td>0.719323521607439</td>
 <td>0.0314705104006553</td>
@@ -2176,6 +2347,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.276973285617128</td>
 <td>0.0476453264184808</td>
 <td>70</td>
+<td>0.0331226375857016</td>
 <td>0.0842987965298347</td>
 <td>0</td>
 <td>0.0794771945558656</td>
@@ -2183,6 +2355,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.268096834454345</td>
 <td>0.0952906528369617</td>
 <td>93</td>
+<td>0.0298625482016795</td>
 <td>0.0840716824092961</td>
 <td>0</td>
 <td>0.158954389111731</td>
@@ -2197,6 +2370,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999043099738362</td>
 <td>0.000795822939860108</td>
 <td>691</td>
+<td>0.193777784079668</td>
 <td>0.0337849732503199</td>
 <td>0.96734463079352</td>
 <td>0.00488309575678637</td>
@@ -2204,6 +2378,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.998734935461187</td>
 <td>0.00183000598416646</td>
 <td>810</td>
+<td>0.183106095650217</td>
 <td>0.0334576995676491</td>
 <td>0.974666417192713</td>
 <td>0.00849413532940811</td>
@@ -2218,6 +2393,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.837046565030988</td>
 <td>0.0126247369380792</td>
 <td>349</td>
+<td>0.109911272362411</td>
 <td>0.0469233731707155</td>
 <td>0.2368071049299</td>
 <td>0.0320083097507855</td>
@@ -2225,6 +2401,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.699320659907827</td>
 <td>0.0349676522453532</td>
 <td>362</td>
+<td>0.0830864778705914</td>
 <td>0.0454947517236344</td>
 <td>0</td>
 <td>0.101932561676056</td>
@@ -2239,6 +2416,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.48402728076304</td>
 <td>0.0264817996536896</td>
 <td>119</td>
+<td>0.0623246032217757</td>
 <td>0.0425297149889533</td>
 <td>0</td>
 <td>0.061176391843935</td>
@@ -2246,6 +2424,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.441236941473773</td>
 <td>0.0554855009564466</td>
 <td>165</td>
+<td>0.0520873981135717</td>
 <td>0.0425322208445175</td>
 <td>0</td>
 <td>0.12235278368787</td>
@@ -2260,6 +2439,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999058065935441</td>
 <td>0.000801150245580732</td>
 <td>690</td>
+<td>0.170740969375425</td>
 <td>0.0383594911820041</td>
 <td>0.96804641701592</td>
 <td>0.00491578361065002</td>
@@ -2267,6 +2447,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999055675078066</td>
 <td>0.00160230049116146</td>
 <td>902</td>
+<td>0.162201654836421</td>
 <td>0.0380784627806476</td>
 <td>0.957723390055342</td>
 <td>0.0113039131869437</td>
@@ -2281,6 +2462,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999054447943216</td>
 <td>0.00195209501854822</td>
 <td>708</td>
+<td>0.162534261658805</td>
 <td>0.262615886732584</td>
 <td>0.990751645378141</td>
 <td>0.00624527343593531</td>
@@ -2288,6 +2470,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999053828503943</td>
 <td>0.00390419003709644</td>
 <td>841</td>
+<td>0.136336083838872</td>
 <td>0.253452544750898</td>
 <td>0.989742304390423</td>
 <td>0.0130852936633624</td>
@@ -2302,6 +2485,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.703891230784076</td>
 <td>0.0234047589983871</td>
 <td>250</td>
+<td>0.102532729502519</td>
 <td>0.0823501569393696</td>
 <td>0</td>
 <td>0.0714747521258282</td>
@@ -2309,6 +2493,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.699139022235093</td>
 <td>0.0468095179967742</td>
 <td>325</td>
+<td>0.0950300652503033</td>
 <td>0.081841375656724</td>
 <td>0</td>
 <td>0.142949504251656</td>
@@ -2323,6 +2508,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.998970561109234</td>
 <td>0.00202738412432432</td>
 <td>680</td>
+<td>0.227657085176717</td>
 <td>0.197776578493151</td>
 <td>0.957465894242189</td>
 <td>0.0136527101100821</td>
@@ -2330,6 +2516,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999056651624936</td>
 <td>0.00387047277403664</td>
 <td>825</td>
+<td>0.2185430604444</td>
 <td>0.195925318478194</td>
 <td>0.990682380019067</td>
 <td>0.0123826763403038</td>
@@ -2344,6 +2531,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.958608305350868</td>
 <td>0.0120437611723825</td>
 <td>445</td>
+<td>0.119988267795432</td>
 <td>0.182846551388498</td>
 <td>0.846133328904434</td>
 <td>0.0241987224068373</td>
@@ -2351,6 +2539,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.957757477158934</td>
 <td>0.024087522344765</td>
 <td>606</td>
+<td>0.111170435925243</td>
 <td>0.183451844487083</td>
 <td>0.867730066767337</td>
 <td>0.0440979492091959</td>
@@ -2365,6 +2554,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999002750817908</td>
 <td>0.00146957254071459</td>
 <td>690</td>
+<td>0.130373567673453</td>
 <td>0.136053341612684</td>
 <td>0.987186879353771</td>
 <td>0.00540564590044217</td>
@@ -2372,6 +2562,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999086562399407</td>
 <td>0.00280555640150498</td>
 <td>904</td>
+<td>0.124934955015067</td>
 <td>0.134666159170725</td>
 <td>0.985800013984251</td>
 <td>0.0113260795981215</td>
@@ -2386,6 +2577,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.548202632982966</td>
 <td>0.0421457638856807</td>
 <td>183</td>
+<td>0.0533474475376237</td>
 <td>0.148649158144065</td>
 <td>0</td>
 <td>0.101998154337129</td>
@@ -2393,6 +2585,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.504899006313369</td>
 <td>0.0883051323161601</td>
 <td>226</td>
+<td>0.0448360451091828</td>
 <td>0.148047346689926</td>
 <td>0</td>
 <td>0.203996308674258</td>
@@ -2407,6 +2600,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.164616406309938</td>
 <td>0.0217419689804211</td>
 <td>55</td>
+<td>0.0149021557847493</td>
 <td>0.0135081206948791</td>
 <td>0</td>
 <td>0.0287416034364197</td>
@@ -2414,6 +2608,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.158332938574974</td>
 <td>0.0434839379608422</td>
 <td>70</td>
+<td>0.0133235659787204</td>
 <td>0.013510206392399</td>
 <td>0</td>
 <td>0.0574832068728395</td>
@@ -2428,6 +2623,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.942726836308127</td>
 <td>0.0184309488774757</td>
 <td>449</td>
+<td>0.145232854184828</td>
 <td>0.263375609685149</td>
 <td>0.88357838127146</td>
 <td>0.0267401510371617</td>
@@ -2435,6 +2631,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.989389091624256</td>
 <td>0.0152313818740616</td>
 <td>734</td>
+<td>0.164840748036684</td>
 <td>0.273349240464793</td>
 <td>0.936108822925166</td>
 <td>0.0386171047641362</td>
@@ -2449,6 +2646,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999079895649103</td>
 <td>0.000949917283967358</td>
 <td>722</td>
+<td>0.309230101622274</td>
 <td>0.0422976699423432</td>
 <td>0.941434807962407</td>
 <td>0.00807195474271671</td>
@@ -2456,6 +2654,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.99878598749774</td>
 <td>0.00218434808429748</td>
 <td>882</td>
+<td>0.295053881957231</td>
 <td>0.0420240875205438</td>
 <td>0.945783212694924</td>
 <td>0.0154101438844764</td>
@@ -2470,6 +2669,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.771867202481554</td>
 <td>0.0135780972941593</td>
 <td>294</td>
+<td>0.104354169704446</td>
 <td>0.0361713397413151</td>
 <td>0.445854766742812</td>
 <td>0.0226496313797482</td>
@@ -2477,6 +2677,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.767883337446867</td>
 <td>0.0271561945883186</td>
 <td>416</td>
+<td>0.0954403758174109</td>
 <td>0.0360775313254167</td>
 <td>0.437611041757225</td>
 <td>0.0452992627594965</td>
@@ -2491,6 +2692,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999034978149226</td>
 <td>0.0029613493690685</td>
 <td>715</td>
+<td>0.161492677686088</td>
 <td>0.479682590020558</td>
 <td>0.978946251402783</td>
 <td>0.0143998620999477</td>
@@ -2498,6 +2700,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.99903723590837</td>
 <td>0.00592269873813701</td>
 <td>846</td>
+<td>0.150859543997582</td>
 <td>0.471795243182316</td>
 <td>0.982168611292622</td>
 <td>0.0262412360796163</td>
@@ -2512,6 +2715,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.16643770234671</td>
 <td>0.025845086074755</td>
 <td>46</td>
+<td>0.016754430228007</td>
 <td>0.0214932455200045</td>
 <td>0</td>
 <td>0.0357925074615755</td>
@@ -2519,6 +2723,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.157378893719061</td>
 <td>0.05169017214951</td>
 <td>60</td>
+<td>0.0144570696491852</td>
 <td>0.0215144410127735</td>
 <td>0</td>
 <td>0.071585014923151</td>
@@ -2533,6 +2738,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999062679257189</td>
 <td>0.00104707018736558</td>
 <td>686</td>
+<td>0.180490687920408</td>
 <td>0.0551227691694513</td>
 <td>0.993074093934099</td>
 <td>0.00291353499184801</td>
@@ -2540,6 +2746,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999054928546714</td>
 <td>0.00209414037473116</td>
 <td>867</td>
+<td>0.172695993098952</td>
 <td>0.0539947264737566</td>
 <td>0.988909653033062</td>
 <td>0.0073529283654415</td>
@@ -2554,6 +2761,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.914527376063351</td>
 <td>0.00710867158045504</td>
 <td>385</td>
+<td>0.226562669663902</td>
 <td>0.0234105147995014</td>
 <td>0.683760942652301</td>
 <td>0.0149630722613029</td>
@@ -2561,6 +2769,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.913164882706465</td>
 <td>0.0142173431609101</td>
 <td>510</td>
+<td>0.218049255082046</td>
 <td>0.0234379106809089</td>
 <td>0.701999172650043</td>
 <td>0.0285659550691299</td>
@@ -2575,6 +2784,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0</td>
 <td>0.131843818236211</td>
 <td>0</td>
+<td>0.000355086481640776</td>
 <td>0.440837003965938</td>
 <td>0</td>
 <td>0.131843818236211</td>
@@ -2582,6 +2792,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0834719144744776</td>
 <td>0.218918108336538</td>
 <td>32</td>
+<td>0.00307289005965089</td>
 <td>0.438958371628897</td>
 <td>0</td>
 <td>0.263687636472422</td>
@@ -2596,6 +2807,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999052111532065</td>
 <td>0.000452742854469242</td>
 <td>689</td>
+<td>0.162960233244383</td>
 <td>0.0123352012959106</td>
 <td>0.830178181272606</td>
 <td>0.00672308768160013</td>
@@ -2603,6 +2815,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999048905111892</td>
 <td>0.000905485708938485</td>
 <td>817</td>
+<td>0.158776257390623</td>
 <td>0.0123161805051828</td>
 <td>0.8411754850045</td>
 <td>0.0128350259415032</td>
@@ -2617,6 +2830,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.864003253739774</td>
 <td>0.0108123619923398</td>
 <td>371</td>
+<td>0.122220320458631</td>
 <td>0.0348581801887143</td>
 <td>0.377454709422859</td>
 <td>0.0261673028453112</td>
@@ -2624,6 +2838,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.788268956953758</td>
 <td>0.0272873067985602</td>
 <td>403</td>
+<td>0.0918501117247494</td>
 <td>0.0342149022447985</td>
 <td>0.151273262603109</td>
 <td>0.0660387823989534</td>
@@ -2638,6 +2853,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999054022695253</td>
 <td>0.00166822357093823</td>
 <td>688</td>
+<td>0.133268773602543</td>
 <td>0.20975108681366</td>
 <td>0.979131299648122</td>
 <td>0.00811190655999802</td>
@@ -2645,6 +2861,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999041713956452</td>
 <td>0.00333644714187646</td>
 <td>856</td>
+<td>0.117422475265491</td>
 <td>0.206594800290803</td>
 <td>0.976701348705953</td>
 <td>0.0169963221940872</td>
@@ -2659,6 +2876,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999071970301503</td>
 <td>0.00194848961948986</td>
 <td>681</td>
+<td>0.205571991201393</td>
 <td>0.235927471595539</td>
 <td>0.992441271008734</td>
 <td>0.0056799506275174</td>
@@ -2666,6 +2884,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999067215718976</td>
 <td>0.00389697923897972</td>
 <td>816</td>
+<td>0.192397911591772</td>
 <td>0.237818539014033</td>
 <td>0.990795988293963</td>
 <td>0.0124674776024435</td>
@@ -2680,6 +2899,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.895933987126844</td>
 <td>0.0247203569297453</td>
 <td>397</td>
+<td>0.140050734888986</td>
 <td>0.231437062791027</td>
 <td>0</td>
 <td>0.11474173252399</td>
@@ -2687,6 +2907,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.932021844823889</td>
 <td>0.0391809202245429</td>
 <td>612</td>
+<td>0.140588295352646</td>
 <td>0.236623864270552</td>
 <td>0.7265510046264</td>
 <td>0.0824720813092691</td>
@@ -2701,6 +2922,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.571627564985604</td>
 <td>0.0340967267728492</td>
 <td>158</td>
+<td>0.112275787850018</td>
 <td>0.0843841266261959</td>
 <td>0.350414706049098</td>
 <td>0.0450738661373165</td>
@@ -2708,6 +2930,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.531687751512738</td>
 <td>0.071440536168509</td>
 <td>189</td>
+<td>0.093624245556374</td>
 <td>0.0827236698026385</td>
 <td>0.382568815613214</td>
 <td>0.0860503787180431</td>
@@ -2722,6 +2945,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.563237924120733</td>
 <td>0.0758284319903853</td>
 <td>203</td>
+<td>0.0493870822750897</td>
 <td>0.528555010637347</td>
 <td>0</td>
 <td>0.167211606217498</td>
@@ -2729,6 +2953,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.521597790273323</td>
 <td>0.158878119718052</td>
 <td>288</td>
+<td>0.0403926314319706</td>
 <td>0.527252767591476</td>
 <td>0</td>
 <td>0.334423212434997</td>
@@ -2743,6 +2968,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999078302593598</td>
 <td>0.00111882798774762</td>
 <td>699</td>
+<td>0.190194576863126</td>
 <td>0.0620962719294125</td>
 <td>0.973345578749621</td>
 <td>0.00625515489635254</td>
@@ -2750,6 +2976,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999074323886198</td>
 <td>0.00223765597549525</td>
 <td>855</td>
+<td>0.181508307962727</td>
 <td>0.0616263542227708</td>
 <td>0.967498775004253</td>
 <td>0.0137300495522399</td>
@@ -2764,6 +2991,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999008058510638</td>
 <td>0.00203578204641597</td>
 <td>694</td>
+<td>0.149434204934741</td>
 <td>0.25929592043054</td>
 <td>0.991141511181562</td>
 <td>0.00621698421076757</td>
@@ -2771,6 +2999,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999000637888234</td>
 <td>0.00407156409283195</td>
 <td>834</td>
+<td>0.132736602258356</td>
 <td>0.256443160925087</td>
 <td>0.990164020609539</td>
 <td>0.0130260211875251</td>
@@ -2785,6 +3014,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.962801411477194</td>
 <td>0.0035304935546388</td>
 <td>469</td>
+<td>0.0885120125146835</td>
 <td>0.0259082661998426</td>
 <td>0.909579370240255</td>
 <td>0.00562154413661762</td>
@@ -2792,6 +3022,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.940768259590184</td>
 <td>0.00890995518315239</td>
 <td>608</td>
+<td>0.0728007610798784</td>
 <td>0.0259301043757833</td>
 <td>0.857288766648578</td>
 <td>0.0141871683214276</td>
@@ -2806,6 +3037,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0</td>
 <td>0.144196776663762</td>
 <td>0</td>
+<td>0.0142190373093494</td>
 <td>0.461969486857068</td>
 <td>0</td>
 <td>0.144196776663762</td>
@@ -2813,6 +3045,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.250664549245343</td>
 <td>0.198778489717064</td>
 <td>131</td>
+<td>0.0294864027077057</td>
 <td>0.471991992278442</td>
 <td>0</td>
 <td>0.288393553327525</td>
@@ -2827,6 +3060,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999044613873478</td>
 <td>0.000590302717847219</td>
 <td>669</td>
+<td>0.147401883230907</td>
 <td>0.0194542809131905</td>
 <td>0.980676720985442</td>
 <td>0.00273994249969381</td>
@@ -2834,6 +3068,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999037083616307</td>
 <td>0.00118060543569444</td>
 <td>865</td>
+<td>0.141617854033353</td>
 <td>0.019169437541511</td>
 <td>0.982098452064405</td>
 <td>0.0052308157690764</td>
@@ -2848,6 +3083,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.959838172452649</td>
 <td>0.0153452634949188</td>
 <td>478</td>
+<td>0.160485463491366</td>
 <td>0.366447238147171</td>
 <td>0.85028926132224</td>
 <td>0.0308322098270117</td>
@@ -2855,6 +3091,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.968836883739232</td>
 <td>0.0266930552426946</td>
 <td>659</td>
+<td>0.153204848434392</td>
 <td>0.362736808120618</td>
 <td>0.892299340168187</td>
 <td>0.0511948845343044</td>
@@ -2869,6 +3106,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.04219723434331</td>
 <td>0.044863390185255</td>
 <td>6</td>
+<td>0.0128517083346223</td>
 <td>0.0515852362083032</td>
 <td>0</td>
 <td>0.0540381122967865</td>
@@ -2876,6 +3114,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0375267380542856</td>
 <td>0.0897267803705099</td>
 <td>8</td>
+<td>0.0126258736055657</td>
 <td>0.0515447537602527</td>
 <td>0</td>
 <td>0.108076224593573</td>
@@ -2890,6 +3129,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999022609921495</td>
 <td>0.000994026784760226</td>
 <td>691</td>
+<td>0.161650705164433</td>
 <td>0.0661209507084814</td>
 <td>0.980163743207105</td>
 <td>0.00461386361785894</td>
@@ -2897,6 +3137,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.997302720399653</td>
 <td>0.00331627322571921</td>
 <td>789</td>
+<td>0.146490783945856</td>
 <td>0.0657419749374596</td>
 <td>0.965554802707062</td>
 <td>0.0121985123365454</td>
@@ -2911,6 +3152,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.756779311941688</td>
 <td>0.0150532926339315</td>
 <td>242</td>
+<td>0.235223228364507</td>
 <td>0.0257611652766702</td>
 <td>0.513619372659377</td>
 <td>0.0239690988337534</td>
@@ -2918,6 +3160,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.667829608411244</td>
 <td>0.0362634885339599</td>
 <td>271</td>
+<td>0.192612381572384</td>
 <td>0.0255172673322427</td>
 <td>0.419544621985873</td>
 <td>0.055117278107812</td>
@@ -2932,6 +3175,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.141916602175049</td>
 <td>0.0692405664104893</td>
 <td>9</td>
+<td>0.0865043623170182</td>
 <td>0.055235948397253</td>
 <td>0</td>
 <td>0.105239504236208</td>
@@ -2939,6 +3183,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.108642890626167</td>
 <td>0.14507501620113</td>
 <td>12</td>
+<td>0.0724500862255381</td>
 <td>0.054958921987342</td>
 <td>0</td>
 <td>0.210479008472417</td>
@@ -2953,6 +3198,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.923541711228526</td>
 <td>0.00545154679080987</td>
 <td>413</td>
+<td>0.11230017763588</td>
 <td>0.0237267639216929</td>
 <td>0.845947417706763</td>
 <td>0.00790926096868297</td>
@@ -2960,6 +3206,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.843281737143254</td>
 <td>0.0158185219373659</td>
 <td>467</td>
+<td>0.0826280247529266</td>
 <td>0.0229287291385402</td>
 <td>0.716266355479088</td>
 <td>0.0219068554400097</td>
@@ -2974,6 +3221,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.734022265952524</td>
 <td>0.0192207242624687</td>
 <td>248</td>
+<td>0.0751590823962279</td>
 <td>0.0618909872657207</td>
 <td>0.0542937630880847</td>
 <td>0.0510519308464847</td>
@@ -2981,6 +3229,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.729584535932765</td>
 <td>0.0384414485249374</td>
 <td>340</td>
+<td>0.0717584469193441</td>
 <td>0.0616831298086753</td>
 <td>0.0902150449250727</td>
 <td>0.0930332360382615</td>
@@ -2995,6 +3244,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999059785671618</td>
 <td>0.00184730222458641</td>
 <td>712</td>
+<td>0.188474910234053</td>
 <td>0.221629568982536</td>
 <td>0.989891368371362</td>
 <td>0.00619142302603514</td>
@@ -3002,6 +3252,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.99905113187077</td>
 <td>0.00369460444917282</td>
 <td>867</td>
+<td>0.169396762486601</td>
 <td>0.217613745875309</td>
 <td>0.989773980084705</td>
 <td>0.0123828460520703</td>
@@ -3016,6 +3267,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999001159900736</td>
 <td>0.00100718010717107</td>
 <td>704</td>
+<td>0.184685418144029</td>
 <td>0.0669514688052564</td>
 <td>0.978205684330559</td>
 <td>0.00489751557332658</td>
@@ -3023,6 +3275,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.998801819177057</td>
 <td>0.00221075784830727</td>
 <td>864</td>
+<td>0.16211547102928</td>
 <td>0.0659220139556818</td>
 <td>0.977877802442294</td>
 <td>0.00979503114665317</td>
@@ -3037,6 +3290,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.629993463932108</td>
 <td>0.0191380390745606</td>
 <td>203</td>
+<td>0.131047094502546</td>
 <td>0.0373114452742511</td>
 <td>0.0724262382948103</td>
 <td>0.0584448059953491</td>
@@ -3044,6 +3298,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.625915839937383</td>
 <td>0.0382760781491212</td>
 <td>280</td>
+<td>0.123016683305258</td>
 <td>0.0371279120838492</td>
 <td>0.086025793071313</td>
 <td>0.111576798730355</td>
@@ -3058,6 +3313,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0707743168062449</td>
 <td>0.08379155878193</td>
 <td>15</td>
+<td>0.00317853392859491</td>
 <td>0.199964446095496</td>
 <td>0</td>
 <td>0.116041787759753</td>
@@ -3065,6 +3321,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.241027060685914</td>
 <td>0.13280675475096</td>
 <td>90</td>
+<td>0.0134230125960593</td>
 <td>0.196712946349752</td>
 <td>0</td>
 <td>0.232083575519506</td>
@@ -3079,6 +3336,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.148118975910163</td>
 <td>0.0260954342606906</td>
 <td>39</td>
+<td>0.0451230855015016</td>
 <td>0.0342330151696116</td>
 <td>0</td>
 <td>0.0361392112522757</td>
@@ -3086,6 +3344,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.100507416038747</td>
 <td>0.0546759760124044</td>
 <td>59</td>
+<td>0.0428722103440269</td>
 <td>0.0340432671580355</td>
 <td>0</td>
 <td>0.0722784225045514</td>
@@ -3100,6 +3359,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.509897322235159</td>
 <td>0.0174376712705218</td>
 <td>172</td>
+<td>0.0587474130490184</td>
 <td>0.0246235267858508</td>
 <td>0</td>
 <td>0.0367046265025175</td>
@@ -3107,6 +3367,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.503271682830679</td>
 <td>0.0348753425410437</td>
 <td>226</td>
+<td>0.0525796765317148</td>
 <td>0.0245406661310211</td>
 <td>0</td>
 <td>0.0734092530050351</td>
@@ -3121,6 +3382,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.925057929416362</td>
 <td>0.0203506948189693</td>
 <td>427</td>
+<td>0.130629772272183</td>
 <td>0.245994414630692</td>
 <td>0.725454253068351</td>
 <td>0.0408892876288313</td>
@@ -3128,6 +3390,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.900493471108504</td>
 <td>0.0467967074525467</td>
 <td>515</td>
+<td>0.115572485013989</td>
 <td>0.244948670668502</td>
 <td>0.613748367152569</td>
 <td>0.0985025833981044</td>
@@ -3142,6 +3405,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999060825374644</td>
 <td>0.000927884400106034</td>
 <td>716</td>
+<td>0.127654732848372</td>
 <td>0.0504759011253037</td>
 <td>0.96724054375042</td>
 <td>0.00569341262987782</td>
@@ -3149,6 +3413,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999053198843579</td>
 <td>0.00185576880021207</td>
 <td>872</td>
+<td>0.11579549137613</td>
 <td>0.0497803273727851</td>
 <td>0.972166433169825</td>
 <td>0.0103752510879834</td>
@@ -3163,6 +3428,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0246346481495855</td>
 <td>0.0415401688653057</td>
 <td>7</td>
+<td>0.00899230404335525</td>
 <td>0.0452827125807267</td>
 <td>0</td>
 <td>0.0455902840440959</td>
@@ -3170,6 +3436,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.0221566863133001</td>
 <td>0.0830803377306114</td>
 <td>8</td>
+<td>0.00877016408433774</td>
 <td>0.0452918929127051</td>
 <td>0</td>
 <td>0.0911805680881918</td>
@@ -3184,6 +3451,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999085599240635</td>
 <td>0.00132685067197815</td>
 <td>707</td>
+<td>0.17525575661966</td>
 <td>0.117822173268027</td>
 <td>0.970965245994696</td>
 <td>0.00777139199543486</td>
@@ -3191,6 +3459,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999084061921801</td>
 <td>0.00265370134395629</td>
 <td>888</td>
+<td>0.16000059842585</td>
 <td>0.116099942194116</td>
 <td>0.967659967136439</td>
 <td>0.0162828653503367</td>
@@ -3205,6 +3474,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999006207815091</td>
 <td>0.00222971646371414</td>
 <td>707</td>
+<td>0.120561766096768</td>
 <td>0.283817907425752</td>
 <td>0.968319319568324</td>
 <td>0.0130594957248383</td>
@@ -3212,6 +3482,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999000718216965</td>
 <td>0.00445943292742828</td>
 <td>850</td>
+<td>0.117602786239738</td>
 <td>0.286493114877248</td>
 <td>0.949717116559729</td>
 <td>0.0329584291323777</td>
@@ -3226,6 +3497,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999017898422882</td>
 <td>0.000612122298652579</td>
 <td>698</td>
+<td>0.254968007744697</td>
 <td>0.0264148375833052</td>
 <td>0.978437762050788</td>
 <td>0.002976506852237</td>
@@ -3233,6 +3505,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999007792623357</td>
 <td>0.00122424459730516</td>
 <td>859</td>
+<td>0.239251248913085</td>
 <td>0.0262166315958271</td>
 <td>0.973854899336455</td>
 <td>0.00653342519105737</td>
@@ -3247,6 +3520,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.320523733788272</td>
 <td>0.0403840751601452</td>
 <td>89</td>
+<td>0.0196227156359057</td>
 <td>0.111877467990022</td>
 <td>0</td>
 <td>0.0643028679746351</td>
@@ -3254,6 +3528,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.310355898038979</td>
 <td>0.0807681503202903</td>
 <td>124</td>
+<td>0.0167684709127187</td>
 <td>0.111795869718051</td>
 <td>0</td>
 <td>0.12860573594927</td>
@@ -3268,6 +3543,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.331144026943445</td>
 <td>0.0437243232207542</td>
 <td>68</td>
+<td>0.0516993115169717</td>
 <td>0.0661045773901475</td>
 <td>0</td>
 <td>0.0800477922551603</td>
@@ -3275,6 +3551,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.284205175182539</td>
 <td>0.0916125795682892</td>
 <td>86</td>
+<td>0.0412272866134783</td>
 <td>0.0653648845720055</td>
 <td>0</td>
 <td>0.160095584510321</td>
@@ -3289,6 +3566,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.413732486988926</td>
 <td>0.0415864521585581</td>
 <td>112</td>
+<td>0.0347207338432624</td>
 <td>0.125616731487402</td>
 <td>0.0842051626537498</td>
 <td>0.0603348215662699</td>
@@ -3296,6 +3574,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.362042648547165</td>
 <td>0.0871332447641036</td>
 <td>137</td>
+<td>0.0258581917072533</td>
 <td>0.123871183932289</td>
 <td>0.0517655193813319</td>
 <td>0.126415419023679</td>
@@ -3310,6 +3589,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999064452890284</td>
 <td>0.00160070515778572</td>
 <td>676</td>
+<td>0.200221429102863</td>
 <td>0.145596294490625</td>
 <td>0.977421750560542</td>
 <td>0.00815421298242483</td>
@@ -3317,6 +3597,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.982458167396578</td>
 <td>0.0141842372190374</td>
 <td>679</td>
+<td>0.148879397647804</td>
 <td>0.14017315801447</td>
 <td>0.926026114552489</td>
 <td>0.0298564596883983</td>
@@ -3331,6 +3612,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999019989962689</td>
 <td>0.00282739748714406</td>
 <td>716</td>
+<td>0.248831996501302</td>
 <td>0.403245764533144</td>
 <td>0.986173572556902</td>
 <td>0.0108954570488065</td>
@@ -3338,6 +3620,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999014468037586</td>
 <td>0.00565479497428811</td>
 <td>900</td>
+<td>0.236718113080075</td>
 <td>0.393729108245453</td>
 <td>0.987215474423234</td>
 <td>0.0208004834220281</td>
@@ -3352,6 +3635,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.996407706629466</td>
 <td>0.00195565755228276</td>
 <td>621</td>
+<td>0.0424497498259065</td>
 <td>0.192784193638707</td>
 <td>0.975933456665206</td>
 <td>0.00519439812751997</td>
@@ -3359,6 +3643,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.961577026208101</td>
 <td>0.013109174058353</td>
 <td>636</td>
+<td>0.0339531473747983</td>
 <td>0.191692494645293</td>
 <td>0.9146710664844</td>
 <td>0.0199247789318812</td>
@@ -3373,6 +3658,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999006205167061</td>
 <td>0.00187896573630401</td>
 <td>728</td>
+<td>0.213077082295018</td>
 <td>0.157715927351362</td>
 <td>0.87235046270726</td>
 <td>0.0231647677610659</td>
@@ -3380,6 +3666,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.971019349991279</td>
 <td>0.0210098815085628</td>
 <td>684</td>
+<td>0.151519585709723</td>
 <td>0.155131727405737</td>
 <td>0.677461480253201</td>
 <td>0.0772823230558688</td>
@@ -3394,6 +3681,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999003464189907</td>
 <td>0.00350688592057252</td>
 <td>704</td>
+<td>0.12535082001915</td>
 <td>0.905159626938837</td>
 <td>0.988285254588774</td>
 <td>0.0123133488427467</td>
@@ -3401,6 +3689,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999086389001655</td>
 <td>0.00669498508663328</td>
 <td>840</td>
+<td>0.118762443826905</td>
 <td>0.89251845916274</td>
 <td>0.988135381391521</td>
 <td>0.0246266976854935</td>
@@ -3415,6 +3704,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999031737670885</td>
 <td>0.000788615816667144</td>
 <td>702</td>
+<td>0.138379037400873</td>
 <td>0.0347197175935877</td>
 <td>0.969443416694569</td>
 <td>0.00461893924806432</td>
@@ -3422,6 +3712,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.999024398800993</td>
 <td>0.00157723163333429</td>
 <td>848</td>
+<td>0.134741611395228</td>
 <td>0.0346968037262082</td>
 <td>0.965957154299446</td>
 <td>0.00967774703448199</td>
@@ -3436,6 +3727,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.919463106915693</td>
 <td>0.00860065386551085</td>
 <td>376</td>
+<td>0.11801045540444</td>
 <td>0.0497065135152481</td>
 <td>0.503765063749452</td>
 <td>0.0239318302557971</td>
@@ -3443,6 +3735,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.910544244347438</td>
 <td>0.0180203609468203</td>
 <td>503</td>
+<td>0.10667357594161</td>
 <td>0.0492111524288669</td>
 <td>0.458751634559134</td>
 <td>0.0501427247359504</td>
@@ -3457,6 +3750,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.487290290738235</td>
 <td>0.047527776962781</td>
 <td>129</td>
+<td>0.030112771318832</td>
 <td>0.157302196126318</td>
 <td>0</td>
 <td>0.10979532905503</td>
@@ -3464,6 +3758,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <td>0.479546203736585</td>
 <td>0.0950555539255621</td>
 <td>201</td>
+<td>0.0281224965872005</td>
 <td>0.157267717293995</td>
 <td>0</td>
 <td>0.21959065811006</td>
