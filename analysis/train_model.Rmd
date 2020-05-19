@@ -60,7 +60,7 @@ Some notations to explain: *rsq_min* is the r-squared when lambda=lambda.min, *n
 
 ```
 
-
+  
 Some LVs like LV6,LV8 have pretty low heritability but have very high r-squared. In such LVs, the training model always selected many variants(ncoef_nzero). 
 Other LVs like LV101,LV113 have relatively high heritability but very low r-squared.In such LVs, the training model always selected few variants(ncoef_nzero). 
 
