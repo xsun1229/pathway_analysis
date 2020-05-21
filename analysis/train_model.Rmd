@@ -66,6 +66,11 @@ Other LVs like LV101,LV113 have relatively high heritability but very low r-squa
 
 It seems that the r-squared issue is a variante selection issue?
 
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/summary_H_le_sorted.rdata")
+DT::datatable(sum_sorted, options = list(pageLength =20))
+```
+
 | LVs | V.G..Vlvs | SE       | zscore               | pval                | rsq_min_l           | lambda_min_l         | ncoef_nzero_min_l | rsq_test_l           | mspe_l               | rsq_1se_l          | lambda_1se_l        | ncoef_nzero_1se_l | rsq_min_e           | lambda_min_e         | ncoef_nzero_min_e | rsq_test_e           | mspe_e               | rsq_1se_e          | lambda_1se_e        | ncoef_nzero_1se_e |
 |-----|-----------|----------|----------------------|---------------------|---------------------|----------------------|-------------------|----------------------|----------------------|--------------------|---------------------|-------------------|---------------------|----------------------|-------------------|----------------------|----------------------|--------------------|---------------------|-------------------|
 | 5   | 1e-06     | 0.032691 | 3.05894588724725e-05 | 0.499987796571523   | 0.746872501918715   | 0.0191768825543947   | 280               | 0.0684491578141754   | 0.0692565647142184   | 0                  | 0.0613519700952273  | 0                 | 0.742606912748116   | 0.0383537651087894   | 363               | 0.0594483944657362   | 0.0683457746938214   | 0.0249680349074091 | 0.10672162961179    | 5                 |
