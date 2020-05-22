@@ -106,3 +106,31 @@ We first plot the change of mean squared errors and coefficients when training t
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_testpred.jpeg" width="80%">
 </figure>
 
+For LV101, we performned more analysis to detect the reason why it has relatively high heritability(0.19) but low r-squared(0.071) in lasso.
+
+##### Variants with non-zero coefficients
+
+We got 15 variants with non-zero lasso coefficients. For these variants, we performed single snp linear regression (LV101 ~ genotype of a snp) and made conparision in both training set and testing set.
+
+Notations: **coefficients_lasso** is the coefficients from the lasso model. **pval_lm_traindata** is  the p-value of F-statistics from the linear regression using the training set data. **rsq_lm_traindata** is the r-squared of the linear regression using training set data. Suffix "_testdata" means the results using testing set. 
+
+
+```{r eval=FALSE, echo=T}
+### i is the ith variants
+  fit_linear[[i]] <- lm(y ~ x[,i])   ###y is T1B_PC5 and  x[,i] is genotype of a variant.
+  pval_snp[i] <- summary(fit_linear[[i]])$coefficients[,4] ### p-value of F-statistics 
+  rsq_snp[i] <- summary(fit_linear[[i]])$r.squared   ###r-squared of the linear regression
+
+```
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/nzero_variants_101.rdata")
+DT::datatable(summary_snp_all, options = list(pageLength =20))
+```
+
+To compare the p-values of training set and test set, we made a scatter plot.
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_pvals.jpeg" width="80%">
+</figure>
+

@@ -41,6 +41,8 @@ We got 26 variants with non-zero lasso coefficients. For these variants, we perf
 
 Notations: **coefficients_lasso** is the coefficients from the lasso model. **pval_lm_traindata** is  the p-value of F-statistics from the linear regression using the training set data. **rsq_lm_traindata** is the r-squared of the linear regression using training set data. Suffix "_testdata" means the results using testing set. 
 
+The MHC region ranges roughly from 27653730 to 37640596 on chr6. So the variants on chr6 in the table are all in MHC region. 
+
 ```{r eval=FALSE, echo=T}
 ### i is the ith variants
   fit_linear[[i]] <- lm(y ~ x[,i])   ###y is T1B_PC5 and  x[,i] is genotype of a variant.
@@ -50,8 +52,13 @@ Notations: **coefficients_lasso** is the coefficients from the lasso model. **pv
 ```
 
 ```{r echo=FALSE}
-load("/project2/xinhe/xsun/website/pathway_analysis/output/nzero_variants.rdata")
+load("/project2/xinhe/xsun/website/pathway_analysis/output/nzero_variants_pc5.rdata")
 DT::datatable(summary_snp_all, options = list(pageLength =20))
 ```
 
+To compare the p-values of training set and test set, we made a scatter plot.
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/T1B_pvals.jpeg" width="80%">
+</figure>
 
