@@ -37,6 +37,6 @@ DT::datatable(sum_sorted, options = list(pageLength =20))
 
 
 ```{r}
-
+ 
 ```
 

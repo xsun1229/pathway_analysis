@@ -82,6 +82,7 @@ DT::datatable(sum_sorted, options = list(pageLength =20))
 Taking lv6(low heritability but high r2) and lv101(high heritability but low r2) as examples, we made sveral plots to show the models. Since the lasso and elastic_net models were not quite different, we just post the plots from lasso regression here.
 
 We first plot the change of mean squared errors and coefficients when training the model using lasso. We also plot the predicted lv values vs observed lv values. 
+
 #### LV6
 
 <figure class="half">
