@@ -1,0 +1,115 @@
+---
+title: "train_model_ldpruning"
+author: "XSun"
+date: "2020-05-23"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+We performed same analysis with [this part](https://xsun1229.github.io/pathway_analysis/train_model.html). But the data are kind of different. After dividing the data into training part and testing part, we perfpormed LDpruning for the training data using Plink. The window size of ldpruning is 50kb, the step size is 5kb, the VIF is 5 (1/(1-r2), r2=0.8). After ldpruning, the average number of variants in training data decreases from 103,809 to 31,834. 
+
+
+## Results
+
+### Heritability vs R-squared
+
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/devide_snp001_le_ldpru.jpeg" width="150%">
+</figure>
+
+**I'm kind of confused here, after ldpruning, some singnals have been omitted. I expected to get lower r-squared for each LV, but it seems that I'm totally wrong(see the scatter plot below). I plotted the r-squared obtained from all variants with p-val < 0.01 vs r-squared obtained after ldpruning. Why is this so?**
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/rsq_all_ld.jpeg"  width="150%">
+</figure>
+  
+
+## Debugging
+
+
+### Table
+
+Notations to explain: **rsq_min** is the r-squared when lambda=lambda.min, **ncoef_nzero_min** is the number of non-zero coefficients when lambda=lambda.min, **rsq_test** is the r-squared in testing set (obtained from lm(lv.obs ~ lv.pred)) ,**pval_test** is the pvalue of F-statisticsin testing test. When the suffix is '_1se', the notations mean lambda=lambda.1se. Suffix '_l' means lasso regression and '_e' means elastic_net
+
+
+```{r eval=FALSE, echo=T}
+  ###Lasso regression. 'k' represents the kth LV.
+    fit_lasso <- cv.glmnet(x, y, alpha =1, foldid = foldid)   ##'foldid = foldid' can fix the data partition in cross validation, making the codes reproducible
+    fit_r_train_l[k]  <- fit_lasso$glmnet.fit$dev.ratio[which(fit_lasso$glmnet.fit$lambda == fit_lasso$lambda.min)]  ###r2 when lambda = lambda.min
+    predict_l <- predict(fit_lasso, nx, s = fit_lasso$lambda.min )
+    
+    fit_linear <- lm(y_test ~ predict_l)
+    pval_test_l[i] <- summary(fit_linear)$coefficients[,4]
+    rsq_test_l[i] <- summary(fit_linear)$r.squared
+
+```
+
+  
+Some LVs like LV6,LV8 have pretty low heritability but have very high r-squared. In such LVs, the training model always selected many variants(ncoef_nzero). 
+Other LVs like LV101,LV113 have relatively high heritability but very low r-squared.In such LVs, the training model always selected few variants(ncoef_nzero). 
+
+
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/summary_H_le_sorted_ldpru.rdata")
+rownames(sum_sorted) <- c()
+DT::datatable(sum_sorted, options = list(pageLength =20))
+```
+
+
+
+
+### lv101
+
+Taking lv101(high heritability but low r2) as an example, we ploted several figures as before.
+
+#### LV101
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_ldpr_mse.jpeg" width="80%">
+</figure>
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_ldpr_coef.jpeg" width="80%">
+</figure>
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_ldpr_testpred.jpeg" width="80%">
+</figure>
+
+For LV101, we performned more analysis to detect the reason why it has relatively high heritability(0.19) but low r-squared(0.071) in lasso.
+
+#### Variants with non-zero coefficients
+
+We got 15 variants with non-zero lasso coefficients. Although we got 15 variants in former analysis, these variants are not the same variants as before. For these variants, we also performed single snp linear regression (LV101 ~ genotype of a snp) and made conparision in both training set and testing set.
+
+Notations: **coefficients_lasso** is the coefficients from the lasso model. **pval_lm_traindata** is  the p-value of F-statistics from the linear regression using the training set data. **rsq_lm_traindata** is the r-squared of the linear regression using training set data. Suffix "_testdata" means the results using testing set. 
+
+
+```{r eval=FALSE, echo=T}
+### i is the ith variants
+  fit_linear[[i]] <- lm(y ~ x[,i])   ###y is T1B_PC5 and  x[,i] is genotype of a variant.
+  pval_snp[i] <- summary(fit_linear[[i]])$coefficients[,4] ### p-value of F-statistics 
+  rsq_snp[i] <- summary(fit_linear[[i]])$r.squared   ###r-squared of the linear regression
+
+```
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/nzero_variants_101_ldpru.rdata")
+DT::datatable(summary_snp_all, options = list(pageLength =20))
+```
+
+To compare the p-values of training set and test set, we made a scatter plot.
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_ldpru_pvals.jpeg" width="80%">
+</figure>
+
+
+
+
+```{r}
+
+```
+

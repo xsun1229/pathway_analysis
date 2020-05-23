@@ -24,7 +24,7 @@ The missing data pattern of our dataset. x-axis represents the proportion of mis
 
 3. In the training data, performed association test between the 128 LVs and all SNPs using Plink. We corrected the results for genotype PCs (We used Plink to compute 10 PCs and used them as corvariates in association test).
 
-4. From 3, we selected all SNPs with p < 1e-02. For each LV, we can get a set of a bit less than 100,000 variants.
+4. From 3, we selected all SNPs with p < 1e-02. For each LV, we can get a set of around 100,000 variants.
 
 5. Trained Lasso/Elastic net using SNPs from step4 in the training data and evaluated the performance in the testing data.
 
