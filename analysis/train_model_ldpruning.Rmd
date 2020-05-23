@@ -21,7 +21,7 @@ We performed same analysis with [this part](https://xsun1229.github.io/pathway_a
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/devide_snp001_le_ldpru.jpeg" width="150%">
 </figure>
 
-**I'm kind of confused here, after ldpruning, some singnals have been omitted. I expected to get lower r-squared for each LV, but it seems that I'm totally wrong(see the scatter plot below). I plotted the r-squared obtained from all variants with p-val < 0.01 vs r-squared obtained after ldpruning. Why is this so?**
+**I'm kind of confused here, after ldpruning, some signals have been omitted. I expected to get lower r-squared for each LV, but it seems that I'm totally wrong(see the scatter plot below). I plotted the r-squared obtained from all variants with p-val < 0.01 vs r-squared obtained after ldpruning. Why is this so?**
 
 <figure class="half">
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/rsq_all_ld.jpeg"  width="150%">
