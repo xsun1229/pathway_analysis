@@ -54,6 +54,7 @@ The MHC region ranges roughly from 27653730 to 37640596 on chr6. So the variants
 ```{r echo=FALSE}
 load("/project2/xinhe/xsun/website/pathway_analysis/output/nzero_variants_pc5.rdata")
 DT::datatable(summary_snp_all, options = list(pageLength =20))
+
 ```
 
 To compare the p-values of training set and test set, we made a scatter plot.
