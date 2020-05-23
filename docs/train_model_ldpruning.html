@@ -577,16 +577,16 @@ output/nzero_variants_101_ldpru.rdata
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree7cd442e7ed6c038aa7d47618134264d45648a3cftargetblank7cd442ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/7cd442e7ed6c038aa7d47618134264d45648a3cf" target="_blank">7cd442e</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreeae6469c76c0f2c848db21ccbeed17db7fd3f51cftargetblankae6469ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/ae6469c76c0f2c848db21ccbeed17db7fd3f51cf" target="_blank">ae6469c</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree7cd442e7ed6c038aa7d47618134264d45648a3cftargetblank7cd442ea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreeae6469c76c0f2c848db21ccbeed17db7fd3f51cftargetblankae6469ca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/7cd442e7ed6c038aa7d47618134264d45648a3cf" target="_blank">7cd442e</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/ae6469c76c0f2c848db21ccbeed17db7fd3f51cf" target="_blank">ae6469c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -598,8 +598,8 @@ Ignored files:
     Ignored:    .Rproj.user/
 
 Unstaged changes:
-    Modified:   analysis/index.Rmd
     Deleted:    analysis/regression.Rmd
+    Deleted:    output/LV101_ldpr.jpeg
     Deleted:    output/LV5.jpeg
     Deleted:    output/nzero_variants.rdata
     Deleted:    output/snp001_le.jpeg
@@ -646,6 +646,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/ae6469c76c0f2c848db21ccbeed17db7fd3f51cf/analysis/train_model_ldpruning.Rmd" target="_blank">ae6469c</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-23
+</td>
+<td>
+wflow_publish(c(“analysis/index.Rmd”, “analysis/train_model_ldpruning.Rmd”))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/93475e693e03d51401754007aac985d5f9f626ba/docs/train_model_ldpruning.html" target="_blank">93475e6</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-23
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/xsun1229/pathway_analysis/blob/7cd442e7ed6c038aa7d47618134264d45648a3cf/analysis/train_model_ldpruning.Rmd" target="_blank">7cd442e</a>
 </td>
 <td>
@@ -676,7 +710,7 @@ wflow_publish(c(“analysis/train_model.Rmd”, “analysis/train_model_ldprunin
 <figure class="half">
 <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/devide_snp001_le_ldpru.jpeg" width="150%">
 </figure>
-<p><strong>I’m kind of confused here, after ldpruning, some singnals have been omitted. I expected to get lower r-squared for each LV, but it seems that I’m totally wrong(see the scatter plot below). I plotted the r-squared obtained from all variants with p-val &lt; 0.01 vs r-squared obtained after ldpruning. Why is this so?</strong></p>
+<p><strong>I’m kind of confused here, after ldpruning, some signals have been omitted. I expected to get lower r-squared for each LV, but it seems that I’m totally wrong(see the scatter plot below). I plotted the r-squared obtained from all variants with p-val &lt; 0.01 vs r-squared obtained after ldpruning. Why is this so?</strong></p>
 <figure class="half">
 <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/rsq_all_ld.jpeg"  width="150%">
 </figure>

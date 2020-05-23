@@ -376,16 +376,16 @@ This reproducible <a href="http://rmarkdown.rstudio.com">R Markdown</a> analysis
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree97118cda74c2e553ce77dd6f28c60c2e9c8734ddtargetblank97118cda"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/97118cda74c2e553ce77dd6f28c60c2e9c8734dd" target="_blank">97118cd</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreeae6469c76c0f2c848db21ccbeed17db7fd3f51cftargetblankae6469ca"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/ae6469c76c0f2c848db21ccbeed17db7fd3f51cf" target="_blank">ae6469c</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree97118cda74c2e553ce77dd6f28c60c2e9c8734ddtargetblank97118cda" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreeae6469c76c0f2c848db21ccbeed17db7fd3f51cftargetblankae6469ca" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/97118cda74c2e553ce77dd6f28c60c2e9c8734dd" target="_blank">97118cd</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/ae6469c76c0f2c848db21ccbeed17db7fd3f51cf" target="_blank">ae6469c</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -440,6 +440,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/ae6469c76c0f2c848db21ccbeed17db7fd3f51cf/analysis/index.Rmd" target="_blank">ae6469c</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-23
+</td>
+<td>
+wflow_publish(c(“analysis/index.Rmd”, “analysis/train_model_ldpruning.Rmd”))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/d1c4ec16b4bc319c307705aad5f719000119ace9/docs/index.html" target="_blank">d1c4ec1</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-23
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -787,26 +821,27 @@ Start workflowr project.
 </div>
 </div>
 </div>
-<div id="pathway-analysis" class="section level2">
-<h2>Pathway analysis</h2>
-<p>KEGG is a collection of databases dealing with genomes, biological pathways, diseases, drugs, and chemical substances. For each pathway of human, we inferred the PCs and PEER factors of it. Then computed the heritabilities of factors and made a summary of the heritabilities.</p>
+<div id="pathway-analysis" class="section level1">
+<h1>Pathway analysis</h1>
+<ul>
+<li>KEGG KEGG is a collection of databases dealing with genomes, biological pathways, diseases, drugs, and chemical substances. For each pathway of human, we inferred the PCs and PEER factors of it. Then computed the heritabilities of factors and made a summary of the heritabilities.</li>
+</ul>
 <p><a href="https://xsun1229.github.io/pathway_analysis/analy.html">For more details</a></p>
-</div>
-<div id="pwy-plier" class="section level2">
-<h2>pwy-plier</h2>
-<p>PLIER(pathway-level information extractor) is a broadly applicable method to accurately infer relevant biological insights, such as variation in cell-type proportion or pathway activity, from global gene expression studies. It approximates the expression pattern of every gene as a linear combination of eigengene-like latent variables (LVs). We calculated heritability of these LVs and performed further analysis.</p>
+<ul>
+<li>pwy-plier PLIER(pathway-level information extractor) is a broadly applicable method to accurately infer relevant biological insights, such as variation in cell-type proportion or pathway activity, from global gene expression studies. It approximates the expression pattern of every gene as a linear combination of eigengene-like latent variables (LVs). We calculated heritability of these LVs and performed further analysis.</li>
+</ul>
 <p><a href="https://xsun1229.github.io/pathway_analysis/pwy_PLIER.html">For more details</a></p>
-</div>
-<div id="pwy-plier-nochrx" class="section level2">
-<h2>pwy-plier-nochrx</h2>
+<ul>
+<li>pwy-plier-nochrx</li>
+</ul>
 <p>In last part, we extracted LVs from gene expression matrix which includes chrX, but it maybe more accurate to exclude chrX. So, we performed analysis for the data excluding chrX.</p>
 <p><a href="https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx.html">For more details</a></p>
 </div>
-<div id="factor-twas" class="section level2">
-<h2>Factor-TWAS</h2>
+<div id="factor-twas" class="section level1">
+<h1>Factor-TWAS</h1>
 <p>We have extract factors(LVs) related to pathways from gene expression data and calculated their heritability in former analysis. We plan to use TWAS to find the association between diseases and pathways/factors. TWAS analyse can be divided into training and prediction part.</p>
-<div id="training-part" class="section level3">
-<h3>Training part</h3>
+<div id="training-part" class="section level2">
+<h2>Training part</h2>
 <ol style="list-style-type: decimal">
 <li>In this part, we will use lasso and elastic_net regression to train a prediction model. The dependent variables here are LVs and the independent variables are genotype of certain variants.</li>
 </ol>
@@ -820,8 +855,8 @@ Start workflowr project.
 </ol>
 <p><a href="https://xsun1229.github.io/pathway_analysis/T1B.html">For more details</a></p>
 </div>
-<div id="prediction-part" class="section level3">
-<h3>Prediction part</h3>
+<div id="prediction-part" class="section level2">
+<h2>Prediction part</h2>
 <p>Welcome to my research website.</p>
 </div>
 </div>
