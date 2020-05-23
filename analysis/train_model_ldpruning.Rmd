@@ -52,12 +52,13 @@ Notations to explain: **rsq_min** is the r-squared when lambda=lambda.min, **nco
 Some LVs like LV6,LV8 have pretty low heritability but have very high r-squared. In such LVs, the training model always selected many variants(ncoef_nzero). 
 Other LVs like LV101,LV113 have relatively high heritability but very low r-squared.In such LVs, the training model always selected few variants(ncoef_nzero). 
 
-
+In this table, there are several NA value. These NA values come from linear regression(lm(y_test ~ predict_l)). It means the variant in regression is linearly with the intercept. After checking the predict_l, we found the predict_l for all samples are the same.
 
 ```{r echo=FALSE}
 load("/project2/xinhe/xsun/website/pathway_analysis/output/summary_H_le_sorted_ldpru.rdata")
 rownames(sum_sorted) <- c()
 DT::datatable(sum_sorted, options = list(pageLength =20))
+
 ```
 
 

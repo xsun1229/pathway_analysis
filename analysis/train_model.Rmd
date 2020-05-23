@@ -68,10 +68,13 @@ Other LVs like LV101,LV113 have relatively high heritability but very low r-squa
 
 It seems that the r-squared issue is a variante selection issue?
 
+In this table, there are several NA value. These NA values come from linear regression(lm(y_test ~ predict_l)). It means the variant in regression is linearly with the intercept. After checking the predict_l, we found the predict_l for all samples are the same.
+
 ```{r echo=FALSE}
 load("/project2/xinhe/xsun/website/pathway_analysis/output/summary_H_le_sorted.rdata")
 rownames(sum_sorted) <- c()
 DT::datatable(sum_sorted, options = list(pageLength =20))
+
 ```
 
 
