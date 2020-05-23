@@ -11,20 +11,16 @@ editor_options:
 # Pathway analysis
 
 - KEGG 
-KEGG is a collection of databases dealing with genomes, biological pathways, diseases, drugs, and chemical substances. For each pathway of human, we inferred the PCs and PEER factors of it. Then computed the heritabilities of factors and made a summary of the heritabilities.
 
-[For more details](https://xsun1229.github.io/pathway_analysis/analy.html)
+    KEGG is a collection of databases dealing with genomes, biological pathways, diseases, drugs, and chemical substances. For each pathway of human, we inferred the PCs and PEER factors of it. Then computed the heritabilities of factors and made a summary of the heritabilities. [For more details](https://xsun1229.github.io/pathway_analysis/analy.html)
 
 - pwy-plier
-PLIER(pathway-level information extractor) is a broadly applicable method to accurately infer relevant biological insights, such as variation in cell-type proportion or pathway activity, from global gene expression studies. It approximates the expression pattern of every gene as a linear combination of eigengene-like latent variables (LVs). We calculated heritability of these LVs and performed further analysis.
 
-[For more details](https://xsun1229.github.io/pathway_analysis/pwy_PLIER.html)
+    PLIER(pathway-level information extractor) is a broadly applicable method to accurately infer relevant biological insights, such as variation in cell-type proportion or pathway activity, from global gene expression studies. It approximates the expression pattern of every gene as a linear combination of eigengene-like latent variables (LVs). We calculated heritability of these LVs and performed further analysis. [For more details](https://xsun1229.github.io/pathway_analysis/pwy_PLIER.html)
 
 - pwy-plier-nochrx
 
-In last part, we extracted LVs from gene expression matrix which includes chrX, but it maybe more accurate to exclude chrX. So, we performed analysis for the data excluding chrX.
-
-[For more details](https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx.html)
+    In last part, we extracted LVs from gene expression matrix which includes chrX, but it maybe more accurate to exclude chrX. So, we performed analysis for the data excluding chrX. [For more details](https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx.html)
 
 # Factor-TWAS
 
@@ -32,17 +28,11 @@ We have extract factors(LVs) related to pathways from gene expression data and c
 
 ## Training part
 
-1. In this part, we will use lasso and elastic_net regression to train a prediction model. The dependent variables here are LVs and the independent variables are genotype of certain variants.
+1. In this part, we will use lasso and elastic_net regression to train a prediction model. The dependent variables here are LVs and the independent variables are genotype of certain variants. [For more details](https://xsun1229.github.io/pathway_analysis/train_model.html)
 
-[For more details](https://xsun1229.github.io/pathway_analysis/train_model.html)
+2. We performed same analysis with [1](https://xsun1229.github.io/pathway_analysis/train_model.html). But the data are kind of different. After dividing the data into training part and testing part, we perfpormed LDpruning for the training data using Plink. The window size of ldpruning is 50kb, the step size is 5kb, the VIF is 5 (1/(1-r2), r2=0.8). After ldpruning, the average number of variants in training data decreases from 103,809 to 31,834. [For more details](https://xsun1229.github.io/pathway_analysis/train_model_ldpruning.html)
 
-2. We performed same analysis with [1](https://xsun1229.github.io/pathway_analysis/train_model.html). But the data are kind of different. After dividing the data into training part and testing part, we perfpormed LDpruning for the training data using Plink. The window size of ldpruning is 50kb, the step size is 5kb, the VIF is 5 (1/(1-r2), r2=0.8). After ldpruning, the average number of variants in training data decreases from 103,809 to 31,834.
-
-[For more details](https://xsun1229.github.io/pathway_analysis/train_model_ldpruning.html)
-
-3. We also trained a model for the fifth pc of T1B pathway. 
-
-[For more details](https://xsun1229.github.io/pathway_analysis/T1B.html)
+3. We also trained a model for the fifth pc of T1B pathway.  [For more details](https://xsun1229.github.io/pathway_analysis/T1B.html)
 
 ## Prediction part
 

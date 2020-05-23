@@ -21,7 +21,7 @@ We performed same analysis with [this part](https://xsun1229.github.io/pathway_a
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/devide_snp001_le_ldpru.jpeg" width="150%">
 </figure>
 
-**I'm kind of confused here, after ldpruning, some signals have been omitted. I expected to get lower r-squared for each LV, but it seems that I'm totally wrong(see the scatter plot below). I plotted the r-squared obtained from all variants with p-val < 0.01 vs r-squared obtained after ldpruning. Why is this so?**
+**I'm kind of confused here, after ldpruning, some signals have been omitted. I expected to get lower r-squared for each LV. But for some LVs, I got almost the same r-squared, for some others, I got much higher r-squared. I plotted the r-squared obtained from all variants with p-val < 0.01 vs r-squared obtained after ldpruning. Why this happens?**
 
 <figure class="half">
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/rsq_all_ld.jpeg"  width="150%">
@@ -78,11 +78,13 @@ Taking lv101(high heritability but low r2) as an example, we ploted several figu
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_ldpr_testpred.jpeg" width="80%">
 </figure>
 
-For LV101, we performned more analysis to detect the reason why it has relatively high heritability(0.19) but low r-squared(0.071) in lasso.
+For LV101, we performned more analysis to detect the reason why it has relatively high heritability(0.19) but low r-squared(0.079) in lasso.
 
 #### Variants with non-zero coefficients
 
-We got 15 variants with non-zero lasso coefficients. Although we got 15 variants in former analysis, these variants are not the same variants as before. For these variants, we also performed single snp linear regression (LV101 ~ genotype of a snp) and made conparision in both training set and testing set.
+We got 15 variants with non-zero lasso coefficients. Although we got 15 variants in former analysis, these variants are not the same variants as before. 
+
+For these variants, we also performed single snp linear regression (LV101 ~ genotype of a snp) and made conparision in both training set and testing set.
 
 Notations: **coefficients_lasso** is the coefficients from the lasso model. **pval_lm_traindata** is  the p-value of F-statistics from the linear regression using the training set data. **rsq_lm_traindata** is the r-squared of the linear regression using training set data. Suffix "_testdata" means the results using testing set. 
 
