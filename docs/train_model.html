@@ -454,7 +454,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-05-22
+<strong>Last updated:</strong> 2020-05-23
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
@@ -577,16 +577,16 @@ output/nzero_variants_101.rdata
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreef5cba93cc3bbed03ee11082db2c33540cc3fef0ftargetblankf5cba93a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/f5cba93cc3bbed03ee11082db2c33540cc3fef0f" target="_blank">f5cba93</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree7cd442e7ed6c038aa7d47618134264d45648a3cftargetblank7cd442ea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/7cd442e7ed6c038aa7d47618134264d45648a3cf" target="_blank">7cd442e</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreef5cba93cc3bbed03ee11082db2c33540cc3fef0ftargetblankf5cba93a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree7cd442e7ed6c038aa7d47618134264d45648a3cftargetblank7cd442ea" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/f5cba93cc3bbed03ee11082db2c33540cc3fef0f" target="_blank">f5cba93</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/7cd442e7ed6c038aa7d47618134264d45648a3cf" target="_blank">7cd442e</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -597,13 +597,8 @@ Ignored files:
     Ignored:    .Rhistory
     Ignored:    .Rproj.user/
 
-Untracked files:
-    Untracked:  output/LV101_pvals.jpeg
-    Untracked:  output/T1B_pvals.jpeg
-    Untracked:  output/nzero_variants_101.rdata
-    Untracked:  output/nzero_variants_pc5.rdata
-
 Unstaged changes:
+    Modified:   analysis/index.Rmd
     Deleted:    analysis/regression.Rmd
     Deleted:    output/LV5.jpeg
     Deleted:    output/nzero_variants.rdata
@@ -646,6 +641,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/7cd442e7ed6c038aa7d47618134264d45648a3cf/analysis/train_model.Rmd" target="_blank">7cd442e</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-23
+</td>
+<td>
+wflow_publish(c(“analysis/train_model.Rmd”, “analysis/train_model_ldpruning.Rmd”,
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/8e2ca8b7e095437b15a0bfcdfcf0c698eccff19c/docs/train_model.html" target="_blank">8e2ca8b</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-22
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1009,7 +1038,7 @@ wflow_publish(c(“output/LV101.jpeg”, “analysis/train_model.Rmd”,
 <ol start="2" style="list-style-type: decimal">
 <li><p>We splited the data set into training(80%, 536 samples) and test(20%, 134 samples) set.</p></li>
 <li><p>In the training data, performed association test between the 128 LVs and all SNPs using Plink. We corrected the results for genotype PCs (We used Plink to compute 10 PCs and used them as corvariates in association test).</p></li>
-<li><p>From 3, we selected all SNPs with p &lt; 1e-02. For each LV, we can get a set of a bit less than 100,000 variants.</p></li>
+<li><p>From 3, we selected all SNPs with p &lt; 1e-02. For each LV, we can get a set of around 100,000 variants.</p></li>
 <li><p>Trained Lasso/Elastic net using SNPs from step4 in the training data and evaluated the performance in the testing data.</p></li>
 </ol>
 </div>
