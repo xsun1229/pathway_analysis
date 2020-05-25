@@ -38,7 +38,7 @@ We have extract factors(LVs) related to pathways from gene expression data and c
 
 # Factor analysis
 
-In [Bayesian detection of expression quantitative trait [Genetics, 2011]](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3241411/), authors used HESS to analyze the larger IDIN(IRF7-driven inflammatory network) and found two SNPs, rs9557207 and rs11616269,which are detected as hotspots for the IDIN expression. 
+In *Bayesian detection of expression quantitative trait [Genetics, 2011]*, authors used HESS to analyze the larger IDIN(IRF7-driven inflammatory network) and found two SNPs, rs9557207 and rs11616269,which are detected as hotspots for the IDIN expression. 
 
 Here, we perform factor analysis using IDIN genes in whole blood data to find if any factor associates with the two SNPs.  [For more details](https://xsun1229.github.io/pathway_analysis/INID.html)
 

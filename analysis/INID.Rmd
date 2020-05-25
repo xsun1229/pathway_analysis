@@ -34,9 +34,19 @@ DT::datatable(IDIN, options = list(pageLength =5))
 
 1. There are 524 genes(ensembl.id) in IDIN. 483 of them have expression data in whole blood data (GTEx). After converting ensembl.id into hgnc_symbol, 480 genes left. We used the gene expression matrix to of these genes to extract PLIER factors (LVs). 
 
-2.  We used CanonicalPathways in PLIER R package, which contains 545 curated pathways from Reactome and KEGG. Among 480 genes, CanonicalPathways contains 255 genes.
+2.  We used all pathway data provided in PLIER R package, which contains 6611 curated pathways. Among 480 genes, 435 genes were used in factor extraction.
 
-3. We obtained 106 LVs from PLIER, 19 of them have AUC > 0.70(see figure below)
+    (1) bloodCellMarkersIRISDMAP - 
+    IRIS: Abbas, Alexander R., et al. "Deconvolution of blood microarray data identifies cellular activation patterns in systemic lupus erythematosus." PloS one 4.7 (2009).
+    DMAP: Novershtern, Noa, et al. "Densely interconnected transcriptional circuits control cell states in human hematopoiesis." Cell 144.2 (2011): 296-309.
+    (2) canonicalPathways  - canonical pathway from MSigDB
+    (3) chemgenPathways - chemical and genetic perturbations from MSigDB
+    (4) immunePathways  - Immunologic signatures from MSigDB
+    (5) oncogenicPathways - oncogeneic signatures gene sets from MsigDB
+    (6)svmMarkers - Newman, Aaron M., et al. "Robust enumeration of cell subsets from tissue expression profiles." Nature methods 12.5 (2015): 453-457.
+    (7) xCell - Aran, Dvir, Zicheng Hu, and Atul J. Butte. "xCell: digitally portraying the tissue cellular heterogeneity landscape." Genome biology 18.1 (2017): 220.
+
+3. We obtained 86 LVs from PLIER, 29 of them have AUC > 0.70(see figure below)
 
 ### LV plots
 
@@ -79,7 +89,6 @@ LV_AUC <- apply(plierResult$Uauc, 2, max)  ### plierResult is the results of fac
 
 ```{r echo=FALSE}
 load("/project2/xinhe/xsun/website/pathway_analysis/output/summary_assoc_2snp.rdata")
-
 DT::datatable(summary, options = list(pageLength =20))
 
 ```
