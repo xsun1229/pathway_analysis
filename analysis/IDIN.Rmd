@@ -83,6 +83,8 @@ The table below shows the detailed results of the linear regression.
 
 Notations: **LV_AUC** is an indicator to show the confidence that LV will associate with some pathways. AUV > 0.7 means high confidence. **pval** is the pvalue of F-statistics in regression. **rsq** is the r-squared of the regression.
 
+You can sort the table by clicking the arrow by the header of each column.
+
 ```{r eval=FALSE, echo=T}
 LV_AUC <- apply(plierResult$Uauc, 2, max)  ### plierResult is the results of factor extraction.
 ```
