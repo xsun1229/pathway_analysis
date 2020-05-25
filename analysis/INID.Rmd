@@ -76,3 +76,11 @@ Notations: **LV_AUC** is an indicator to show the confidence that LV will associ
 ```{r eval=FALSE, echo=T}
 LV_AUC <- apply(plierResult$Uauc, 2, max)  ### plierResult is the results of factor extraction.
 ```
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/summary_assoc_2snp.rdata")
+
+DT::datatable(summary, options = list(pageLength =20))
+
+```
+
