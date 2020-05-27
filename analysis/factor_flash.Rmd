@@ -1,0 +1,69 @@
+---
+title: "factor_flash"
+author: "XSun"
+date: "2020-05-27"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+In this part, we used ['flashr'](https://github.com/stephenslab/flashr), methods for matrix factorization based on [Empirical Bayes Matrix Factorization](https://arxiv.org/abs/1802.06931), to extract factors from IDIN gene expression matrix (same with the matrix in [PLIER_IDIN](https://xsun1229.github.io/pathway_analysis/IDIN.html)).We also performed factor analysis find if any factor associates with the two SNPs ( [rs9557207](https://www.ncbi.nlm.nih.gov/snp/rs9557207) and [rs11616269](https://www.ncbi.nlm.nih.gov/snp/rs11616269))
+
+## Material and Methods
+
+1. We used workflow showed in ['flashr'](https://github.com/stephenslab/flashr) to extract factors. 
+
+```{r eval=FALSE, echo=T}
+f = flash(Y)    ### Y is the IDIN gene expression matrix.
+ldf = flash_get_ldf(f)
+```
+
+2. Then, we used the backfitting algorithm to improve the fit (but it takes longer).
+
+```{r eval=FALSE, echo=T}
+f.b = flash(Y, f_init = f, backfit=TRUE, greedy=FALSE)
+ldf.b = flash_get_ldf(f.b)
+```
+
+3. Perform association test between the facotrs and two SNPs. 
+
+## Results
+
+We obtained 62 factors using FLASH.
+
+### Association test
+
+We performed linear regression for factors ~ snp.
+
+```{r eval=FALSE, echo=T}
+  ### k indicates the kth factors
+  y <- as.numeric(factors[,k])   ## kth factors
+  x <- as.numeric(geno_2snp[,1])   ## genotype of rs11616269
+  
+  pval_snp1[k] <- summary(lm(y ~ x))$coefficients[2,4]  ## pval of F-statistics in y ~ x regression
+  rsq_snp1[k] <- summary(lm(y ~ x))$r.squared    ## r-squared of the regression
+```
+
+We made a histogram to show the pvalue distribution. 
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/rs11616269_pval_falsh_b.jpeg" width="80%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/rs9557207_pval_falsh_b.jpeg" width="80%">
+</figure>
+
+The table below shows the detailed results of the linear regression. 
+
+Notations: **pval** is the pvalue of F-statistics in regression. **rsq** is the r-squared of the regression.
+
+You can sort the table by clicking the arrow by the header of each column.
+
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/summary_assoc_2snp_flash_b.rdata")
+DT::datatable(summary, options = list(pageLength =20))
+```
