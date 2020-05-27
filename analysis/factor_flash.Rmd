@@ -9,7 +9,7 @@ editor_options:
 
 ## Introduction
 
-In this part, we used ['flashr'](https://github.com/stephenslab/flashr), methods for matrix factorization based on [Empirical Bayes Matrix Factorization](https://arxiv.org/abs/1802.06931), to extract factors from IDIN gene expression matrix (same with the matrix in [PLIER_IDIN](https://xsun1229.github.io/pathway_analysis/IDIN.html)).We also performed factor analysis find if any factor associates with the two SNPs ( [rs9557207](https://www.ncbi.nlm.nih.gov/snp/rs9557207) and [rs11616269](https://www.ncbi.nlm.nih.gov/snp/rs11616269))
+In this part, we used ['flashr'](https://github.com/stephenslab/flashr), methods for matrix factorization based on [Empirical Bayes Matrix Factorization](https://arxiv.org/abs/1802.06931), to extract factors from IDIN gene expression matrix (same with the matrix in [IDIN-PLIER](https://xsun1229.github.io/pathway_analysis/IDIN.html)).We also performed factor analysis find if any factor associates with the two SNPs ( [rs9557207](https://www.ncbi.nlm.nih.gov/snp/rs9557207) and [rs11616269](https://www.ncbi.nlm.nih.gov/snp/rs11616269))
 
 ## Material and Methods
 
