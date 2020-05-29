@@ -17,16 +17,16 @@ In this part, we used ['flashr'](https://github.com/stephenslab/flashr), methods
     - Part of the IDIN genes (genes associated with rs9557207 and rs11616269, listed by *Bayesian detection of expression quantitative trait [Genetics, 2011]*, see the table below,  evidence of associations :BF > 10)
 
 **rs11616269**
-```{r eval=FALSE,echo=FALSE}
+```{r echo=FALSE}
 load("/project2/xinhe/xsun/website/pathway_analysis/output/gene_BF_116.rdata")
-DT::datatable(summary, options = list(pageLength =20))
+DT::datatable(gene_116, options = list(pageLength =20))
 
 ```
 
 **rs9557207**
-```{r eval=FALSE,echo=FALSE}
+```{r echo=FALSE}
 load("/project2/xinhe/xsun/website/pathway_analysis/output/gene_BF_955.rdata")
-DT::datatable(summary, options = list(pageLength =20))
+DT::datatable(gene_955, options = list(pageLength =20))
 
 ```
 
