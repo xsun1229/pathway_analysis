@@ -9,33 +9,54 @@ editor_options:
 
 ## Introduction
 
-In this part, we used ['flashr'](https://github.com/stephenslab/flashr), methods for matrix factorization based on [Empirical Bayes Matrix Factorization](https://arxiv.org/abs/1802.06931), to extract factors from IDIN gene expression matrix (same with the matrix in [IDIN-PLIER](https://xsun1229.github.io/pathway_analysis/IDIN.html)).We also performed factor analysis find if any factor associates with the two SNPs ( [rs9557207](https://www.ncbi.nlm.nih.gov/snp/rs9557207) and [rs11616269](https://www.ncbi.nlm.nih.gov/snp/rs11616269))
+In this part, we used ['flashr'](https://github.com/stephenslab/flashr), methods for matrix factorization based on [Empirical Bayes Matrix Factorization](https://arxiv.org/abs/1802.06931), to extract factors from IDIN gene expression matrix and part of the IDIN gene expression matrix.We also performed factor analysis find if any factor associates with the two SNPs ( [rs9557207](https://www.ncbi.nlm.nih.gov/snp/rs9557207) and [rs11616269](https://www.ncbi.nlm.nih.gov/snp/rs11616269))
 
 ## Material and Methods
+1. Data
+    - All genes in IDIN(same with the genes in [IDIN-PLIER](https://xsun1229.github.io/pathway_analysis/IDIN.html))
+    - Part of the IDIN genes (genes associated with rs9557207 and rs11616269, listed by *Bayesian detection of expression quantitative trait [Genetics, 2011]*, see the table below,  evidence of associations :BF > 10)
 
-1. We used workflow showed in ['flashr'](https://github.com/stephenslab/flashr) to extract factors. 
+**rs11616269**
+```{r eval=FALSE,echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/gene_BF_116.rdata")
+DT::datatable(summary, options = list(pageLength =20))
+
+```
+
+**rs9557207**
+```{r eval=FALSE,echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/gene_BF_955.rdata")
+DT::datatable(summary, options = list(pageLength =20))
+
+```
+
+
+2. We used workflow showed in ['flashr'](https://github.com/stephenslab/flashr) to extract factors. 
 
 ```{r eval=FALSE, echo=T}
-f = flash(Y)    ### Y is the IDIN gene expression matrix.
+f = flash(Y)    ### Y is the gene expression matrix.
 ldf = flash_get_ldf(f)
 ```
 
-2. Then, we used the backfitting algorithm to improve the fit (but it takes longer).
+3. Then, we used the backfitting algorithm to improve the fit (but it takes longer).
 
 ```{r eval=FALSE, echo=T}
 f.b = flash(Y, f_init = f, backfit=TRUE, greedy=FALSE)
 ldf.b = flash_get_ldf(f.b)
 ```
 
-3. Perform association test between the facotrs and two SNPs. 
+4. Perform association tests between the facotrs and two SNPs. 
+
+5. Besides, I performed association tests for the SNP-related gene expression and snp to find if they are associated with each other (single gene expression ~ single snp).
 
 ## Results
 
-We obtained 62 factors using FLASH.
+We obtained 62 factors for all genes in IDIN using FLASH. For genes associated with rs9557207, wo got 8 factors and for genes associated with rs11616269, we got 4.
+### Factors ~ SNPs.
 
-### Association test
+#### All genes in IDIN
 
-We performed linear regression for factors ~ snp.
+We performed linear regression for factors(extracted from all genes in IDIN) ~ snp.
 
 ```{r eval=FALSE, echo=T}
   ### k indicates the kth factors
@@ -49,11 +70,11 @@ We performed linear regression for factors ~ snp.
 We made a histogram to show the pvalue distribution. 
 
 <figure class="half">
-    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/rs11616269_pval_falsh_b.jpeg" width="80%">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/rs11616269_pval_flash_b.jpeg" width="80%">
 </figure>
 
 <figure class="half">
-    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/rs9557207_pval_falsh_b.jpeg" width="80%">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/rs9557207_pval_flash_b.jpeg" width="80%">
 </figure>
 
 The table below shows the detailed results of the linear regression. 
@@ -65,5 +86,44 @@ You can sort the table by clicking the arrow by the header of each column.
 
 ```{r echo=FALSE}
 load("/project2/xinhe/xsun/website/pathway_analysis/output/summary_assoc_2snp_flash_b.rdata")
+rownames(summary) <- paste0("factor", seq(1, nrow(summary), by=1))
 DT::datatable(summary, options = list(pageLength =20))
+```
+
+#### Genes associated with rs9557207
+
+We performed linear regression for factors ~ snp. We list the p-values and r-squared of each regression here. 
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/summary_assoc_955_flash_b.rdata")
+rownames(summary) <- paste0("factor", seq(1, nrow(summary), by=1))
+DT::datatable(summary, options = list(pageLength =10))
+```
+
+
+#### Genes associated with rs11616269
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/summary_assoc_116_flash_b.rdata")
+rownames(summary) <- paste0("factor", seq(1, nrow(summary), by=1))
+DT::datatable(summary, options = list(pageLength =10))
+```
+
+### Gene expression ~ SNPs
+
+*It seems that the two snps are not associated with the gene expression(genes are reported in [Bayesian detection of expression quantitative trait (Genetics, 2011)]. So I'm considering the factor analysis results are reasonable.*
+
+
+- rs9557207
+
+```{r echo=FALSE}
+summary <- read.csv("/project2/xinhe/xsun/website/pathway_analysis/output/rs9557207_gene_snp.csv", header = T)
+DT::datatable(summary, options = list(pageLength =10))
+```
+
+- rs11616269
+
+```{r echo=FALSE}
+summary <- read.csv("/project2/xinhe/xsun/website/pathway_analysis/output/rs11616269_gene_snp.csv", header = T)
+DT::datatable(summary, options = list(pageLength =10))
 ```
