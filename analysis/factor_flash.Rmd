@@ -52,6 +52,7 @@ ldf.b = flash_get_ldf(f.b)
 ## Results
 
 We obtained 62 factors for all genes in IDIN using FLASH. For genes associated with rs9557207, wo got 8 factors and for genes associated with rs11616269, we got 4.
+
 ### Factors ~ SNPs.
 
 #### All genes in IDIN
