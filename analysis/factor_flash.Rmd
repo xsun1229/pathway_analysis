@@ -9,12 +9,13 @@ editor_options:
 
 ## Introduction
 
-In this part, we used ['flashr'](https://github.com/stephenslab/flashr), methods for matrix factorization based on [Empirical Bayes Matrix Factorization](https://arxiv.org/abs/1802.06931), to extract factors from IDIN gene expression matrix and part of the IDIN gene expression matrix.We also performed factor analysis find if any factor associates with the two SNPs ( [rs9557207](https://www.ncbi.nlm.nih.gov/snp/rs9557207) and [rs11616269](https://www.ncbi.nlm.nih.gov/snp/rs11616269))
+In this part, we used ['flashr'](https://github.com/stephenslab/flashr), methods for matrix factorization based on [Empirical Bayes Matrix Factorization](https://arxiv.org/abs/1802.06931), to extract factors from IDIN gene expression matrix and part of the IDIN gene expression matrix.We also performed factor analysis find if any factor associates with the two SNPs ( [rs9557207](https://www.ncbi.nlm.nih.gov/snp/rs9557207) and [rs11616269](https://www.ncbi.nlm.nih.gov/snp/rs11616269)) and EBI2 expression data.
 
 ## Material and Methods
 1. Data
     - All genes in IDIN(same with the genes in [IDIN-PLIER](https://xsun1229.github.io/pathway_analysis/IDIN.html))
     - Part of the IDIN genes (genes associated with rs9557207 and rs11616269, listed by *Bayesian detection of expression quantitative trait [Genetics, 2011]*, see the table below,  evidence of associations :BF > 10)
+    - EBI2 expression data and genotype of variants are from GTEx data.
 
 **rs11616269**
 ```{r echo=FALSE}
@@ -45,13 +46,13 @@ f.b = flash(Y, f_init = f, backfit=TRUE, greedy=FALSE)
 ldf.b = flash_get_ldf(f.b)
 ```
 
-4. Perform association tests between the facotrs and two SNPs. 
+4. Perform association tests between the facotrs and two SNPs/EBI2 expression data. 
 
 5. Besides, I performed association tests for the SNP-related gene expression and snp to find if they are associated with each other (single gene expression ~ single snp).
 
 ## Results
 
-We obtained 62 factors for all genes in IDIN using FLASH. For genes associated with rs9557207, wo got 8 factors and for genes associated with rs11616269, we got 4.
+We obtained 62 factors for all genes in IDIN using FLASH. For genes associated with rs9557207, we got 8 factors and for genes associated with rs11616269, we got 4.
 
 ### Factors ~ SNPs.
 
@@ -128,3 +129,49 @@ DT::datatable(summary, options = list(pageLength =10))
 summary <- read.csv("/project2/xinhe/xsun/website/pathway_analysis/output/rs11616269_gene_snp.csv", header = T)
 DT::datatable(summary, options = list(pageLength =10))
 ```
+
+
+### Factors ~ EBI2 expression
+
+We made histograms to show the pvalue distribution and we also made a table to show the detailed information for each factor.
+
+#### 62 factors extracted from all IDIN genes.
+
+We got 12 of 62 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/pval_allgene_ebi2.jpeg" width="80%">
+</figure>
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/p_r_all_ebi2.rdata")
+DT::datatable(summary, options = list(pageLength =10))
+```
+
+
+#### 8 factors extracted from rs9557207-related genes.
+
+We got 4 of 8 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/pval_955_ebi2.jpeg" width="80%">
+</figure>
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/p_r_955_ebi2.rdata")
+DT::datatable(summary, options = list(pageLength =10))
+```
+
+#### 4 Factors extracted from rs11616269-related genes.
+
+We got 3 of 4 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/pval_116_ebi2.jpeg" width="80%">
+</figure>
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/p_r_116_ebi2.rdata")
+DT::datatable(summary, options = list(pageLength =10))
+```
+
