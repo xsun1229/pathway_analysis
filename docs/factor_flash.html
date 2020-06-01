@@ -454,7 +454,7 @@ div.tocify {
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2020-05-29
+<strong>Last updated:</strong> 2020-06-01
 </p>
 <p>
 <strong>Checks:</strong> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6 <span class="glyphicon glyphicon-exclamation-sign text-danger" aria-hidden="true"></span> 1
@@ -609,6 +609,30 @@ output/rs9557207_gene_snp.csv
 output/rs11616269_gene_snp.csv
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+/project2/xinhe/xsun/website/pathway_analysis/output/p_r_all_ebi2.rdata
+</td>
+<td style="text-align:left;">
+output/p_r_all_ebi2.rdata
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+/project2/xinhe/xsun/website/pathway_analysis/output/p_r_955_ebi2.rdata
+</td>
+<td style="text-align:left;">
+output/p_r_955_ebi2.rdata
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+/project2/xinhe/xsun/website/pathway_analysis/output/p_r_116_ebi2.rdata
+</td>
+<td style="text-align:left;">
+output/p_r_116_ebi2.rdata
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -617,16 +641,16 @@ output/rs11616269_gene_snp.csv
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreef22fc94ec8390f73f01539518a1f3fda85c83d81targetblankf22fc94a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/f22fc94ec8390f73f01539518a1f3fda85c83d81" target="_blank">f22fc94</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree02750bd52c1b471358f1ab73157536bc6d2187detargetblank02750bda"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/02750bd52c1b471358f1ab73157536bc6d2187de" target="_blank">02750bd</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreef22fc94ec8390f73f01539518a1f3fda85c83d81targetblankf22fc94a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree02750bd52c1b471358f1ab73157536bc6d2187detargetblank02750bda" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/f22fc94ec8390f73f01539518a1f3fda85c83d81" target="_blank">f22fc94</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/02750bd52c1b471358f1ab73157536bc6d2187de" target="_blank">02750bd</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -689,6 +713,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/02750bd52c1b471358f1ab73157536bc6d2187de/analysis/factor_flash.Rmd" target="_blank">02750bd</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-06-01
+</td>
+<td>
+wflow_publish(c(“output/pval_allgene_ebi2.jpeg”, “output/pval_955_ebi2.jpeg”,
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/0c4ea8f4f28e0b0f5d8224e3deb97c08d24e315b/docs/factor_flash.html" target="_blank">0c4ea8f</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-05-29
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -851,7 +909,7 @@ wflow_publish(c(“analysis/factor_flash.Rmd”, “output/rs11616269_pval_flash
 </div>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>In this part, we used <a href="https://github.com/stephenslab/flashr">‘flashr’</a>, methods for matrix factorization based on <a href="https://arxiv.org/abs/1802.06931">Empirical Bayes Matrix Factorization</a>, to extract factors from IDIN gene expression matrix and part of the IDIN gene expression matrix.We also performed factor analysis find if any factor associates with the two SNPs ( <a href="https://www.ncbi.nlm.nih.gov/snp/rs9557207">rs9557207</a> and <a href="https://www.ncbi.nlm.nih.gov/snp/rs11616269">rs11616269</a>)</p>
+<p>In this part, we used <a href="https://github.com/stephenslab/flashr">‘flashr’</a>, methods for matrix factorization based on <a href="https://arxiv.org/abs/1802.06931">Empirical Bayes Matrix Factorization</a>, to extract factors from IDIN gene expression matrix and part of the IDIN gene expression matrix.We also performed factor analysis find if any factor associates with the two SNPs ( <a href="https://www.ncbi.nlm.nih.gov/snp/rs9557207">rs9557207</a> and <a href="https://www.ncbi.nlm.nih.gov/snp/rs11616269">rs11616269</a>) and EBI2 expression data.</p>
 </div>
 <div id="material-and-methods" class="section level2">
 <h2>Material and Methods</h2>
@@ -860,6 +918,7 @@ wflow_publish(c(“analysis/factor_flash.Rmd”, “output/rs11616269_pval_flash
 <ul>
 <li>All genes in IDIN(same with the genes in <a href="https://xsun1229.github.io/pathway_analysis/IDIN.html">IDIN-PLIER</a>)</li>
 <li>Part of the IDIN genes (genes associated with rs9557207 and rs11616269, listed by <em>Bayesian detection of expression quantitative trait [Genetics, 2011]</em>, see the table below, evidence of associations :BF &gt; 10)</li>
+<li>EBI2 expression data and genotype of variants are from GTEx data.</li>
 </ul></li>
 </ol>
 <p><strong>rs11616269</strong> <div id="htmlwidget-25477d99f8699b15a5c8" style="width:100%;height:auto;" class="datatables html-widget"></div>
@@ -877,13 +936,13 @@ ldf = flash_get_ldf(f)</code></pre>
 <pre class="r"><code>f.b = flash(Y, f_init = f, backfit=TRUE, greedy=FALSE)
 ldf.b = flash_get_ldf(f.b)</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li><p>Perform association tests between the facotrs and two SNPs.</p></li>
+<li><p>Perform association tests between the facotrs and two SNPs/EBI2 expression data.</p></li>
 <li><p>Besides, I performed association tests for the SNP-related gene expression and snp to find if they are associated with each other (single gene expression ~ single snp).</p></li>
 </ol>
 </div>
 <div id="results" class="section level2">
 <h2>Results</h2>
-<p>We obtained 62 factors for all genes in IDIN using FLASH. For genes associated with rs9557207, wo got 8 factors and for genes associated with rs11616269, we got 4.</p>
+<p>We obtained 62 factors for all genes in IDIN using FLASH. For genes associated with rs9557207, we got 8 factors and for genes associated with rs11616269, we got 4.</p>
 <div id="factors-snps." class="section level3">
 <h3>Factors ~ SNPs.</h3>
 <div id="all-genes-in-idin" class="section level4">
@@ -933,6 +992,36 @@ ldf.b = flash_get_ldf(f.b)</code></pre>
 </ul>
 <div id="htmlwidget-4cd78be07865bf8d6c49" style="width:100%;height:auto;" class="datatables html-widget"></div>
 <script type="application/json" data-for="htmlwidget-4cd78be07865bf8d6c49">{"x":{"filter":"none","data":[["1","2","3","4","5","6","7","8","9","10","11","12","13"],["OMA1","TRIM37","PARP10","WDR33","LOC285074","EPC1","WSB1","VNN2","PIWIL4","KIF23","XPOT","MOCS2","ZBTB34"],["ENSG00000162600","ENSG00000108395","ENSG00000178685","ENSG00000136709",null,"ENSG00000120616","ENSG00000109046","ENSG00000112303","ENSG00000134627","ENSG00000137807","ENSG00000184575","ENSG00000164172","ENSG00000177125"],[10.46,50.49,39.47,85.24,11.78,14.88,26.02,27.59,21.08,53.91,199.78,11.67,16.89],[0.5700097,0.7363221,0.8303526,0.469654,null,0.4974739,0.6170187,0.7406645,0.4499087,0.9941406,0.9425259,0.8015665,0.6115727],[0.000484,0.00017,6.89e-05,0.000784,null,0.00069,0.000375,0.000164,0.000856,8.09e-08,7.8e-06,9.48e-05,0.000387]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>hgnc_symbol<\/th>\n      <th>ensembl_gene_id<\/th>\n      <th>BF<\/th>\n      <th>pval<\/th>\n      <th>rsq<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[3,4,5]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="factors-ebi2-expression" class="section level3">
+<h3>Factors ~ EBI2 expression</h3>
+<p>We made histograms to show the pvalue distribution and we also made a table to show the detailed information for each factor.</p>
+<div id="factors-extracted-from-all-idin-genes." class="section level4">
+<h4>62 factors extracted from all IDIN genes.</h4>
+<p>We got 12 of 62 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)</p>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/pval_allgene_ebi2.jpeg" width="80%">
+</figure>
+<div id="htmlwidget-1858cd90d56a4e65b6c0" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-1858cd90d56a4e65b6c0">{"x":{"filter":"none","data":[["factor1","factor2","factor3","factor4","factor5","factor6","factor7","factor8","factor9","factor10","factor11","factor12","factor13","factor14","factor15","factor16","factor17","factor18","factor19","factor20","factor21","factor22","factor23","factor24","factor25","factor26","factor27","factor28","factor29","factor30","factor31","factor32","factor33","factor34","factor35","factor36","factor37","factor38","factor39","factor40","factor41","factor42","factor43","factor44","factor45","factor46","factor47","factor48","factor49","factor50","factor51","factor52","factor53","factor54","factor55","factor56","factor57","factor58","factor59","factor60","factor61","factor62"],[1.02198222191821e-72,1.02209707700027e-41,0.535347928820461,0.0820399926366768,0.0154200037196831,0.212237159743473,0.545031563650886,2.17448998177549e-13,0.00268817369307082,0.0576496375365858,0.00220204523640437,0.0366081205766917,0.10569928719761,0.0637728291351354,0.0814624158891095,0.583334482698317,0.577971826666585,0.544609093462732,0.0572549323873142,0.0218585675941027,0.095001470088022,0.0987827230387754,0.959319784822648,0.0502468226830674,0.743007670950199,0.209471482832672,0.466048247086732,0.838673369104356,0.143320757582563,0.75387991686274,0.663598159531635,0.485452368171887,0.89348537037819,0.298610360992955,0.249636472719819,0.325055470495618,0.966267152433803,0.643509769646538,0.259981076033001,0.331473225725873,0.795123336264051,0.779583249982413,0.923992458088808,0.612618320922409,0.269507495177948,0.00109780806127189,0.0225194649721066,0.0339877931133498,0.0104989226640211,0.915128142552099,0.95001735212856,0.897073995246926,0.665120099855902,0.651567871444056,0.855996514730031,0.687884845039665,0.590743847193656,0.80914724477432,0.919114340439834,0.257252015233522,0.866264805388394,0.437879878387385],[0.385720646703606,0.239893097451638,0.000575460017820722,0.0045201142840198,0.00875223116262325,0.00232851984963184,0.000548603675950233,0.0774921816667691,0.0134042945872997,0.00538431481395258,0.0139438070345552,0.00652327085489671,0.00391347858025163,0.00513499761293239,0.00453720973591854,0.000450647139494753,0.000463600186816279,0.000549757028389152,0.00540133897580829,0.00784472931285646,0.00416734197566052,0.00407420335729166,3.89772052330967e-06,0.00572616535925939,0.000161036753058955,0.00235688057196743,0.000795682973932705,6.20941878083319e-05,0.00320375098042565,0.000147254290441785,0.000283378744783757,0.000728707959222008,2.68579840621333e-05,0.00161725178721585,0.00198355290238321,0.00144987823755146,2.6793706107386e-06,0.000320819153712994,0.00189910413218406,0.0014119361948261,0.000101006318802721,0.000117330663791679,1.3636276208453e-05,0.000384015589530075,0.00182492684415314,0.0158356250582808,0.00776771586384483,0.00671192768683066,0.00976209485846052,1.70151254013515e-05,5.88673406316854e-06,2.5068769063128e-05,0.00028065485861897,0.000305465073519176,4.93356402763104e-05,0.000241745533092786,0.000433140654814033,8.73893363654845e-05,1.54489875102717e-05,0.00192097614287581,4.24862586362151e-05,0.000901214368438744]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>pval<\/th>\n      <th>rsq<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="factors-extracted-from-rs9557207-related-genes." class="section level4">
+<h4>8 factors extracted from rs9557207-related genes.</h4>
+<p>We got 4 of 8 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)</p>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/pval_955_ebi2.jpeg" width="80%">
+</figure>
+<div id="htmlwidget-60a063183f0059ee486d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-60a063183f0059ee486d">{"x":{"filter":"none","data":[["factor1","factor2","factor3","factor4","factor5","factor6","factor7","factor8"],[1.32533804706935e-123,0.0587662423948408,0.00888687651645884,0.0076110080797729,0.516826067575,0.504039903941539,5.19069979863102e-12,0.998917855822537],[0.567228739809323,0.00533681505329052,0.0102028962796006,0.0106141081554524,0.000629348415391957,0.000668570376402974,0.06884628311635,2.7557448529209e-09]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>pval<\/th>\n      <th>rsq<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div id="factors-extracted-from-rs11616269-related-genes." class="section level4">
+<h4>4 Factors extracted from rs11616269-related genes.</h4>
+<p>We got 3 of 4 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)</p>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/pval_116_ebi2.jpeg" width="80%">
+</figure>
+<div id="htmlwidget-55a9e6739eae3c0359ef" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-55a9e6739eae3c0359ef">{"x":{"filter":"none","data":[["factor1","factor2","factor3","factor4"],[2.99340459375602e-25,4.44295185024457e-36,0.0107848070519112,0.208720906706364],[0.14911331071797,0.209922281316041,0.00969120619330795,0.00236465382989312]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>pval<\/th>\n      <th>rsq<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"pageLength":10,"columnDefs":[{"className":"dt-right","targets":[1,2]},{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 <br>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
@@ -971,6 +1060,7 @@ loaded via a namespace (and not attached):
 [21] promises_1.0.1  fs_1.3.1        mime_0.9        glue_1.4.1     
 [25] evaluate_0.14   rmarkdown_1.13  stringi_1.4.6   compiler_3.6.1 
 [29] backports_1.1.7 jsonlite_1.6.1  httpuv_1.5.1   </code></pre>
+</div>
 </div>
 </div>
 </div>
