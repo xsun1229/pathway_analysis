@@ -24,7 +24,8 @@ editor_options:
     
 - pwy-plier-nochrx-allpathway
 
-    In last part, we just extracted LVs using PLIER. But we just included the pathway dataset that containing KEGG path way. In this part, we get all the pathways provided in 'PLIER' R package included to find if we can get better results. [For more details](https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx-allpath.html)
+    
+     [For more details](https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx-allpath.html)
 
 # Factor-TWAS
 

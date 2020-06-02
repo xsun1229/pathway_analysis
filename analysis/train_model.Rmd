@@ -74,7 +74,6 @@ In this table, there are several NA value. These NA values come from linear regr
 load("/project2/xinhe/xsun/website/pathway_analysis/output/summary_H_le_sorted.rdata")
 rownames(sum_sorted) <- c()
 DT::datatable(sum_sorted, options = list(pageLength =20))
-
 ```
 
 
