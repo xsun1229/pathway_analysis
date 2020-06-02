@@ -23,9 +23,8 @@ editor_options:
     In last part, we extracted LVs from gene expression matrix which includes chrX, but it maybe more accurate to exclude chrX. So, we performed analysis for the data excluding chrX. [For more details](https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx.html)
     
 - pwy-plier-nochrx-allpathway
-
     
-     [For more details](https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx-allpath.html)
+    In this part, the data and workflow are the same with [pwy-plier-nochrx](https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx.html). In last part, we extracted LVs using PLIER. But we just included the pathway dataset that containing KEGG pathway. In this part, we get all the pathways provided in 'PLIER' R package included to find if we can get better results. [For more details](https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx-allpath.html)
 
 # Factor-TWAS
 
@@ -35,9 +34,12 @@ We have extract factors(LVs) related to pathways from gene expression data and c
 
 1. In this part, we will use lasso and elastic_net regression to train a prediction model. The dependent variables here are LVs and the independent variables are genotype of certain variants. [For more details](https://xsun1229.github.io/pathway_analysis/train_model.html)
 
-2. We performed same analysis with [1](https://xsun1229.github.io/pathway_analysis/train_model.html). But the data are kind of different. After dividing the data into training part and testing part, we perfpormed LDpruning for the training data using Plink. The window size of ldpruning is 50kb, the step size is 5kb, the VIF is 5 (1/(1-r2), r2=0.8). After ldpruning, the average number of variants in training data decreases from 103,809 to 31,834. [For more details](https://xsun1229.github.io/pathway_analysis/train_model_ldpruning.html)
+2. In this part, the workflow is the same with [1.](https://xsun1229.github.io/pathway_analysis/train_model.html). For the data part, the genotype data are the same too, we just change the phenotype data. The phenotype data are the LVs obtained from [pwy-plier-nochrx-allpath](https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx-allpath.html)
 
-3. We also trained a model for the fifth pc of T1B pathway.  [For more details](https://xsun1229.github.io/pathway_analysis/T1B.html)
+
+3. We performed same analysis with [1](https://xsun1229.github.io/pathway_analysis/train_model.html). But the data are kind of different. After dividing the data into training part and testing part, we perfpormed LDpruning for the training data using Plink. The window size of ldpruning is 50kb, the step size is 5kb, the VIF is 5 (1/(1-r2), r2=0.8). After ldpruning, the average number of variants in training data decreases from 103,809 to 31,834. [For more details](https://xsun1229.github.io/pathway_analysis/train_model_ldpruning.html)
+
+4. We also trained a model for the fifth pc of T1B pathway.  [For more details](https://xsun1229.github.io/pathway_analysis/T1B.html)
 
 ## Prediction part
 

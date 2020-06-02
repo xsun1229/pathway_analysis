@@ -27,7 +27,7 @@ This figure shows the prediction performance (R2 of Lasso/Elastic_net regression
 ### Table
 The table below shows the heritability of LVs and performance of the training models. The table has been sorted by Heritability from small to large.
 
-Some notations to explain: **rsq_min** is the r-squared when lambda=lambda.min, **ncoef_nzero_min** is the number of non-zero coefficients when lambda=lambda.min, **rsq_test** is the r-squared in testing set (obtained from lm(lv.obs ~ lv.pred)) ,**pval_test** is the pvalue of F-statisticsin testing test. When the suffix is '_1se', the notations mean lambda=lambda.1se. Suffix '_l' means lasso regression and '_e' means elastic_net
+Some notations to explain: **rsq_min** is the r-squared when lambda=lambda.min, **ncoef_nzero_min** is the number of non-zero coefficients when lambda=lambda.min, **rsq_test** is the r-squared in testing set (obtained from lm(lv.obs ~ lv.pred)) ,**pval_test** is the pvalue of F-statistics in testing set. When the suffix is '_1se', the notations mean lambda=lambda.1se. Suffix '_l' means lasso regression and '_e' means elastic_net
 
 
 ```{r eval=FALSE, echo=T}
@@ -89,7 +89,7 @@ We first plot the change of mean squared errors and coefficients when training t
 
 For LV89, we performned more analysis to detect the reason why it has relatively high heritability but low r-squared in lasso.
 
-##### Variants with non-zero coefficients
+#### Variants with non-zero coefficients
 
 We got 12 variants with non-zero lasso coefficients. For these variants, we performed single snp linear regression (LV89 ~ genotype of a snp) and made conparision in both training set and testing set.
 
@@ -116,3 +116,64 @@ To compare the p-values of training set and test set, we made a scatter plot.
 </figure>
 
 
+### LVs with relatively low pval_test_l
+
+By sorting the pval_test_l in the table above, we can get several LVs that have very low pvalues on testing set (LV40,73,45,78). We made scatter plots of predicted LVs vs. observed LVs for them. Besides, we did GWAS analysis.
+
+The red line in manhattan plot means p-value is 5e-8. 
+
+#### lv40
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV40_allpath.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qq_unif_lv40_allpath.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv40_allpath.jpeg" width="200%">
+</figure>
+
+#### lv73
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV73_allpath.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qq_unif_lv73_allpath.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv73_allpath.jpeg" width="200%">
+</figure>
+
+#### lv40
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV45_allpath.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qq_unif_lv45_allpath.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv45_allpath.jpeg" width="200%">
+</figure>
+
+#### lv78
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV78_allpath.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qq_unif_lv78_allpath.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv78_allpath.jpeg" width="200%">
+</figure>
