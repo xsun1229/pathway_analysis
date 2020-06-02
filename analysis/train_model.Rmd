@@ -28,6 +28,8 @@ The missing data pattern of our dataset. x-axis represents the proportion of mis
 
 5. Trained Lasso/Elastic net using SNPs from step4 in the training data and evaluated the performance in the testing data.
 
+6. For LVs with relatively low pval_test_l, we did GWAS analysis. In the association tests, first 10 genotype pcs were included as covariants.
+
 
 ## Results
 
@@ -47,7 +49,7 @@ There seems to be some overfitting problems. So I did some debuggings.
 ### Table
 The table below shows the heritability of LVs and performance of the training models. The table has been sorted by Heritability from small to large.
 
-Some notations to explain: **rsq_min** is the r-squared when lambda=lambda.min, **ncoef_nzero_min** is the number of non-zero coefficients when lambda=lambda.min, **rsq_test** is the r-squared in testing set (obtained from lm(lv.obs ~ lv.pred)) ,**pval_test** is the pvalue of F-statisticsin testing test. When the suffix is '_1se', the notations mean lambda=lambda.1se. Suffix '_l' means lasso regression and '_e' means elastic_net
+Some notations to explain: **rsq_min** is the r-squared when lambda=lambda.min, **ncoef_nzero_min** is the number of non-zero coefficients when lambda=lambda.min, **rsq_test** is the r-squared in testing set (obtained from lm(lv.obs ~ lv.pred)) ,**pval_test** is the pvalue of F-statistics in testing set. When the suffix is '_1se', the notations mean lambda=lambda.1se. Suffix '_l' means lasso regression and '_e' means elastic_net
 
 
 ```{r eval=FALSE, echo=T}
@@ -74,6 +76,7 @@ In this table, there are several NA value. These NA values come from linear regr
 load("/project2/xinhe/xsun/website/pathway_analysis/output/summary_H_le_sorted.rdata")
 rownames(sum_sorted) <- c()
 DT::datatable(sum_sorted, options = list(pageLength =20))
+
 ```
 
 
@@ -110,7 +113,7 @@ We first plot the change of mean squared errors and coefficients when training t
 
 For LV101, we performned more analysis to detect the reason why it has relatively high heritability(0.19) but low r-squared(0.071) in lasso.
 
-##### Variants with non-zero coefficients
+#### Variants with non-zero coefficients
 
 We got 15 variants with non-zero lasso coefficients. For these variants, we performed single snp linear regression (LV101 ~ genotype of a snp) and made conparision in both training set and testing set.
 
@@ -136,3 +139,66 @@ To compare the p-values of training set and test set, we made a scatter plot.
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV101_pvals.jpeg" width="80%">
 </figure>
 
+### LVs with relatively low pval_test_l
+
+By sorting the pval_test_l in the table above, we can get several LVs that have very low pvalues on testing set (LV90,50,125,68). We made scatter plots of predicted LVs vs. observed LVs for them. Besides, we did GWAS analysis.
+
+The red line in manhattan plot means p-value is 5e-8. 
+
+#### lv90
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV90.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qq_unif_lv90.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv90.jpeg" width="200%">
+</figure>
+
+
+#### lv50
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV50.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qq_unif_lv50.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv50.jpeg" width="200%">
+</figure>
+  
+
+#### lv125
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV125.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qq_unif_lv125.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv125.jpeg" width="200%">
+</figure>
+
+#### lv68
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV68.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/qq_unif_lv68.jpeg" width="200%">
+</figure>
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv68.jpeg" width="200%">
+</figure>
