@@ -665,16 +665,16 @@ output/p_r_116_cisebi2.rdata
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree7a204ee805360ad54524b69831c2cb38a6a857e8targetblank7a204eea"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/7a204ee805360ad54524b69831c2cb38a6a857e8" target="_blank">7a204ee</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreefb165062a167e555b38c9b9ca623daac92d85d0dtargetblankfb16506a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/fb165062a167e555b38c9b9ca623daac92d85d0d" target="_blank">fb16506</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree7a204ee805360ad54524b69831c2cb38a6a857e8targetblank7a204eea" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreefb165062a167e555b38c9b9ca623daac92d85d0dtargetblankfb16506a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/7a204ee805360ad54524b69831c2cb38a6a857e8" target="_blank">7a204ee</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/fb165062a167e555b38c9b9ca623daac92d85d0d" target="_blank">fb16506</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -686,6 +686,7 @@ Ignored files:
     Ignored:    .Rproj.user/
 
 Unstaged changes:
+    Deleted:    output/ebi2_mse_le.jpeg
     Deleted:    output/snp001_le.jpeg
 
 </code></pre>
@@ -725,6 +726,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/fb165062a167e555b38c9b9ca623daac92d85d0d/analysis/factor_flash.Rmd" target="_blank">fb16506</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-06-04
+</td>
+<td>
+wflow_publish(c(“analysis/factor_flash.Rmd”, “output/ebi2_mse_e.jpeg”,
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/a6ef67a028868df5e45f7ea29ac887870519aa5b/docs/factor_flash.html" target="_blank">a6ef67a</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-06-04
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1144,9 +1179,15 @@ ldf.b = flash_get_ldf(f.b)</code></pre>
 <div id="regression-ebi2-expression-cis-snp." class="section level4">
 <h4>Regression EBI2 expression ~ cis-snp.</h4>
 <p>The r-squared of lasso regression is 0.0061 and the r-squared of elastic-net is 0.0057 (lambda = lambda.min). Both lasso and elastic-net just selected a few snps when lambda = lambda.min. It seems that the expression of EBI2 are not predictable using cis-snps. So the results in this part are not as good as those in last part.</p>
+<p>Lasso</p>
 <figure class="half">
-<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/ebi2_mse_le.jpeg" width="100%">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/ebi2_mse_l.jpeg" width="80%">
 </figure>
+<p>Elastic-net</p>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/ebi2_mse_l.jpeg" width="80%">
+</figure>
+<p>Since the results of lasso and elastic-net are not quite different, we just attatch the results of lasso regression in the following part.</p>
 </div>
 <div id="factors-extracted-from-all-idin-genes.-1" class="section level4">
 <h4>62 factors extracted from all IDIN genes.</h4>
