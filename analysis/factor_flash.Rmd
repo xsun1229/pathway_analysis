@@ -183,10 +183,19 @@ In this part, we did association test for factors and cis-genetic component of E
 
 The r-squared of lasso regression is 0.0061 and the r-squared of elastic-net is 0.0057 (lambda = lambda.min). Both lasso and elastic-net just selected a few snps when lambda = lambda.min. It seems that the expression of EBI2 are not predictable using cis-snps. So the results in this part are not as good as those in last part.
 
+Lasso
+
 <figure class="half">
-    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/ebi2_mse_le.jpeg" width="100%">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/ebi2_mse_l.jpeg" width="80%">
 </figure>
 
+Elastic-net
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/ebi2_mse_l.jpeg" width="80%">
+</figure>
+
+Since the results of lasso and elastic-net are not quite different, we just attatch the results of lasso regression in the following part.
 
 #### 62 factors extracted from all IDIN genes.
 
