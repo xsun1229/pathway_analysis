@@ -46,7 +46,7 @@ f.b = flash(Y, f_init = f, backfit=TRUE, greedy=FALSE)
 ldf.b = flash_get_ldf(f.b)
 ```
 
-4. Perform association tests between the facotrs and two SNPs/EBI2 expression data. 
+4. Perform association tests between the facotrs and two SNPs/EBI2 expression/cis-genetic component of EBI2 expression. 
 
 5. Besides, I performed association tests for the SNP-related gene expression and snp to find if they are associated with each other (single gene expression ~ single snp).
 
@@ -172,6 +172,55 @@ We got 3 of 4 factors associated with EBI2 expression (pvalues of F-statistics i
 
 ```{r echo=FALSE}
 load("/project2/xinhe/xsun/website/pathway_analysis/output/p_r_116_ebi2.rdata")
+DT::datatable(summary, options = list(pageLength =10))
+```
+
+### Factors ~ cis-genetic component of EBI2 expression
+
+In this part, we did association test for factors and cis-genetic component of EBI2 expression. To get the cis-genetic component of EBI2 expression, we performed lasso/elastic_net regression for EBI2 expression ~ cis-snp (within 500kb from TSS of EBI2, 3634 variants). 
+
+#### Regression EBI2 expression ~ cis-snp.
+
+The r-squared of lasso regression is 0.0061 and the r-squared of elastic-net is 0.0057 (lambda = lambda.min). Both lasso and elastic-net just selected a few snps when lambda = lambda.min. It seems that the expression of EBI2 are not predictable using cis-snps. So the results in this part are not as good as those in last part.
+
+
+#### 62 factors extracted from all IDIN genes.
+
+We got 12 of 62 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/pval_all_cisebi2.jpeg" width="80%">
+</figure>
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/p_r_all_cisebi2.rdata")
+DT::datatable(summary, options = list(pageLength =10))
+```
+
+
+#### 8 factors extracted from rs9557207-related genes.
+
+We got 4 of 8 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/pval_955_cisebi2.jpeg" width="80%">
+</figure>
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/p_r_955_cisebi2.rdata")
+DT::datatable(summary, options = list(pageLength =10))
+```
+
+#### 4 Factors extracted from rs11616269-related genes.
+
+We got 3 of 4 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)
+
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/pval_116_cisebi2.jpeg" width="80%">
+</figure>
+
+```{r echo=FALSE}
+load("/project2/xinhe/xsun/website/pathway_analysis/output/p_r_116_cisebi2.rdata")
 DT::datatable(summary, options = list(pageLength =10))
 ```
 

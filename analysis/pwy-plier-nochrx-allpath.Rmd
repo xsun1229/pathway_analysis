@@ -9,7 +9,7 @@ editor_options:
 
 ## Introduction
 
-In this part, the data and workflow are the same with [pwy-plier-nochrx](https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx.html). In last part, we just extracted LVs using PLIER. But we just included the pathway dataset that containing KEGG pathway. In this part, we get all the pathways provided in 'PLIER' R package included to find if we can get better results. 
+In this part, the data and workflow are the same with [pwy-plier-nochrx](https://xsun1229.github.io/pathway_analysis/pwy-plier-nochrx.html). In last part, we extracted LVs using PLIER. But we just included the pathway dataset that containing KEGG pathway. In this part, we get all the pathways provided in 'PLIER' R package included to find if we can get better results. 
 
 The pathways are shown below.
 
