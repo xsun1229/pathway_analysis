@@ -665,16 +665,16 @@ output/p_r_116_cisebi2.rdata
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree9fe2a81f3730e415217b0088f55c02ff1bb43947targetblank9fe2a81a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/9fe2a81f3730e415217b0088f55c02ff1bb43947" target="_blank">9fe2a81</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree2e854519dfea4090e5f6b395c5d6feddc788a6f5targetblank2e85451a"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/2e854519dfea4090e5f6b395c5d6feddc788a6f5" target="_blank">2e85451</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree9fe2a81f3730e415217b0088f55c02ff1bb43947targetblank9fe2a81a" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistree2e854519dfea4090e5f6b395c5d6feddc788a6f5targetblank2e85451a" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/9fe2a81f3730e415217b0088f55c02ff1bb43947" target="_blank">9fe2a81</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/2e854519dfea4090e5f6b395c5d6feddc788a6f5" target="_blank">2e85451</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -686,11 +686,6 @@ Ignored files:
     Ignored:    .Rproj.user/
 
 Unstaged changes:
-    Deleted:    analysis/INID.Rmd
-    Deleted:    analysis/regression.Rmd
-    Deleted:    output/LV101_ldpr.jpeg
-    Deleted:    output/LV5.jpeg
-    Deleted:    output/nzero_variants.rdata
     Deleted:    output/snp001_le.jpeg
 
 </code></pre>
@@ -730,6 +725,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/2e854519dfea4090e5f6b395c5d6feddc788a6f5/analysis/factor_flash.Rmd" target="_blank">2e85451</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-06-04
+</td>
+<td>
+wflow_publish(c(“output/ebi2_mse_le.jpeg”, “analysis/factor_flash.Rmd”))
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/207143ddb2896ae5e1c7c118299b7e3c14d02b33/docs/factor_flash.html" target="_blank">207143d</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-06-04
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -1081,6 +1110,9 @@ ldf.b = flash_get_ldf(f.b)</code></pre>
 <div id="regression-ebi2-expression-cis-snp." class="section level4">
 <h4>Regression EBI2 expression ~ cis-snp.</h4>
 <p>The r-squared of lasso regression is 0.0061 and the r-squared of elastic-net is 0.0057 (lambda = lambda.min). Both lasso and elastic-net just selected a few snps when lambda = lambda.min. It seems that the expression of EBI2 are not predictable using cis-snps. So the results in this part are not as good as those in last part.</p>
+<figure class="half">
+<img src="https://github.com/xsun1229/pathway_analysis/raw/master/outputebi2_mse_le.jpeg" width="100%">
+</figure>
 </div>
 <div id="factors-extracted-from-all-idin-genes.-1" class="section level4">
 <h4>62 factors extracted from all IDIN genes.</h4>
