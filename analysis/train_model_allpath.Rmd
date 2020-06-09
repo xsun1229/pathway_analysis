@@ -150,7 +150,7 @@ The red line in manhattan plot means p-value is 5e-8.
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/man_lv73_allpath.jpeg" width="200%">
 </figure>
 
-#### lv40
+#### lv45
 
 <figure class="half">
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/LV45_allpath.jpeg" width="200%">

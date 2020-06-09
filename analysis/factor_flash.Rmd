@@ -199,7 +199,7 @@ Since the results of lasso and elastic-net are not quite different, we just atta
 
 #### 62 factors extracted from all IDIN genes.
 
-We got 12 of 62 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)
+We got 8 of 62 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)
 
 <figure class="half">
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/pval_all_cisebi2.jpeg" width="80%">
@@ -213,7 +213,7 @@ DT::datatable(summary, options = list(pageLength =10))
 
 #### 8 factors extracted from rs9557207-related genes.
 
-We got 4 of 8 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)
+We got 2 of 8 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)
 
 <figure class="half">
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/pval_955_cisebi2.jpeg" width="80%">
@@ -226,7 +226,7 @@ DT::datatable(summary, options = list(pageLength =10))
 
 #### 4 Factors extracted from rs11616269-related genes.
 
-We got 3 of 4 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)
+We got 1 of 4 factors associated with EBI2 expression (pvalues of F-statistics in linear regression are less than 0.05)
 
 <figure class="half">
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/pval_116_cisebi2.jpeg" width="80%">
