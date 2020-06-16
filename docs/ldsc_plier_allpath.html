@@ -577,16 +577,16 @@ output/lv73.results
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreeeb924efa475c1a153ee6995980263bc6740c4a14targetblankeb924efa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/eb924efa475c1a153ee6995980263bc6740c4a14" target="_blank">eb924ef</a> </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreef2df2ea3eba8c8945cb14fff9f0af31d82d8f3d4targetblankf2df2eaa"> <span class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> <strong>Repository version:</strong> <a href="https://github.com/xsun1229/pathway_analysis/tree/f2df2ea3eba8c8945cb14fff9f0af31d82d8f3d4" target="_blank">f2df2ea</a> </a>
 </p>
 </div>
-<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreeeb924efa475c1a153ee6995980263bc6740c4a14targetblankeb924efa" class="panel-collapse collapse">
+<div id="strongRepositoryversionstrongahrefhttpsgithubcomxsun1229pathwayanalysistreef2df2ea3eba8c8945cb14fff9f0af31d82d8f3d4targetblankf2df2eaa" class="panel-collapse collapse">
 <div class="panel-body">
 <p>
 Great! You are using Git for version control. Tracking code development and connecting the code version to the results is critical for reproducibility.
 </p>
 <p>
-The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/eb924efa475c1a153ee6995980263bc6740c4a14" target="_blank">eb924ef</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
+The results in this page were generated with repository version <a href="https://github.com/xsun1229/pathway_analysis/tree/f2df2ea3eba8c8945cb14fff9f0af31d82d8f3d4" target="_blank">f2df2ea</a>. See the <em>Past versions</em> tab to see a history of the changes made to the R Markdown and HTML files.
 </p>
 <p>
 Note that you need to be careful to ensure that all relevant files for the analysis have been committed to Git prior to generating the results (you can use <code>wflow_publish</code> or <code>wflow_git_commit</code>). workflowr only checks the R Markdown file, but you know if there are other scripts or data files that it depends on. Below is the status of the Git repository when the results were generated:
@@ -638,6 +638,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/xsun1229/pathway_analysis/blob/f2df2ea3eba8c8945cb14fff9f0af31d82d8f3d4/analysis/ldsc_plier_allpath.Rmd" target="_blank">f2df2ea</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-06-16
+</td>
+<td>
+wflow_publish(“analysis/ldsc_plier_allpath.Rmd”)
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/xsun1229/pathway_analysis/4416c98ccb51cdd29d342b1710ac918e26f008ee/docs/ldsc_plier_allpath.html" target="_blank">4416c98</a>
+</td>
+<td>
+XSun
+</td>
+<td>
+2020-06-16
+</td>
+<td>
+Build site.
+</td>
+</tr>
 <tr>
 <td>
 Rmd
@@ -738,7 +772,13 @@ wflow_publish(c(“analysis/index.Rmd”, “analysis/ldsc_plier_allpath.Rmd”,
 <h2>Material and Methods</h2>
 <ol style="list-style-type: decimal">
 <li><p>The software ‘ldsc’ uses GWAS summary statistics as inputs. The GWAS summary statistics we adopted here came from the association tests for plier factors (nochrx, allpathway, MHC included)using training data (536 samples)in <a href="https://xsun1229.github.io/pathway_analysis/train_model_allpath.html">train_model_allpath</a>. We converted the GWAS results into following format(taking lv73, the one has the highest heritability as an example).</p>
-<p>head(sum_nox_allpath_lv73.txt) SNP N Z A1 A2 rs11596870 536 0.0368997099573425 T T rs11190359 517 -0.117165312926245 A A rs11190360 526 -0.0449721830225635 C C rs11190362 536 -0.35896191232789 C C rs192480913 536 0.528949522917621 A A</p></li>
+<p>head(sum_nox_allpath_lv73.txt)</p>
+<p>SNP N Z A1 A2</p>
+<p>rs11596870 536 0.0368997099573425 T T</p>
+<p>rs11190359 517 -0.117165312926245 A A</p>
+<p>rs11190360 526 -0.0449721830225635 C C</p>
+<p>rs11190362 536 -0.35896191232789 C C</p>
+<p>rs192480913 536 0.528949522917621 A A</p></li>
 </ol>
 <p>The ‘SNP’ IDs here are from dbSNP 151, We downloaded the correspondence between dbSNP 151 and GTEx variant ID from the <a href="https://storage.googleapis.com/gtex_analysis_v8/reference/GTEx_Analysis_2017-06-05_v8_WholeGenomeSeq_838Indiv_Analysis_Freeze.lookup_table.txt.gz">GTEx portal</a></p>
 <p>The ‘N’ here stands for the the number of non-missing samples for each variants.</p>
