@@ -53,6 +53,8 @@ We performed LD score regression for lv40(the one has lowest pvalue on testing s
 
 We made several plots to show the enrichment and 95% confidence intervals for each lv.
 
+Enrichment here is the proportion of prop.h2 devided by prop.snp.
+
 #### lv40
 
 If the picture is too small to see clearly, you can click the right mouse button to see the full picture.
