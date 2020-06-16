@@ -17,12 +17,19 @@ We adopted LD score regression to estimate SNP-based heritability and partation 
 1. The software 'ldsc' uses GWAS summary statistics as inputs. The GWAS summary statistics we adopted here came from the association tests for plier factors (nochrx, allpathway, MHC included)using training data (536 samples)in [train_model_allpath](https://xsun1229.github.io/pathway_analysis/train_model_allpath.html). We converted the GWAS results into following format(taking lv73, the one has the highest heritability as an example).
 
       head(sum_nox_allpath_lv73.txt)
+      
       SNP N Z A1 A2
+      
       rs11596870 536 0.0368997099573425 T T
+      
       rs11190359 517 -0.117165312926245 A A
+      
       rs11190360 526 -0.0449721830225635 C C
+      
       rs11190362 536 -0.35896191232789 C C
+      
       rs192480913 536 0.528949522917621 A A
+    
 
 The 'SNP' IDs here are from dbSNP 151, We downloaded the correspondence between dbSNP 151 and GTEx variant ID from the [GTEx portal](https://storage.googleapis.com/gtex_analysis_v8/reference/GTEx_Analysis_2017-06-05_v8_WholeGenomeSeq_838Indiv_Analysis_Freeze.lookup_table.txt.gz)
 
