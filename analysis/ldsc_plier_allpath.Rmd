@@ -1,0 +1,75 @@
+---
+title: "ldsc_plier_allpath"
+author: "XSun"
+date: "2020-06-15"
+output: workflowr::wflow_html
+editor_options:
+  chunk_output_type: console
+---
+
+## Introduction
+
+We adopted LD score regression to estimate SNP-based heritability and partation the heritability into seperate categories. The software we used here is [ldsc](https://github.com/bulik/ldsc).
+
+
+## Material and Methods
+
+1. The software 'ldsc' uses GWAS summary statistics as inputs. The GWAS summary statistics we adopted here came from the association tests for plier factors (nochrx, allpathway, MHC included)using training data (536 samples)in [train_model_allpath](https://xsun1229.github.io/pathway_analysis/train_model_allpath.html). We converted the GWAS results into following format(taking lv73, the one has the highest heritability as an example).
+
+    head(sum_nox_allpath_lv73.txt)
+    SNP N Z A1 A2
+    rs11596870 536 0.0368997099573425 T T
+    rs11190359 517 -0.117165312926245 A A
+    rs11190360 526 -0.0449721830225635 C C
+    rs11190362 536 -0.35896191232789 C C
+    rs192480913 536 0.528949522917621 A A
+
+The 'SNP' IDs here are from dbSNP 151, We downloaded the correspondence between dbSNP 151 and GTEx variant ID from the [GTEx portal](https://storage.googleapis.com/gtex_analysis_v8/reference/GTEx_Analysis_2017-06-05_v8_WholeGenomeSeq_838Indiv_Analysis_Freeze.lookup_table.txt.gz)
+
+The 'N' here stands for the the number of non-missing samples for each variants.
+
+'Z' is the z-score for each variants. We computed it from p-value and effect size. 
+Z=sign(Effect Size)×|phi^(-1)(p/2)|.  phi^(-1) is the inverse cumulative distribution function of the normal distribution.
+
+A1 is the alternative allele and A2 is the reference allele.
+
+2. The LD scores (baseline.* in 1000G_Phase1_baseline_ldscores.tgz), regression weights (weights.* in weights_hm3_no_hla.tgz), and allele frequencies (1000G.mac5eur.* in 1000G_Phase1_frq.tgz) were downloaded from [here](https://data.broadinstitute.org/alkesgroup/LDSCORE/) (provided by the software, they used 53 annotations). 
+
+3. After running 
+
+    python ldsc.py --h2 ./../data_pre/summary_gwas/sum_nox_allpath_lv73.txt  --ref-ld-chr ./baseline/baseline. --w-ld-chr ./weights_hm3_no_hla/weights.  --overlap-annot  --frqfile-chr ./1000G_frq/1000G.mac5eur.  --out ./../results/lv73_test
+    
+We obtained the enrichment result of factors. We made a plot to show the heritability enrichment in each category.
+
+## Results
+
+### Enrichment plots
+
+We performd LD score regression for lv40(the one has lowest pvalue on testing set *pval_test_l*) and lv73(the one has the highest heritability) from [plier-nochrx-allpathway](https://xsun1229.github.io/pathway_analysis/train_model_allpath.html). 
+
+We made several plots to show the enrichment and 95% confidence intervals for each lv.
+
+####lv40
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/enric_lv40.jpeg" width="80%">
+</figure>
+
+```{r echo=FALSE}
+aa <- read.table("/project2/xinhe/xsun/website/pathway_analysis/output/lv40.results", header = T)
+DT::datatable(aa, options = list(pageLength =10))
+```
+
+####lv73
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/enric_lv73.jpeg" width="80%">
+</figure>
+
+```{r echo=FALSE}
+aa <- read.table("/project2/xinhe/xsun/website/pathway_analysis/output/lv73.results", header = T)
+DT::datatable(aa, options = list(pageLength =10))
+```
+
+####comparison between lv40 and lv73
+<figure class="half">
+    <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/enric_lv40_lv73.jpeg" width="80%">
+</figure>
