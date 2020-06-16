@@ -50,6 +50,9 @@ We performd LD score regression for lv40(the one has lowest pvalue on testing se
 We made several plots to show the enrichment and 95% confidence intervals for each lv.
 
 ####lv40
+
+If the picture is too small to see clearly, you can click the right mouse button to see the full picture.
+
 <figure class="half">
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/enric_lv40.jpeg" width="80%">
 </figure>
@@ -60,6 +63,7 @@ DT::datatable(aa, options = list(pageLength =10))
 ```
 
 ####lv73
+
 <figure class="half">
     <img src="https://github.com/xsun1229/pathway_analysis/raw/master/output/enric_lv73.jpeg" width="80%">
 </figure>
